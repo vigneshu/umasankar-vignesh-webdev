@@ -44,3 +44,7 @@ body {
         bottom: 0px;
     }
 }
+
+.vu a:hover {
+    text-decoration: none;
+}
