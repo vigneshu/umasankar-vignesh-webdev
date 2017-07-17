@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+</head>
+<body>
+<div class="vu">
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid"></div>
+            <div class="navbar-text pull-left">
+                <a class="navbar-link" href="website-list.html">
+                    <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+                </a>
+            </div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Edit Website</a>
+            </div>
+
+
+            <div class="navbar-text pull-right">
+                <a class="navbar-link" href="website-list.html">
+                    <span class="glyphicon glyphicon-ok vu-white"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <label for="websiteName">Name</label>
+        <input name="websiteName"
+               id ="websiteName"
+               type="text"
+               value="Facebook"
+               class="form-control"/>
+
+        <label for="description">Description</label>
+        <textarea name="description"
+                  id ="description"
+                  type="text"
+                  class="form-control">Social Networking website</textarea>
+
+        <a class="btn btn-default btn-danger btn-block"
+           href="website-list.html"
+           role="button">Delete</a>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="navbar-header navbar-text pull-right container-fluid">
+            <a class="navbar-link" href="profile.html">
+                <span class="glyphicon glyphicon-user vu-white"></span>
+            </a>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

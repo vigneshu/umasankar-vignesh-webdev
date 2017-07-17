@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+</head>
+<body>
+<div class="vu">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Profile</a>
+            </div>
+
+            <div class="navbar-text pull-right">
+                <a class="navbar-link vu-white" href="website-list.html">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <label for="username">Username</label>
+        <input name="username"
+               id ="username"
+               type="text"
+               readonly
+               class="form-control"
+               value="vigneshu"/>
+        <label for="firstName">First Name</label>
+        <input name="firstName"
+               id ="firstName"
+               class="form-control"
+               type="text"
+               pattern="[A-Za-z]"
+               placeholder="Vignesh"/>
+
+        <label for="lastName">Last Name</label>
+        <input name="lastName"
+               id ="lastName"
+               type="text"
+               pattern="[A-Za-z]"
+               class="form-control"
+               placeholder="Umasankar"/>
+
+        <label for="email">Email Address</label>
+        <input name="email"
+               id ="email"
+               type="email"
+               class="form-control"
+               placeholder="umasankar.v@husky.neu.edu"/>
+
+        <label for="dob">Date of Birth</label>
+        <input name="dob"
+               id ="dob"
+               type="date"
+               class="form-control"/>
+
+        <label for="password2">Verify Password</label>
+        <input name="password2"
+               id ="password2"
+               placeholder="qwerty123@"
+               type="password"
+               class="form-control"/>
+
+        <a class="btn btn-default btn-primary btn-block"
+           href="website-list.html"
+           role="button">Websites</a>
+        <a class="btn btn-default btn-danger btn-block"
+           href="login.html"
+           role="button">Logout</a>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="navbar-header navbar-text pull-right container-fluid">
+            <a class="navbar-link" href="profile.html">
+                <span class="glyphicon glyphicon-user vu-white"></span>
+            </a>
+        </div>
+    </nav>
+</div>
+</body>
+</html>
