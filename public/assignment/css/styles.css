@@ -2,10 +2,17 @@ input, textarea {
     margin-bottom: 5px;
 }
 
+p {
+    text-align:justify;
+}
 body {
     padding-top: 60px;
+    padding-bottom: 60px;
 }
-
+img, iframe {
+    width:100%;
+    margin-bottom: 10px;
+}
 .vu .navbar-default {
     background-color: #004988;
     border-color: #204d74;
@@ -52,12 +59,17 @@ body {
 
 .vu-widget-container {
     position: relative;
-    bottom: 60px;
+
 }
 
-.vu-widget-button{
+
+.vu-widget-image{
     position: absolute;
     top: 0;
     right: 0;
-    padding: 5px;
+    background-color: white;
+}
+
+.vu-widget-text{
+    float: right;
 }
