@@ -48,3 +48,16 @@ body {
 .vu a:hover {
     text-decoration: none;
 }
+
+
+.vu-widget-container {
+    position: relative;
+    bottom: 60px;
+}
+
+.vu-widget-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+}

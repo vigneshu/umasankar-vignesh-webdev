@@ -12,18 +12,17 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-text pull-left">
-                <a class="navbar-link" href="website-list.html">
+                <a class="navbar-link" href="page-list.html">
                     <span class="glyphicon glyphicon-chevron-left vu-white"></span>
                 </a>
             </div>
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">New Website</a>
+                <a class="navbar-brand" href="#">Edit Page</a>
             </div>
 
 
             <div class="navbar-text pull-right">
-                <a class="navbar-link" href="website-list.html">
+                <a class="navbar-link" href="page-list.html">
                     <span class="glyphicon glyphicon-ok vu-white"></span>
                 </a>
             </div>
@@ -32,14 +31,18 @@
 
     <div class="container-fluid">
         <div class="row">
-            <!-- Website list -->
+            <!-- Page list -->
             <div class="col-xs-3 visible-lg vu-split-view-left">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-xs-8">Facebook</div>
+                            <div class="col-xs-8">
+                                <a href="widget-list.html">
+                                    Blog Post
+                                </a>
+                            </div>
                             <div class="col-xs-4">
-                                <a class="navbar-link" href="website-edit.html">
+                                <a class="navbar-link" href="page-edit.html">
                                     <span class="glyphicon glyphicon glyphicon-cog pull-right"></span>
                                 </a>
                             </div>
@@ -47,9 +50,13 @@
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-xs-8">Twitter</div>
+                            <div class="col-xs-8">
+                                <a href="widget-list.html">
+                                    Blog
+                                </a>
+                            </div>
                             <div class="col-xs-4">
-                                <a class="navbar-link" href="website-edit.html">
+                                <a class="navbar-link" href="page-edit.html">
                                     <span class="glyphicon glyphicon glyphicon-cog pull-right"></span>
                                 </a>
                             </div>
@@ -57,9 +64,13 @@
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-xs-8">Google</div>
+                            <div class="col-xs-8">
+                                <a href="widget-list.html">
+                                    Home
+                                </a>
+                            </div>
                             <div class="col-xs-4">
-                                <a class="navbar-link" href="website-edit.html">
+                                <a class="navbar-link" href="page-edit.html">
                                     <span class="glyphicon glyphicon glyphicon-cog pull-right"></span>
                                 </a>
                             </div>
@@ -67,9 +78,27 @@
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-xs-8">Amazon</div>
+                            <div class="col-xs-8">
+                                <a href="widget-list.html">
+                                    About
+                                </a>
+                            </div>
                             <div class="col-xs-4">
-                                <a class="navbar-link" href="website-edit.html">
+                                <a class="navbar-link" href="page-edit.html">
+                                    <span class="glyphicon glyphicon glyphicon-cog pull-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <a href="widget-list.html">
+                                    Contact Us
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="navbar-link" href="page-edit.html">
                                     <span class="glyphicon glyphicon glyphicon-cog pull-right"></span>
                                 </a>
                             </div>
@@ -77,27 +106,25 @@
                     </li>
                 </ul>
             </div>
-            <!-- New website -->
             <div class="col-xs-12 col-lg-9 vu-split-view-right">
-                <div class="vu-padding-8">
-                    <label for="websiteName">Name</label>
-                    <input name="websiteName"
-                           id ="websiteName"
-                           type="text"
-                           placeholder="Wikipedia"
-                           class="form-control"/>
+                <label for="pageName">Name</label>
+                <input name="pageName"
+                       id ="pageName"
+                       type="text"
+                       value="Blog Post"
+                       class="form-control"/>
 
-                    <label for="description">Description</label>
-                    <textarea name="description"
-                              id ="description"
-                              type="text"
-                              placeholder="Online Encyclopedia"
-                              class="form-control"></textarea>
-                </div>
+                <label for="title">Title</label>
+                <textarea name="title"
+                          id ="title"
+                          type="text"
+                          class="form-control">Page Title</textarea>
+
+                <a class="btn btn-default btn-danger btn-block"
+                   href="page-list.html"
+                   role="button">Delete</a>
             </div>
-
         </div>
-
 
     </div>
 
