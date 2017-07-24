@@ -10,9 +10,9 @@ body {
     padding-bottom: 60px;
 }
 img, iframe {
-    width:100%;
     margin-bottom: 10px;
 }
+
 .vu .navbar-default {
     background-color: #004988;
     border-color: #204d74;
@@ -55,7 +55,9 @@ img, iframe {
 .vu a:hover {
     text-decoration: none;
 }
-
+.vu .glyphicon:hover {
+    cursor: pointer;
+}
 
 .vu-widget-container {
     position: relative;

@@ -1,0 +1,78 @@
+<div class="vu">
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+
+                <div class="navbar-text pull-right">
+                    <a class="navbar-link" href="#!/user/{{model.user._id}}">
+                        <span class="glyphicon glyphicon-ok vu-white"></span>
+                    </a>
+                </div>
+                <div class="navbar-header navbar-brand">
+                    Profile
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <label for="username">Username</label>
+            <input name="username"
+                   id ="username"
+                   type="text"
+                   readonly
+                   class="form-control"
+                   value="{{model.user.username}}"/>
+            <label for="firstName">First Name</label>
+            <input name="firstName"
+                   id ="firstName"
+                   class="form-control"
+                   type="text"
+                   pattern="[A-Za-z]"
+                   placeholder="{{model.user.firstName}}"/>
+
+            <label for="lastName">Last Name</label>
+            <input name="lastName"
+                   id ="lastName"
+                   type="text"
+                   pattern="[A-Za-z]"
+                   class="form-control"
+                   placeholder="{{model.user.lastName}}"/>
+
+            <label for="email">Email Address</label>
+            <input name="email"
+                   id ="email"
+                   type="email"
+                   class="form-control"
+                   placeholder="umasankar.v@husky.neu.edu"/>
+
+            <label for="dob">Date of Birth</label>
+            <input name="dob"
+                   id ="dob"
+                   type="date"
+                   class="form-control"/>
+
+            <a class="btn btn-default btn-primary btn-block"
+               href="#!/user/{{model.user._id}}/website"
+               role="button">Websites</a>
+            <a class="btn btn-default btn-danger btn-block"
+               href="#!/login"
+               role="button">Logout</a>
+
+            <a class="btn btn-default btn-primary btn-block"
+               ng-click ="model.unregister()"
+               role="button">Unregister</a>
+
+            <a class="btn btn-default btn-primary btn-block"
+               ng-click ="model.updateUser()"
+               role="button">Update</a>
+        </div>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="navbar-header navbar-text pull-right container-fluid">
+                <a class="navbar-link" href="#!/user/{{model.user._id}}">
+                    <span class="glyphicon glyphicon-user vu-white"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

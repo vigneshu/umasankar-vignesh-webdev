@@ -1,0 +1,46 @@
+<div class="vu">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-left">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/website/">
+                    <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
+                    <span class="glyphicon glyphicon-plus vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Pages</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <ul class="list-group">
+            <li ng-repeat="page in model.pages" class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                            {{page.name}}
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                            <span class="glyphicon glyphicon glyphicon-cog pull-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="navbar-header navbar-text pull-right container-fluid">
+            <a class="navbar-link" href="#!/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user vu-white"></span>
+            </a>
+        </div>
+    </nav>
+</div>

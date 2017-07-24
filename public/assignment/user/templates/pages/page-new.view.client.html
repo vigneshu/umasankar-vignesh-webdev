@@ -1,0 +1,74 @@
+<div class="vu">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-left">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                    <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+                </a>
+            </div>
+
+            <div class="navbar-text pull-right">
+                <a class="navbar-link" ng-click="model.createPage(page)">
+                    <span class="glyphicon glyphicon-ok vu-white"></span>
+                </a>
+            </div>
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">New Page</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Website list -->
+            <div class="col-xs-3 visible-lg vu-split-view-left">
+                <ul class="list-group">
+                    <li ng-repeat="page in model.pages" class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                {{page.name}}
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                                    <span class="glyphicon glyphicon glyphicon-cog pull-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- New website -->
+            <div class="col-xs-12 col-lg-9 vu-split-view-right">
+                <div ng-show="model.msg" class="alert alert-danger">
+                    {{model.msg}}
+                </div>
+                <div class="vu-padding-8">
+                    <label for="pageName">Name</label>
+                    <input name="pageName"
+                           id ="pageName"
+                           type="text"
+                           ng-model="page.name"
+                           placeholder="Page Name"
+                           class="form-control"/>
+
+                    <label for="title">Title</label>
+                    <textarea name="title"
+                              id ="title"
+                              type="text"
+                              ng-model="page.description"
+                              placeholder="Page Title"
+                              class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="navbar-header navbar-text pull-right container-fluid">
+            <a class="navbar-link" href="#!/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user vu-white"></span>
+            </a>
+        </div>
+    </nav>
+</div>

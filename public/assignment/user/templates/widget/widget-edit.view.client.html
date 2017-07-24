@@ -1,0 +1,42 @@
+<div class="vu">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-left">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                    <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pid}}/widget/new">
+                    <span class="glyphicon glyphicon-plus vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-header navbar-brand">
+                Widgets
+            </div>
+
+        </div>
+    </nav>
+    <div ng-switch="model.widget.type">
+        <div ng-switch-when="heading">
+            <ng-include src="'user/template/widget/widget-heading-edit.view.client.html'">
+        </div>
+        <div ng-switch-when="image">
+            <ng-include src="'user/template/widget/widget-image-edit.view.client.html'">
+        </div>
+        <div ng-switch-when="youtube" >
+            <ng-include src="'user/template/widget/widget-youtube-edit.view.client.html'">
+        </div>
+        <div ng-switch-when="text">
+            <ng-include src="'user/template/widget/widget-text-edit.view.client.html'">
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="navbar-header navbar-text pull-right container-fluid">
+            <a class="navbar-link" href="#!/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user vu-white"></span>
+            </a>
+        </div>
+    </nav>
+</div>

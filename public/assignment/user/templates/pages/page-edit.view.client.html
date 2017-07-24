@@ -1,0 +1,68 @@
+<div class="vu">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-left">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                    <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                    <span class="glyphicon glyphicon-ok vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-header navbar-brand">
+                Edit Page
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Page list -->
+            <div class="col-xs-3 visible-lg vu-split-view-left">
+                <ul class="list-group">
+                    <li ng-repeat="page in model.pages" class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                {{page.name}}
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                                    <span class="glyphicon glyphicon glyphicon-cog pull-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-lg-9 vu-split-view-right">
+                <label for="pageName">Name</label>
+                <input name="pageName"
+                       id ="pageName"
+                       type="text"
+                       value="{{model.currentPage.name}}"
+                       class="form-control"/>
+
+                <label for="title">Title</label>
+                <textarea name="title"
+                          id ="title"
+                          type="text"
+                          class="form-control">{{model.currentPage.description}}</textarea>
+
+                <a class="btn btn-default btn-danger btn-block"
+                   ng-click="model.deletePage()"
+                   role="button">Delete</a>
+            </div>
+        </div>
+
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="navbar-header navbar-text pull-right container-fluid">
+            <a class="navbar-link" href="#!/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user vu-white"></span>
+            </a>
+        </div>
+    </nav>
+</div>

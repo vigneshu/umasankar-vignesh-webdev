@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <label for="imageName">Name</label>
+    <input name="imageName"
+           id ="imageName"
+           type="text"
+           value="Image Name"
+           class="form-control"/>
+
+    <label for="text">Text</label>
+    <textarea name="text"
+              id ="text"
+              type="text"
+              class="form-control">Mischievous Monkey Causes Massive Blackout in Zambian Tourist Town</textarea>
+
+    <label for="url">URL</label>
+    <input name="url"
+           id ="url"
+           type="text"
+           value="https://i.kinja-img.com/gawker-media/image/upload/s--hAyD6se0--/c_scale,fl_progressive,q_80,w_800/xjn5sf5nyoyibfengke0.jpg"
+           class="form-control"/>
+
+    <label for="width">Width</label>
+    <input name="width"
+           id ="width"
+           type="text"
+           value="100%"
+           class="form-control"/>
+
+    <label for="upload">Upload</label>
+    <input name="upload"
+           id ="upload"
+           type="file"
+           accept="image/*"
+           class="form-control"/>
+    <a class="btn btn-default btn-danger btn-block"
+       href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pid}}/widget"
+       role="button">Delete</a>
+
+</div>

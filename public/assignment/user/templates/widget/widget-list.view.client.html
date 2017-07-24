@@ -1,0 +1,56 @@
+<div class="vu">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-left">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                    <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pid}}/widget/new">
+                    <span class="glyphicon glyphicon-plus vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-header navbar-brand">
+                Widgets
+            </div>
+
+        </div>
+    </nav>
+    <div class="container-fluid" ng-hide="model.widgets.length">
+        <div class="alert alert-info center-block">
+            <strong>No widgets available.</strong>
+        </div>
+    </div>
+    <div class="container-fluid" draggable sortable>
+        <ul class="list-group">
+            <li ng-repeat="widget in model.widgets" class="list-group-item">
+                <div ng-switch="widget.widgetType">
+                    <div ng-switch-when="HEADING">
+                        <ng-include src="'user/templates/widget/widget-heading.view.client.html'">
+                    </div>
+                    <div ng-switch-when="IMAGE">
+                        <ng-include src="'user/templates/widget/widget-image.view.client.html'">
+                    </div>
+                    <div ng-switch-when="YOUTUBE" class="youtubeWidget">
+                        <ng-include src="'user/templates/widget/widget-youtube.view.client.html'">
+                    </div>
+                    <div ng-switch-when="HTML">
+                        <ng-include src="'user/templates/widget/widget-html.view.client.html'">
+                    </div>
+                    <div ng-switch-when="TEXT">
+                        <ng-include src="'user/templates/widget/widget-text .view.client.html'">
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="navbar-header navbar-text pull-right container-fluid">
+            <a class="navbar-link" href="#!/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user vu-white"></span>
+            </a>
+        </div>
+    </nav>
+</div>

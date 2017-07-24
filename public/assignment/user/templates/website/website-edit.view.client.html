@@ -1,0 +1,66 @@
+<div class="vu">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-left">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/website">
+                    <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a class="navbar-link" ng-click="model.updateWebsite()" >
+                    <span class="glyphicon glyphicon-ok vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-header navbar-brand">
+                Edit Website
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Website list -->
+            <div class="col-xs-3 visible-lg vu-split-view-left">
+                <ul class="list-group">
+                    <li ng-repeat="website in model.websites" class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-8">{{website.name}}</div>
+                            <div class="col-xs-4">
+                                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{website._id}}">
+                                    <span class="glyphicon glyphicon glyphicon-cog pull-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-lg-9 vu-split-view-right">
+                <label for="websiteName">Name</label>
+                <input name="websiteName"
+                       id ="websiteName"
+                       type="text"
+
+                       value="{{model.currentWebsite.name}}"
+                       class="form-control"/>
+
+                <label for="description">Description</label>
+                <textarea name="description"
+                          id ="description"
+                          type="text"
+                          class="form-control">{{model.currentWebsite.description}}</textarea>
+
+                <a class="btn btn-default btn-danger btn-block"
+                   ng-click="model.deleteWebsite()"
+                   role="button">Delete</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="navbar-header navbar-text pull-right container-fluid">
+            <a class="navbar-link" href="#!/user/{{model.userId}}"s>
+                <span class="glyphicon glyphicon-user vu-white"></span>
+            </a>
+        </div>
+    </nav>
+</div>

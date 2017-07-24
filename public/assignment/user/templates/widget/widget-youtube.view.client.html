@@ -1,0 +1,10 @@
+<div class="vu-widget-container">
+    <div class="vu-widget-image">
+        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pid}}/widget/new/youtube">
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </div>
+</div>
+<iframe width="{{widget.width}}" src="{{model.getTrustAsResourceUrl(widget.url)}}"
+        allowfullscreen></iframe>
