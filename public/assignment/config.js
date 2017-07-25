@@ -70,9 +70,19 @@
                     controller: "editWidgetController",
                     controllerAs: "model"
                 })
+                .when("/user/:userId/website/:wid/page/:pid/widget/:wgid", {
+                    templateUrl: "user/templates/widget/widget-edit.view.client.html",
+                    controller: "editWidgetController",
+                    controllerAs: "model"
+                })
                 .when('/user/:userId/website/:wid/page/:pid/widget/new/:type', {
                     templateUrl: 'user/templates/widget/widget-new.view.client.html',
                     controller: 'newWidgetController',
+                    controllerAs: 'model'
+                })
+                .when('/', {
+                    templateUrl: 'user/home.view.client.html',
+                    controller: 'homeController',
                     controllerAs: 'model'
                 })
         }

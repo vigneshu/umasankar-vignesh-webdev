@@ -4,7 +4,7 @@
             <div class="container-fluid">
 
                 <div class="navbar-text pull-right">
-                    <a class="navbar-link" href="#!/user/{{model.user._id}}">
+                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user/{{model.user._id}}">
                         <span class="glyphicon glyphicon-ok vu-white"></span>
                     </a>
                 </div>
@@ -20,15 +20,16 @@
                    id ="username"
                    type="text"
                    readonly
-                   class="form-control"
-                   value="{{model.user.username}}"/>
+                   ng-model="model.user.username"
+                   class="form-control"/>
             <label for="firstName">First Name</label>
             <input name="firstName"
                    id ="firstName"
                    class="form-control"
                    type="text"
                    pattern="[A-Za-z]"
-                   placeholder="{{model.user.firstName}}"/>
+                   ng-model="model.user.firstName"
+                   placeholder="Vignesh"/>
 
             <label for="lastName">Last Name</label>
             <input name="lastName"
@@ -36,35 +37,31 @@
                    type="text"
                    pattern="[A-Za-z]"
                    class="form-control"
-                   placeholder="{{model.user.lastName}}"/>
+                   ng-model="model.user.lastName"
+                   placeholder="Umasankar"/>
 
             <label for="email">Email Address</label>
             <input name="email"
                    id ="email"
                    type="email"
                    class="form-control"
+                   ng-model="model.user.email"
                    placeholder="umasankar.v@husky.neu.edu"/>
 
             <label for="dob">Date of Birth</label>
             <input name="dob"
                    id ="dob"
                    type="date"
+                   ng-model="model.user.dob"
                    class="form-control"/>
 
             <a class="btn btn-default btn-primary btn-block"
                href="#!/user/{{model.user._id}}/website"
                role="button">Websites</a>
             <a class="btn btn-default btn-danger btn-block"
-               href="#!/login"
+               ng-click="model.logout()"
                role="button">Logout</a>
 
-            <a class="btn btn-default btn-primary btn-block"
-               ng-click ="model.unregister()"
-               role="button">Unregister</a>
-
-            <a class="btn btn-default btn-primary btn-block"
-               ng-click ="model.updateUser()"
-               role="button">Update</a>
         </div>
 
         <nav class="navbar navbar-default navbar-fixed-bottom">

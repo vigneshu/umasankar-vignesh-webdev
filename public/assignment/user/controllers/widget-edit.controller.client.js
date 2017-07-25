@@ -8,17 +8,22 @@
         model.userId = $routeParams.userId;
         model.websiteId = $routeParams.wid;
         model.pid = $routeParams.pid;
+        model.wgid = $routeParams.wgid;
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
         function init() {
+            if (model.wgid){
+                model.currentWidget = WidgetService.findWidgetById(model.wgid);
+            }
         }
+        init();
         function updateWidget() {
-            WidgetService.updateWebsiteById(model.currentWebsite._id, model.currentWebsite);
-            $location.url("/user/" + model.userId + "/website");
+            WidgetService.updateWidget(model.currentWidget._id, model.currentWidget);
+            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget");
         }
         function deleteWidget() {
-            WidgetService.deleteWebsiteById(model.currentWebsite._id);
-            $location.url("/user/" + model.userId + "/website");
+            WidgetService.deleteWidget(model.currentWidget._id);
+            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget");
         }
     }
 })();

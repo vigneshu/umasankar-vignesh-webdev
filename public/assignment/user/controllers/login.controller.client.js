@@ -1,7 +1,7 @@
 (function() {
         // without dependency it tries to retreive module, with dependency it tries to declaaare a ew module
         angular.module("WamApp").controller("loginController", loginController);
-        function loginController($scope, $location, UserService) {
+        function loginController($location, UserService, $rootScope) {
             var model = this;
             //eventhandlers
             model.login = login;
@@ -13,7 +13,7 @@
 
             function login(user) {
                 var userFound = false;
-                if(!user.username || !user.password){
+                if(!user || !user.username || !user.password){
                     model.errorMessage = "Both fields are required";
                     return;
                 }
@@ -21,6 +21,7 @@
                 if (user != null){
                     model.welocomeUser = user;
                     userFound = true;
+                    $rootScope.currentUser = user;
                     $location.url("user" + '/' + user._id);
 
                 }
@@ -29,4 +30,4 @@
             }
         }
     }
-)()
+)();

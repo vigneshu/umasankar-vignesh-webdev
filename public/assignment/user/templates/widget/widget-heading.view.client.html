@@ -1,6 +1,6 @@
 <div class="vu-widget-container">
     <div class="vu-widget-image">
-        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pid}}/widget/new/header">
+        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pid}}/widget/{{widget._id}}">
             <span class="glyphicon glyphicon-cog"></span>
         </a>
         <span class="glyphicon glyphicon-menu-hamburger"></span>
@@ -13,4 +13,5 @@
     <h4 ng-switch-when="4">{{widget.text}}</h4>
     <h5 ng-switch-when="5">{{widget.text}}</h5>
     <h6 ng-switch-when="6">{{widget.text}}</h6>
+    <h1 ng-switch-default>{{widget.text}}</h1>
 </div>

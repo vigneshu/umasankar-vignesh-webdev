@@ -24,22 +24,7 @@
         <div class="row">
             <!-- Website list -->
             <div class="col-xs-3 visible-lg vu-split-view-left">
-                <ul class="list-group">
-                    <li ng-repeat="website in model.websites" class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-8">
-                                <a href="../../page-list.html">
-                                    {{website.name}}
-                                </a>
-                            </div>
-                            <div class="col-xs-4">
-                                <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{website._id}}">
-                                    <span class="glyphicon glyphicon glyphicon-cog pull-right"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                <span ng-include="'user/templates/website/website-list.component.view.html'"/>
             </div>
             <!-- New website -->
             <div class="col-xs-12 col-lg-9 vu-split-view-right">

@@ -2,7 +2,7 @@
     angular
         .module("WamApp")
         .factory("UserService", UserService);
-    function UserService(){
+    function UserService($http){
 
         var users = [
             {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
@@ -14,13 +14,19 @@
         var api = {
             "findUserByUsernameAndPassword": findUserByUsernameAndPassword,
             "findUserById": findUserById,
+            "findUserByIdHTTP": findUserByIdHTTP,
             "findUserByUsername": findUserByUsername,
             "updateUser": updateUser,
             "registerUser": registerUser,
         };
         return api;
         function updateUser(userId, user){
-
+            for (var u in users) {
+                var _user = users[u];
+                if (_user._id === userId) {
+                    users[u] = user;
+                }
+            }
         }
         function findUserByUsernameAndPassword(username, password) {
             for (var u in users) {
@@ -34,14 +40,17 @@
         function findUserById(userId) {
             for (var u in users) {
                 var _user = users[u];
-                if (_user._id === userId) {
+                if (_user._id == userId) {
                     return _user;
                 }
             }
             return null;
         }
+        function findUserByIdHTTP(userId) {
+           return $http.get("http://localhost:3000/users/"+ userId);
+        }
         function registerUser(user) {
-            user._Id = (new Date).getTime();
+            user._id = (new Date).getTime();
             users.push(user);
             return user;
         }

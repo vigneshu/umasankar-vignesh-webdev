@@ -41,14 +41,15 @@
                 <input name="pageName"
                        id ="pageName"
                        type="text"
-                       value="{{model.currentPage.name}}"
+                       ng-model="model.currentPage.name"
                        class="form-control"/>
 
                 <label for="title">Title</label>
                 <textarea name="title"
                           id ="title"
                           type="text"
-                          class="form-control">{{model.currentPage.description}}</textarea>
+                          ng-model="model.currentPage.description"
+                          class="form-control"></textarea>
 
                 <a class="btn btn-default btn-danger btn-block"
                    ng-click="model.deletePage()"

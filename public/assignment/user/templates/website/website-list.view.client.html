@@ -18,24 +18,13 @@
 
         </div>
     </nav>
-
+    <div class="container-fluid" ng-hide="model.websites.length">
+        <div class="alert alert-info center-block">
+            <strong>No websites available.</strong>
+        </div>
+    </div>
     <div class="container-fluid">
-        <ul class="list-group">
-            <li ng-repeat="website in model.websites" class="list-group-item">
-                <div class="row">
-                    <div class="col-xs-8">
-                        <a href="#!/user/{{model.user._id}}/website/{{website._id}}/page">
-                            {{website.name}}
-                        </a>
-                    </div>
-                    <div class="col-xs-4">
-                        <a class="navbar-link" href="#!/user/{{model.user._id}}/website/{{website._id}}">
-                            <span class="glyphicon glyphicon glyphicon-cog pull-right"></span>
-                        </a>
-                    </div>
-                </div>
-            </li>
-        </ul>
+        <div ng-include="'user/templates/website/website-list.component.view.html'"/>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="navbar-header navbar-text pull-right container-fluid">

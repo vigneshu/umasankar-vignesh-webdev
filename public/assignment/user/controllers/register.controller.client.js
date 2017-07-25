@@ -12,15 +12,23 @@
         init();
 
         function registerUser(user){
+            if(!user || !user.username || !user.password2){
+                model.errorMessage = "All fields are required";
+                return;
+            }
+            if(user.password != user.password2){
+                model.errorMessage = "Passwords do not match";
+                return;
+            }
             var _user = UserService.findUserByUsername(user);
             if(!_user) {
                 var user = UserService.registerUser(user);
                 // alert("test");
                 console.log(user);
-                $location.url("/profile/" + user._id);
+                $location.url("/user/" + user._id);
             }
             else{
-                console.log("User exists");
+                alert("User exists");
             }
 
         }

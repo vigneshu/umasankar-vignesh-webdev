@@ -9,19 +9,32 @@
         model.websiteId = $routeParams.wid;
         model.pid = $routeParams.pid;
         model.type = $routeParams.type;
-        model.createWebsite = createWebsite;
+        model.createWidget = createWidget;
         function init() {
-
         }
         init();
-        function createWebsite(website) {
-            if (!website || !website.name) {
-                model.msg = "Website name is required";
+        function createWidget(widget) {
+            widget.widgetType = model.type;
+            if (!widget || !widget.name) {
+                model.msg = "Widget name is required";
+                return;
             }
-            else {
-                WidgetService.createWebsite(model.userId, website.name, website.description);
-                $location.url("/user/" + model.userId + "/website");
+            if(widget.widgetType == 'YOUTUBE' || widget.widgetType == "IMAGE"){
+                if (!widget.url) {
+                    model.msg = "Widget URL format is incorrect";
+                    return;
+                }
             }
+            if(widget.widgetType == 'TEXT' || widget.widgetType == "HTML"){
+                if (!widget.text) {
+                    model.msg = "Widget text is required";
+                    return;
+                }
+            }
+
+            WidgetService.createWidget(model.pid, widget);
+            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget")
+
         }
     }
 })();

@@ -1,26 +1,32 @@
 (function() {
-        // without dependency it tries to retreive module, with dependency it tries to declaaare a ew module
+        // without dependency it tries to retreive module, with dependency it tries to declare a new module
         angular.module("WamApp").controller("profileController", profileController);
-        //TODO change from global
-        function profileController($scope, $routeParams, UserService) {
+        function profileController($scope, $routeParams, UserService, $rootScope, $location) {
             var model = this;
             var userId = $routeParams.userId;
 
-            model.updataeUser = updateUser;
-            model.unregister = unregister;
+            model.updateUser = updateUser;
+            model.logout = logout;
 
             function init(){
                 var user = UserService.findUserById(userId);
                 model.user = user;
+                // model.user = user.data;
+                // var promise = UserService.findUserByIdHTTP(userId);
+                // promise.then(function(user){
+                // model.user = user.data;
+                // });
             }
             init();
-            function updateUser() {
-                var user = UserService.findUserById(user.userId);
+            function logout() {
+                $rootScope.currentUser = null;
+                $location.url("login");
             }
-            function unregister() {
-                var user = UserService.findUserById(user.userId);
+
+            function updateUser() {
+                var user = UserService.updateUser(model.user._id, model.user);
             }
         }
 
     }
-)()
+)();

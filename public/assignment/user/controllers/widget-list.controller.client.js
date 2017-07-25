@@ -21,6 +21,8 @@
         function getTrustAsResourceUrl(url) {
             var urlParts = url.split('/');
             var id = urlParts[urlParts.length - 1];
+            var idParts = id.split('=');
+            id = idParts[idParts.length - 1];
             url = 'https://www.youtube.com/embed/' + id;
             return $sce.trustAsResourceUrl(url);
         }

@@ -18,6 +18,11 @@
     </nav>
 
     <div class="container-fluid">
+        <div class="container-fluid" ng-hide="model.pages.length">
+            <div class="alert alert-info center-block">
+                <strong>No pages available.</strong>
+            </div>
+        </div>
         <ul class="list-group">
             <li ng-repeat="page in model.pages" class="list-group-item">
                 <div class="row">

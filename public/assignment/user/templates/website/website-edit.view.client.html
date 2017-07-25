@@ -39,15 +39,15 @@
                 <input name="websiteName"
                        id ="websiteName"
                        type="text"
-
-                       value="{{model.currentWebsite.name}}"
+                       ng-model="model.currentWebsite.name"
                        class="form-control"/>
 
                 <label for="description">Description</label>
                 <textarea name="description"
                           id ="description"
                           type="text"
-                          class="form-control">{{model.currentWebsite.description}}</textarea>
+                          ng-model="model.currentWebsite.description"
+                          class="form-control"></textarea>
 
                 <a class="btn btn-default btn-danger btn-block"
                    ng-click="model.deleteWebsite()"

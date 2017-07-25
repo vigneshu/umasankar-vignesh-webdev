@@ -3,31 +3,27 @@
     <input name="videoName"
            id ="videoName"
            type="text"
-           value="Video Name"
+           placeholder="Video name"
+           ng-model="model.currentWidget.name"
            class="form-control"/>
 
-    <label for="text">Text</label>
-    <textarea name="text"
-              id ="text"
-              type="text"
-              class="form-control">Mischievous Monkey Causes Massive Blackout in Zambian Tourist Town</textarea>
 
     <label for="url">URL</label>
     <input name="url"
            id ="url"
-           type="text"
-           value="https://www.youtube.com/embed/O14-HQa7ICM"
+           type="url"
+           placeholder="Video URL"
+           ng-model="model.currentWidget.url"
            class="form-control"/>
 
     <label for="width">Width</label>
     <input name="width"
            id ="width"
-           type="text"
-           value="100%"
+           type="number"
+           placeholder="Width of video"
+           ng-model="model.currentWidget.width"
            class="form-control"/>
 
-    <a class="btn btn-default btn-danger btn-block"
-       href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pid}}/widget"
-       role="button">Delete</a>
+
 
 </div>

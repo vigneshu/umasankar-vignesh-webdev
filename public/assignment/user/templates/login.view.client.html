@@ -5,7 +5,7 @@
             Welcome {{model.welocomeUser.username}}
         </div>
         <div ng-show="model.errorMessage" class="alert alert-danger">
-            User not found
+            {{model.errorMessage}}
         </div>
         <h2>Login</h2>
         <label for="username">Username</label>
