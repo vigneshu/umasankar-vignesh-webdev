@@ -6,6 +6,8 @@
     function newWebsiteController($location, $routeParams, WebsiteService) {
         var model = this;
         model.userId = $routeParams.userId;
+        model.user = {};
+        model.user._id = $routeParams.userId;
         model.createWebsite = createWebsite;
         function init() {
             model.websites = WebsiteService.findWebsitesForUser(model.userId);

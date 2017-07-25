@@ -30,53 +30,53 @@
                 })
                 //website routes
                 .when("/user/:userId/website", {
-                    templateUrl: "user/templates/website/website-list.view.client.html",
+                    templateUrl: "website/templates/website-list.view.client.html",
                     controller: "websiteController",
                     controllerAs: "model"
                 })
             //others
                 .when("/user/:userId/website/new", {
-                    templateUrl: "user/templates/website/website-new.view.client.html",
+                    templateUrl: "website/templates/website-new.view.client.html",
                     controller: "newWebsiteController",
                     controllerAs: "model"
                 })
                 .when("/user/:userId/website/:wid", {
-                    templateUrl: "user/templates/website/website-edit.view.client.html",
+                    templateUrl: "website/templates/website-edit.view.client.html",
                     controller: "editWebsiteController",
                     controllerAs: "model"
                 })
                 .when("/user/:userId/website/:wid/page", {
-                    templateUrl: "user/templates/pages/page-list.view.client.html",
+                    templateUrl: "page/templates/page-list.view.client.html",
                     controller: "pageListController",
                     controllerAs: "model"
                 })
                 .when("/user/:userId/website/:wid/page/new", {
-                    templateUrl: "user/templates/pages/page-new.view.client.html",
+                    templateUrl: "page/templates/page-new.view.client.html",
                     controller: "newPageController",
                     controllerAs: "model"
                 })
                 .when("/user/:userId/website/:wid/page/:pid", {
-                    templateUrl: "user/templates/pages/page-edit.view.client.html",
+                    templateUrl: "page/templates/page-edit.view.client.html",
                     controller: "editPageController",
                     controllerAs: "model"
                 })
                 .when("/user/:userId/website/:wid/page/:pid/widget", {
-                    templateUrl: "user/templates/widget/widget-list.view.client.html",
+                    templateUrl: "widget/templates/widget-list.view.client.html",
                     controller: "widgetListController",
                     controllerAs: "model"
                 })
                 .when("/user/:userId/website/:wid/page/:pid/widget/new", {
-                    templateUrl: "user/templates/widget/widget-chooser.view.client.html",
+                    templateUrl: "widget/templates/widget-chooser.view.client.html",
                     controller: "editWidgetController",
                     controllerAs: "model"
                 })
                 .when("/user/:userId/website/:wid/page/:pid/widget/:wgid", {
-                    templateUrl: "user/templates/widget/widget-edit.view.client.html",
+                    templateUrl: "widget/templates/widget-edit.view.client.html",
                     controller: "editWidgetController",
                     controllerAs: "model"
                 })
                 .when('/user/:userId/website/:wid/page/:pid/widget/new/:type', {
-                    templateUrl: 'user/templates/widget/widget-new.view.client.html',
+                    templateUrl: 'widget/templates/widget-new.view.client.html',
                     controller: 'newWidgetController',
                     controllerAs: 'model'
                 })
