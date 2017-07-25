@@ -26,6 +26,7 @@
 
             function updateUser() {
                 var user = UserService.updateUser(model.user._id, model.user);
+                model.msg = "User info updated succesfully";
             }
             function deleteUser() {
                 var user = UserService.deleteUser(model.user._id);

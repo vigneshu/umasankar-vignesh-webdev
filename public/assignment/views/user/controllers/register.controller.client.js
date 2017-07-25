@@ -20,7 +20,7 @@
                 model.errorMessage = "Passwords do not match";
                 return;
             }
-            var _user = UserService.findUserByUsername(user);
+            var _user = UserService.findUserByUsername(user.username);
             if(!_user) {
                 var user = UserService.createUser(user);
                 // alert("test");
