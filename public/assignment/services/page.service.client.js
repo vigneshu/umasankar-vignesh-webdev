@@ -9,11 +9,11 @@
             { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
         ];
         var api = {
-            "findPagesForWebsite": findPagesForWebsite,
+            "findPageByWebsiteId": findPageByWebsiteId,
             "createPage": createPage,
             "findPageById": findPageById,
-            "updatePageById": updatePageById,
-            "deletePageById": deletePageById,
+            "updatePage": updatePage,
+            "deletePage": deletePage,
         };
         return api;
 
@@ -35,7 +35,7 @@
             }
             return null;
         }
-        function findPagesForWebsite(websiteId){
+        function findPageByWebsiteId(websiteId){
             var websitePages = [];
             for (var p in pages){
                 var page = pages[p];
@@ -45,7 +45,7 @@
             }
             return websitePages;
         }
-        function updatePageById(pid, value){
+        function updatePage(pid, value){
             for (var p in pages){
                 var page = pages[w];
                 if(page._id == pid){
@@ -54,7 +54,7 @@
                 }
             }
         }
-        function deletePageById(pid){
+        function deletePage(pid){
             for (var p in pages){
                 var page = pages[p];
                 if(page._id == pid){

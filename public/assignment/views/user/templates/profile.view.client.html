@@ -27,7 +27,6 @@
                    id ="firstName"
                    class="form-control"
                    type="text"
-                   pattern="[A-Za-z]"
                    ng-model="model.user.firstName"
                    placeholder="Vignesh"/>
 
@@ -35,7 +34,6 @@
             <input name="lastName"
                    id ="lastName"
                    type="text"
-                   pattern="[A-Za-z]"
                    class="form-control"
                    ng-model="model.user.lastName"
                    placeholder="Umasankar"/>
@@ -61,6 +59,9 @@
             <a class="btn btn-default btn-danger btn-block"
                ng-click="model.logout()"
                role="button">Logout</a>
+            <a class="btn btn-default btn-danger btn-block"
+               ng-click="model.deleteUser()"
+               role="button">Unregister</a>
 
         </div>
 

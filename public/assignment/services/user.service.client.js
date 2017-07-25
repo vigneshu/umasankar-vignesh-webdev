@@ -12,26 +12,27 @@
         ];
 
         var api = {
-            "findUserByUsernameAndPassword": findUserByUsernameAndPassword,
+            "findUserByCredentials": findUserByCredentials,
             "findUserById": findUserById,
             "findUserByIdHTTP": findUserByIdHTTP,
             "findUserByUsername": findUserByUsername,
             "updateUser": updateUser,
-            "registerUser": registerUser,
+            "createUser": createUser,
+            "deleteUser": deleteUser,
         };
         return api;
         function updateUser(userId, user){
             for (var u in users) {
                 var _user = users[u];
-                if (_user._id === userId) {
+                if (_user._id == userId) {
                     users[u] = user;
                 }
             }
         }
-        function findUserByUsernameAndPassword(username, password) {
+        function findUserByCredentials(username, password) {
             for (var u in users) {
                 var _user = users[u];
-                if (_user.username === username && _user.password === password) {
+                if (_user.username == username && _user.password == password) {
                     return _user;
                 }
             }
@@ -49,7 +50,7 @@
         function findUserByIdHTTP(userId) {
            return $http.get("http://localhost:3000/users/"+ userId);
         }
-        function registerUser(user) {
+        function createUser(user) {
             user._id = (new Date).getTime();
             users.push(user);
             return user;
@@ -57,11 +58,19 @@
         function findUserByUsername(username) {
             for (var u in users) {
                 var _user = users[u];
-                if (_user.username === username) {
+                if (_user.username == username) {
                     return _user;
                 }
             }
             return null;
+        }
+        function deleteUser(userId) {
+            for (var u in users) {
+                var user = users[u];
+                if (user._id == userId) {
+                    users.splice(u, 1);
+                }
+            }
         }
     }
 

@@ -11,16 +11,16 @@
         model.updatePage = updatePage;
         model.deletePage = deletePage;
         function init() {
-            model.pages = PageService.findPagesForWebsite(model.websiteId);
+            model.pages = PageService.findPageByWebsiteId(model.websiteId);
             model.currentPage = PageService.findPageById(model.pid);
         }
         init();
         function updatePage() {
-            PageService.updatePageById(model.currentPage._id, model.currentPage);
+            PageService.updatePage(model.currentPage._id, model.currentPage);
             $location.url("/user/" + model.userId + "/website" + model.websiteId + "/page");
         }
         function deletePage() {
-            PageService.deletePageById(model.currentPage._id);
+            PageService.deletePage(model.currentPage._id);
             $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page");
         }
     }

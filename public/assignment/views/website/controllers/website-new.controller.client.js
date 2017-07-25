@@ -10,7 +10,7 @@
         model.user._id = $routeParams.userId;
         model.createWebsite = createWebsite;
         function init() {
-            model.websites = WebsiteService.findWebsitesForUser(model.userId);
+            model.websites = WebsiteService.findWebsitesByUser(model.userId);
         }
         init();
         function createWebsite(website) {

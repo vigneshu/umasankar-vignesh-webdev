@@ -7,6 +7,7 @@
 
             model.updateUser = updateUser;
             model.logout = logout;
+            model.deleteUser = deleteUser;
 
             function init(){
                 var user = UserService.findUserById(userId);
@@ -25,6 +26,10 @@
 
             function updateUser() {
                 var user = UserService.updateUser(model.user._id, model.user);
+            }
+            function deleteUser() {
+                var user = UserService.deleteUser(model.user._id);
+                $location.url("/login");
             }
         }
 

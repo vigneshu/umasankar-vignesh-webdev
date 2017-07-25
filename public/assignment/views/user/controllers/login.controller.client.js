@@ -17,7 +17,7 @@
                     model.errorMessage = "Both fields are required";
                     return;
                 }
-                var user = UserService.findUserByUsernameAndPassword(user.username,user.password );
+                var user = UserService.findUserByCredentials(user.username,user.password );
                 if (user != null){
                     model.welocomeUser = user;
                     userFound = true;

@@ -5,13 +5,13 @@
 
     function registerController(UserService, $location){
         var model = this;
-        model.registerUser = registerUser;
+        model.createUser = createUser;
         function init(){
 
         }
         init();
 
-        function registerUser(user){
+        function createUser(user){
             if(!user || !user.username || !user.password2){
                 model.errorMessage = "All fields are required";
                 return;
@@ -22,7 +22,7 @@
             }
             var _user = UserService.findUserByUsername(user);
             if(!_user) {
-                var user = UserService.registerUser(user);
+                var user = UserService.createUser(user);
                 // alert("test");
                 console.log(user);
                 $location.url("/user/" + user._id);

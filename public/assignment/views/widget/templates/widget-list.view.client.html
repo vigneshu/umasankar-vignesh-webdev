@@ -27,19 +27,19 @@
             <li ng-repeat="widget in model.widgets" class="list-group-item">
                 <div ng-switch="widget.widgetType">
                     <div ng-switch-when="HEADING">
-                        <ng-include src="'widget/templates/widget-heading.view.client.html'">
+                        <ng-include src="'views/widget/templates/widget-heading.view.client.html'">
                     </div>
                     <div ng-switch-when="IMAGE">
-                        <ng-include src="'widget/templates/widget-image.view.client.html'">
+                        <ng-include src="'views/widget/templates/widget-image.view.client.html'">
                     </div>
                     <div ng-switch-when="YOUTUBE" class="youtubeWidget">
-                        <ng-include src="'widget/templates/widget-youtube.view.client.html'">
+                        <ng-include src="'views/widget/templates/widget-youtube.view.client.html'">
                     </div>
                     <div ng-switch-when="HTML">
-                        <ng-include src="'widget/templates/widget-html.view.client.html'">
+                        <ng-include src="'views/widget/templates/widget-html.view.client.html'">
                     </div>
                     <div ng-switch-when="TEXT">
-                        <ng-include src="'widget/templates/widget-text.view.client.html'">
+                        <ng-include src="'views/widget/templates/widget-text.view.client.html'">
                     </div>
                 </div>
             </li>

@@ -9,7 +9,7 @@
         model.websiteId = $routeParams.wid;
         model.createPage = createPage;
         function init() {
-            model.pages = PageService.findPagesForWebsite(model.websiteId);
+            model.pages = PageService.findPageByWebsiteId(model.websiteId);
         }
         init();
         function createPage(page) {
