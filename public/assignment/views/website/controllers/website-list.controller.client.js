@@ -8,7 +8,10 @@
         model.user = {};
         model.user._id = $routeParams.userId;
         function init(){
-            model.websites = WebsiteService.findWebsitesByUser(model.user._id);
+            WebsiteService.findWebsitesByUser(model.user._id)
+                .then(function(msg){
+                    model.websites = msg.data;
+                });
         }
         init();
 

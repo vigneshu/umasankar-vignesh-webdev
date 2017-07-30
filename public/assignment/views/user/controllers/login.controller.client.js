@@ -17,16 +17,21 @@
                     model.errorMessage = "Both fields are required";
                     return;
                 }
-                var user = UserService.findUserByCredentials(user.username,user.password );
-                if (user != null){
-                    model.welocomeUser = user;
-                    userFound = true;
-                    $rootScope.currentUser = user;
-                    $location.url("user" + '/' + user._id);
+                 UserService.findUserByCredentials(user.username,user.password )
+                    .then(function(user){
+                    var user = user.data;
 
-                }
-                if (!userFound)
-                    model.errorMessage = "User Not found";
+                    if (user != 0){
+                        model.welocomeUser = user;
+                        userFound = true;
+                        $rootScope.currentUser = user;
+                        $location.url("user" + '/' + user._id);
+
+                    }
+                    if (!userFound)
+                        model.errorMessage = "User Not found";
+                });
+
             }
         }
     }

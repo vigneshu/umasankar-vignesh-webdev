@@ -10,7 +10,10 @@
         model.user._id = $routeParams.userId;
         model.createWebsite = createWebsite;
         function init() {
-            model.websites = WebsiteService.findWebsitesByUser(model.userId);
+            WebsiteService.findWebsitesByUser(model.user._id).
+            then(function(msg){
+                model.websites = msg.data;
+            });
         }
         init();
         function createWebsite(website) {
@@ -18,8 +21,10 @@
                 model.msg = "Website name is required";
             }
             else {
-                WebsiteService.createWebsite(model.userId, website.name, website.description);
-                $location.url("/user/" + model.userId + "/website");
+                WebsiteService.createWebsite(model.userId, website).
+                    then(function(){
+                    $location.url("/user/" + model.userId + "/website");
+                });
             }
         }
     }

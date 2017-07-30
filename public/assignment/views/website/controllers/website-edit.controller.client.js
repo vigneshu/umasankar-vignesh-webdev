@@ -10,17 +10,29 @@
         model.updateWebsite = updateWebsite;
         model.deleteWebsite = deleteWebsite;
         function init() {
-            model.websites = WebsiteService.findWebsitesByUser(model.userId);
-            model.currentWebsite = WebsiteService.findWebsiteById(model.websiteId);
+            WebsiteService.findWebsitesByUser(model.userId)
+                .then(function(msg){
+                model.websites = msg.data;
+                });
+            WebsiteService.findWebsiteById(model.userId, model.websiteId)
+                .then(function(msg){
+                model.currentWebsite = msg.data;
+                });
         }
         init();
         function updateWebsite() {
-            WebsiteService.updateWebsite(model.currentWebsite._id, model.currentWebsite);
-            $location.url("/user/" + model.userId + "/website");
+            WebsiteService.updateWebsite(model.currentWebsite._id, model.currentWebsite)
+                .then(function(){
+                    $location.url("/user/" + model.userId + "/website");
+                });
+
         }
         function deleteWebsite() {
-            WebsiteService.deleteWebsite(model.currentWebsite._id);
-            $location.url("/user/" + model.userId + "/website");
+            WebsiteService.deleteWebsite(model.currentWebsite._id)
+                .then(function(){
+                    $location.url("/user/" + model.userId + "/website");
+            });
+
         }
     }
 })();

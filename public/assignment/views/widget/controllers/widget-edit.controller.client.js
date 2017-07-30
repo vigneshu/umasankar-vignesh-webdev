@@ -13,17 +13,26 @@
         model.deleteWidget = deleteWidget;
         function init() {
             if (model.wgid){
-                model.currentWidget = WidgetService.findWidgetById(model.wgid);
+                WidgetService.findWidgetById(model.wgid)
+                .then(function(msg){
+                model.currentWidget = msg.data;
+                });
             }
         }
         init();
         function updateWidget() {
-            WidgetService.updateWidget(model.currentWidget._id, model.currentWidget);
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget");
+            WidgetService.updateWidget(model.currentWidget._id, model.currentWidget)
+                .then(function(){
+                    $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget");
+                });
+
         }
         function deleteWidget() {
-            WidgetService.deleteWidget(model.currentWidget._id);
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget");
+            WidgetService.deleteWidget(model.currentWidget._id)
+                .then(function(){
+                    $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget");
+                });
+
         }
     }
 })();

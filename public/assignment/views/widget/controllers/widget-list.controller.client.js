@@ -12,8 +12,11 @@
         model.getTrustAsResourceUrl = getTrustAsResourceUrl;
         model.getSafeHtml = getSafeHtml;
         function init(){
-            model.widgets = WidgetService.findWidgetsByPageId(model.pid);
-        }
+             WidgetService.findWidgetsByPageId(model.pid)
+                .then(function(msg){
+                    model.widgets = msg.data;
+                });
+    }
         init();
         function getSafeHtml(html) {
             return $sce.trustAsHtml(html);

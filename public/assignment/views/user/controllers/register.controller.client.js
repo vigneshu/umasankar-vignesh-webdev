@@ -20,16 +20,20 @@
                 model.errorMessage = "Passwords do not match";
                 return;
             }
-            var _user = UserService.findUserByUsername(user.username);
-            if(!_user) {
-                var user = UserService.createUser(user);
-                // alert("test");
-                console.log(user);
-                $location.url("/user/" + user._id);
-            }
-            else{
-                alert("User exists");
-            }
+           UserService.findUserByUsername(user.username,user.password )
+                .then(function(userResponse){
+                var _user = userResponse.data;
+                if(_user == 0) {
+                    return UserService.createUser(user);
+                }
+                else{
+                    alert("User exists");
+                }
+            }).
+           then(function(data){
+               $location.url("/user/" + data.data._id);
+           });
+
 
         }
     }

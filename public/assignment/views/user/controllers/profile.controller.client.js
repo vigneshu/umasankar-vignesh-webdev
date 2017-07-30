@@ -10,13 +10,10 @@
             model.deleteUser = deleteUser;
 
             function init(){
-                var user = UserService.findUserById(userId);
-                model.user = user;
-                // model.user = user.data;
-                // var promise = UserService.findUserByIdHTTP(userId);
-                // promise.then(function(user){
-                // model.user = user.data;
-                // });
+                UserService.findUserById(userId)
+                    .then(function(user){
+                model.user = user.data;
+                });
             }
             init();
             function logout() {
@@ -25,12 +22,18 @@
             }
 
             function updateUser() {
-                var user = UserService.updateUser(model.user._id, model.user);
-                model.msg = "User info updated succesfully";
+                UserService.updateUser(model.user._id, model.user)
+                    .then(function(user){
+                    var user  = user.data;
+                    model.msg = "User info updated succesfully";
+                });
             }
             function deleteUser() {
-                var user = UserService.deleteUser(model.user._id);
-                $location.url("/login");
+                var user = UserService.deleteUser(model.user._id).
+                then(function(){
+                    $location.url("/login");
+                });
+
             }
         }
 

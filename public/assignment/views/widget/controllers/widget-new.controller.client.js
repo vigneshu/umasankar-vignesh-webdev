@@ -32,8 +32,11 @@
                 }
             }
 
-            WidgetService.createWidget(model.pid, widget);
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget")
+            WidgetService.createWidget(model.pid, widget)
+                .then(function(){
+                    $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget");
+                });
+
 
         }
     }
