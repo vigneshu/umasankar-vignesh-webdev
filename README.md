@@ -13,4 +13,5 @@ Please check tags for assigments
 1. browse to localhost:3000
 
 # Links
+* [Project Design](https://github.com/vigneshu/umasankar-vignesh-webdev/tree/2017-summer-2/public/project)
 * [Project](https://umasankar-vignesh-webdev.herokuapp.com/project/)
