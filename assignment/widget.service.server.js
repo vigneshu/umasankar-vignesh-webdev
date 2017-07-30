@@ -17,7 +17,63 @@ app.get("/api/page/:pageId/widget", findWidgetsByPageId);
 app.get("/api/widget/:widgetId", findWidgetById);
 app.put("/api/widget/:widgetId", updateWidget);
 app.delete("/api/widget/:widgetId", deleteWidget);
+var multer = require('multer'); // npm install multer --save
+var upload = multer({ dest: __dirname+'/../public/uploads' });
+app.post ("/api/upload", upload.single('myFile'), uploadImage);
+function uploadImage(req, res) {
 
+    var widgetId      = req.body.widgetId;
+    var width         = req.body.width;
+    var myFile        = req.file;
+
+    var userId = req.body.userId;
+    var websiteId = req.body.websiteId;
+    var pageId = req.body.pageId;
+    var isNewWidget = false;
+    var widget = {}
+    widget = JSON.parse(req.body.currentWidget);
+    if(widgetId == ""){
+        isNewWidget = true;
+        widget._id = (new Date).getTime();
+        widget.pageId = pageId ;
+    }
+
+    if(myFile)
+    {
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+        widget.url = '/uploads/'+filename;
+    }
+
+    var callbackUrl   = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
+    widget.widgetType = "IMAGE";
+    if(isNewWidget)
+    {
+        widgets.push(widget);
+    }
+    else{
+        for (var w in widgets){
+            if(widgets[w]._id == widgetId){
+                widgets[w] = widget;
+            }
+        }
+    }
+
+    res.redirect(callbackUrl);
+}
+
+function getWidgetById(widgetId) {
+    for (var w in widgets) {
+        if (widgets[w]._id == widgetId) {
+            return widgets[w];
+        }
+    }
+    return null;
+}
 function createWidget(req, res) {
     var pageId = req.params.pageId;
     var widget = req.body;

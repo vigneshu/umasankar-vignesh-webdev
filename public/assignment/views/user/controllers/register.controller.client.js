@@ -28,11 +28,15 @@
                 }
                 else{
                     alert("User exists");
+                    return null;
                 }
             }).
            then(function(data){
                $location.url("/user/" + data.data._id);
-           });
+           })
+           .catch(function () {
+                  console.log("User already exists");
+               })
 
 
         }

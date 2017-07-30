@@ -19,7 +19,7 @@
                 model.msg = "Widget name is required";
                 return;
             }
-            if(widget.widgetType == 'YOUTUBE' || widget.widgetType == "IMAGE"){
+            if(widget.widgetType == 'YOUTUBE'){
                 if (!widget.url) {
                     model.msg = "Widget URL format is incorrect";
                     return;
