@@ -10,6 +10,7 @@
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
             "deleteWidget": deleteWidget,
+            "updateOrder": updateOrder,
         };
         return api;
 
@@ -28,6 +29,10 @@
         function findWidgetsByPageId(pageId){
             var url = "/api/page/"+ pageId +"/widget";
             return $http.get(url);
+        }
+        function updateOrder(pid, startIndex, endIndex){
+            var url = "/api/page/" + pid + "/widget?initial=" + startIndex + "&final=" + endIndex;
+            return $http.put(url);
         }
         function createWidget(pid, widget){
             var url = "/api/page/"+pid+"/widget";

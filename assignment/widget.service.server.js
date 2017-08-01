@@ -17,6 +17,8 @@ app.get("/api/page/:pageId/widget", findWidgetsByPageId);
 app.get("/api/widget/:widgetId", findWidgetById);
 app.put("/api/widget/:widgetId", updateWidget);
 app.delete("/api/widget/:widgetId", deleteWidget);
+app.put("/api/page/:widgetId", updateWidget);
+app.put("/api/page/:pageId/widget", updateOrder);
 var multer = require('multer'); // npm install multer --save
 var upload = multer({ dest: __dirname+'/../public/uploads' });
 app.post ("/api/upload", upload.single('myFile'), uploadImage);
@@ -66,6 +68,14 @@ function uploadImage(req, res) {
     res.redirect(callbackUrl);
 }
 
+function updateOrder(req, res) {
+    var pageId = req.params.pageId;
+    var initial = req.query.initial;
+    var final = req.query.final;
+    var item = widgets.splice(initial, 1)[0];
+    widgets.splice(final, 0, item);
+    res.sendStatus(200);
+}
 function getWidgetById(widgetId) {
     for (var w in widgets) {
         if (widgets[w]._id == widgetId) {

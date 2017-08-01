@@ -1,3 +1,3 @@
 (function() {
-    var app = angular.module("WamApp", ["ngRoute"])
+    var app = angular.module("WamApp", ["ngRoute", "wbdvDirectives"])
 })()

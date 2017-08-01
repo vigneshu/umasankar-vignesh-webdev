@@ -22,7 +22,7 @@
             <strong>No widgets available.</strong>
         </div>
     </div>
-    <div class="container-fluid" draggable sortable>
+    <div class="container-fluid" sortable callback="model.updateOrder(initial, final)">
         <ul class="list-group">
             <li ng-repeat="widget in model.widgets" class="list-group-item">
                 <div ng-switch="widget.widgetType">
