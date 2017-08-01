@@ -71,9 +71,26 @@ function uploadImage(req, res) {
 function updateOrder(req, res) {
     var pageId = req.params.pageId;
     var initial = req.query.initial;
+    var actualInitial = req.query.initial;
     var final = req.query.final;
-    var item = widgets.splice(initial, 1)[0];
-    widgets.splice(final, 0, item);
+    var actualFinal = req.query.final;
+    var loopCount = 0;
+    //the initial and final values are indices within that particular page's
+    // We need to find the indices in the whole page array
+    for (var w in widgets){
+        if (widgets[w].pageId == pageId){
+
+            if(loopCount == initial){
+                actualInitial = w;
+            }
+            if(loopCount == final){
+                actualFinal = w;
+            }
+            loopCount++;
+        }
+    }
+    var item = widgets.splice(actualInitial, 1)[0];
+    widgets.splice(actualFinal, 0, item);
     res.sendStatus(200);
 }
 function getWidgetById(widgetId) {
@@ -141,6 +158,7 @@ function deleteWidget(req, res) {
         if(widget._id == widgetId){
             widgets.splice(w, 1);
             res.sendStatus(200);
+
             return;
         }
     }

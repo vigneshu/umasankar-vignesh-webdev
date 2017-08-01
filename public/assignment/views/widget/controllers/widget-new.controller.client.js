@@ -14,7 +14,7 @@
         }
         init();
         function createWidget(widget) {
-            widget.widgetType = model.type;
+
             if (!widget || !widget.name) {
                 model.msg = "Widget name is required";
                 return;
@@ -31,7 +31,7 @@
                     return;
                 }
             }
-
+            widget.widgetType = model.type;
             WidgetService.createWidget(model.pid, widget)
                 .then(function(){
                     $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget");

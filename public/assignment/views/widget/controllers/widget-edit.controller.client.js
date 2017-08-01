@@ -21,6 +21,22 @@
         }
         init();
         function updateWidget() {
+            if (!model.currentWidget || !model.currentWidget.name) {
+                model.msg = "Widget name is required";
+                return;
+            }
+            if(model.currentWidget.widgetType == 'YOUTUBE'){
+                if (!model.currentWidget.url) {
+                    model.msg = "Widget URL format is incorrect";
+                    return;
+                }
+            }
+            if(model.currentWidget.widgetType == 'TEXT' || model.currentWidget.widgetType == "HTML"){
+                if (!model.currentWidget.text) {
+                    model.msg = "Widget text is required";
+                    return;
+                }
+            }
             WidgetService.updateWidget(model.currentWidget._id, model.currentWidget)
                 .then(function(){
                     $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget");

@@ -16,6 +16,11 @@
             </div>
         </div>
     </nav>
+    <div class="container-fluid">
+        <div ng-show="model.msg" class=" alert alert-danger">
+            {{model.msg}}
+        </div>
+    </div>
 
     <div ng-switch="model.currentWidget.widgetType">
         <div ng-switch-when="HEADING">

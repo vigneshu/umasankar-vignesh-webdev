@@ -1,7 +1,9 @@
 input, textarea {
     margin-bottom: 5px;
 }
-
+.vu .vu-margin-bottom-5 {
+    margin-bottom: 5px;
+}
 p {
     text-align:justify;
 }
