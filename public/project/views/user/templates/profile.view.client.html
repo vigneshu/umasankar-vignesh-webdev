@@ -1,0 +1,79 @@
+<div class="vu">
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+
+                <div class="navbar-text pull-right">
+                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user/{{model.user._id}}">
+                        <span class="glyphicon glyphicon-ok vu-white"></span>
+                    </a>
+                </div>
+                <div class="navbar-header navbar-brand">
+                    Profile
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div ng-show="model.msg" class="alert alert-info">
+                {{model.msg}}
+            </div>
+            <label for="username">Username</label>
+            <input name="username"
+                   id ="username"
+                   type="text"
+                   readonly
+                   ng-model="model.user.username"
+                   class="form-control"/>
+            <label for="firstName">First Name</label>
+            <input name="firstName"
+                   id ="firstName"
+                   class="form-control"
+                   type="text"
+                   ng-model="model.user.firstName"
+                   placeholder="Vignesh"/>
+
+            <label for="lastName">Last Name</label>
+            <input name="lastName"
+                   id ="lastName"
+                   type="text"
+                   class="form-control"
+                   ng-model="model.user.lastName"
+                   placeholder="Umasankar"/>
+
+            <label for="email">Email Address</label>
+            <input name="email"
+                   id ="email"
+                   type="email"
+                   class="form-control"
+                   ng-model="model.user.email"
+                   placeholder="umasankar.v@husky.neu.edu"/>
+
+            <label for="dob">Date of Birth</label>
+            <input name="dob"
+                   id ="dob"
+                   type="date"
+                   ng-model="model.user.dob"
+                   class="form-control"/>
+
+            <a class="btn btn-default btn-primary btn-block"
+               href="#!/user/{{model.user._id}}/website"
+               role="button">Websites</a>
+            <a class="btn btn-default btn-danger btn-block"
+               ng-click="model.logout()"
+               role="button">Logout</a>
+            <a class="btn btn-default btn-danger btn-block"
+               ng-click="model.deleteUser()"
+               role="button">Unregister</a>
+
+        </div>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="navbar-header navbar-text pull-right container-fluid">
+                <a class="navbar-link" href="#!/user/{{model.user._id}}">
+                    <span class="glyphicon glyphicon-user vu-white"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

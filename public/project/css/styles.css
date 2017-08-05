@@ -1,0 +1,79 @@
+input, textarea {
+    margin-bottom: 5px;
+}
+.vu .vu-margin-bottom-5 {
+    margin-bottom: 5px;
+}
+p {
+    text-align:justify;
+}
+body {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+img, iframe {
+    margin-bottom: 10px;
+}
+
+.vu .navbar-default {
+    background-color: #004988;
+    border-color: #204d74;
+}
+
+.vu .navbar-default .navbar-brand {
+    color: white;
+}
+
+
+.vu .vu-white{
+    color: white;
+}
+.list-group,
+.list-group .list-group-item {
+    box-shadow: none;
+    border: none;
+}
+
+.vu .vu-split-view-left {
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    z-index: 1;
+    overflow-y: scroll;
+}
+
+
+@media (min-width: 1200px) {
+    .col-lg-9.vu-split-view-right {
+        width: 75%;
+        position: absolute;
+        right: 0px;
+        overflow-y: scroll;
+        top: 60px;
+        bottom: 0px;
+    }
+}
+
+.vu a:hover {
+    text-decoration: none;
+}
+.vu .glyphicon:hover {
+    cursor: pointer;
+}
+
+.vu-widget-container {
+    position: relative;
+
+}
+
+
+.vu-widget-image{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+}
+
+.vu-widget-text{
+    float: right;
+}
