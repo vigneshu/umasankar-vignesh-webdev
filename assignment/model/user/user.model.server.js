@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var userSchema = require("./user.schema.server.js");
 var db = require("../database");
-var userModel = mongoose.model("UserModel", userSchema);
+var userModel = mongoose.model("user", userSchema);
 userModel.createUser = createUser;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
@@ -10,42 +10,36 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByUsername = findUserByUsername;
 
 function createUser(user){
-    console.log("user model create user");
-    console.log(user);
     return userModel.create(user, function (err){
         if(err){
-            console.log("error");
+            console.log("error createUser");
         }
         else{
-            console.log("success");
+            console.log("success createUser");
         }
     });
 
 
 }
 function updateUser(userId, user){
-    return userModel.update({_id: userId}, {
-        $set: {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email
-        }
-    });
+    console.log("uodate user");
+    console.log(user);
+    return userModel.update({_id: userId}, {$set: user});
 }
 function deleteUser(userId) {
-    return userModel.remove({_id: userId});
+    return userModel.findOne({_id: userId}, function(err, user) {
+        user.remove();
+
+    });
 }
 
 function findUserById(userId) {
     return userModel.findOne({_id: userId},
         function (err, user) {
             if (!user || err) {
-                console.log("findUserById error");
                 return null;
             }
             else {
-                console.log("findUserById success");
-                console.log(user);
                 return user;
             }
         });

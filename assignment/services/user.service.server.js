@@ -16,8 +16,6 @@ app.delete("/api/user/:userId", deleteUser);
 function findUserById(req, response) {
     userModel.findUserById(req.params.userId)
         .then(function(msg){
-            console.log("user findUserById");
-            console.log(msg);
             response.send(msg);
         });
 }
@@ -28,16 +26,12 @@ function findUser(req, response) {
     if(username && password){
         userModel.findUserByCredentials(username, password)
             .then(function(msg){
-                console.log("user findUserByCredentials");
-                console.log(msg);
                 response.send(msg);
             });
     }
     else if(username){
         userModel.findUserByUsername(username)
             .then(function(msg){
-                console.log("user findUserByUsername");
-                console.log(msg);
                 response.send(msg);
             });
     }
@@ -45,15 +39,12 @@ function findUser(req, response) {
 
 function createUser(req, response) {
     var username = req.query.username;
-    console.log("server service create user");
     var password = req.query.password;
     var user = {};
     user.username = username;
     user.password = password;
     userModel.createUser(user)
         .then(function(msg){
-            console.log("user created");
-            console.log(msg);
         response.send(msg);
     });
 }
@@ -75,9 +66,9 @@ function updateUser(req, response) {
 function deleteUser(req, response) {
     var userId = req.params.userId;
     userModel.deleteUser(userId)
-        .then(function(msg){
-            console.log("user userId");
-            console.log(msg);
-            response.send(msg);
+        .then(function(){
+            response.sendStatus(200);
+        }, function (error) {
+            response.sendStatus(404);
         });
 }
