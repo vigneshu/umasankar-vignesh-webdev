@@ -25,7 +25,7 @@
                         model.welocomeUser = user;
                         userFound = true;
                         $rootScope.currentUser = user;
-                        $location.url("user" + '/' + user._id);
+                        $location.url("user" + '/' + user._id+ "/search");
 
                     }
                     if (!userFound)

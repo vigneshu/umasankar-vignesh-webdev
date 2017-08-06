@@ -15,6 +15,7 @@
         </nav>
 
         <div class="container-fluid">
+
             <div class="row">
                 <div class="col-lg-6">
                     <div class="input-group">
@@ -25,8 +26,15 @@
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
-            <div ng-bind="model.searchResults">
+            <div ng-if="model.userId">
+                Your Watchlist
+            </div>
+            <h6>Analyst Ratings</h6>
+            <div ng-bind="model.stockRating">
 
+            </div>
+            <h6>Stock Info</h6>
+            <div ng-bind="model.stockData">
             </div>
 
         </div>

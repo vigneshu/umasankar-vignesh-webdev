@@ -2,17 +2,23 @@
         angular.module("StockApp").controller("searchController", searchController);
         function searchController($location, $routeParams, StockService) {
             var model = this;
-            model.searchResults = "ssss";
+            model.stockRating = "";
+            model.userId = $routeParams.userId;
+            model.stockData = "asfew";
             model.searchStock = searchStock;
             model.ticker = $location.search().ticker;
             function init() {
                 if(model.ticker){
-                    StockService.getStockMeta(model.ticker).then(function(msg){
-                        console.log("here");
-                        console.log(msg.data);
-                        model.searchResults = msg.data;
+                    StockService.getStockRating(model.ticker)
+                        .then(function(msg){
+                        model.stockRating = msg.data;
+                    });
+                    StockService.getStockData(model.ticker)
+                        .then(function(msg){
+                        model.stockData = msg.data;
                     });
                 }
+
 
 
             }
