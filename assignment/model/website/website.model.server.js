@@ -22,7 +22,7 @@ function createWebsite(userId, website){
 
 }
 function updateWebsite(websiteId, website){
-    return websiteModel.update({websiteId: websiteId}, {
+    return websiteModel.update({_id: websiteId}, {
         $set: website
     });
 }

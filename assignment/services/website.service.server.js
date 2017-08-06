@@ -19,7 +19,7 @@ function findWebsiteById(req, res){
         });
 }
 function updateWebsite(req, res) {
-    websiteModel.updateWebsite(websiteId,value)
+    websiteModel.updateWebsite(req.params.websiteId,req.body)
         .then(function(msg){
             res.json(msg);
         });
