@@ -25,13 +25,13 @@
                 model.msg = "Widget name is required";
                 return;
             }
-            if(model.currentWidget.widgetType == 'YOUTUBE'){
+            if(model.currentWidget.type == 'YOUTUBE'){
                 if (!model.currentWidget.url) {
                     model.msg = "Widget URL format is incorrect";
                     return;
                 }
             }
-            if(model.currentWidget.widgetType == 'TEXT' || model.currentWidget.widgetType == "HTML"){
+            if(model.currentWidget.type == 'TEXT' || model.currentWidget.type == "HTML"){
                 if (!model.currentWidget.text) {
                     model.msg = "Widget text is required";
                     return;

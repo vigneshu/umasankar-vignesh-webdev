@@ -25,7 +25,7 @@
     <div class="container-fluid" sortable callback="model.updateOrder(initial, final)">
         <ul class="list-group">
             <li ng-repeat="widget in model.widgets" class="list-group-item">
-                <div ng-switch="widget.widgetType">
+                <div ng-switch="widget.type">
                     <div ng-switch-when="HEADING">
                         <ng-include src="'views/widget/templates/widget-heading.view.client.html'">
                     </div>

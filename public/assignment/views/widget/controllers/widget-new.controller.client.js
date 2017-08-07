@@ -19,19 +19,19 @@
                 model.msg = "Widget name is required";
                 return;
             }
-            if(widget.widgetType == 'YOUTUBE'){
+            if(widget.type == 'YOUTUBE'){
                 if (!widget.url) {
                     model.msg = "Widget URL format is incorrect";
                     return;
                 }
             }
-            if(widget.widgetType == 'TEXT' || widget.widgetType == "HTML"){
+            if(widget.type == 'TEXT' || widget.type == "HTML"){
                 if (!widget.text) {
                     model.msg = "Widget text is required";
                     return;
                 }
             }
-            widget.widgetType = model.type;
+            widget.type = model.type;
             WidgetService.createWidget(model.pid, widget)
                 .then(function(){
                     $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pid + "/widget");
