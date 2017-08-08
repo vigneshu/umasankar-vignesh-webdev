@@ -7,7 +7,8 @@
             "getStockRating": getStockRating,
             "getStockData": getStockData,
         };
-        var proxyUrl = $location.protocol()+ "://localhost" + ":8080/";//$location.host()
+        var proxyUrl = $location.protocol()+ "://"+$location.host() + ":8080/";
+        alert(proxyUrl);
         var stockRatingApi = proxyUrl + 'https://www.quandl.com/api/v3/datatables/ZACKS/AR.json';
         var stockDataApi =  proxyUrl + 'https://www.quandl.com/api/v3/datatables/WIKI/PRICES.json';
         var apiKey = '&api_key=itQmxzTptW7AzTot5f8K';
