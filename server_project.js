@@ -13,7 +13,10 @@ var port = process.env.PORT || 3000;
 var host = process.env.HOST || '0.0.0.0';
 // Listen on a specific port via the PORT environment variable
 var port_cors =  8080;
-
+var proxyUrl = "http://localhost:8080/";
+if(process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
+    proxyUrl = process.env.HOST + "/";
+}
 var cors_proxy = require('cors-anywhere');
 cors_proxy.createServer({
     originWhitelist: [], // Allow all origins
@@ -22,5 +25,4 @@ cors_proxy.createServer({
 }).listen(port_cors, host, function() {
     console.log('Running CORS Anywhere on ' + host + ':' + port_cors);
 });
-console.log("hhh")
 app.listen(port);

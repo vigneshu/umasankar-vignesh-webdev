@@ -9,9 +9,8 @@
             }
             init();
             function searchStock(){
-                alert(model.ticker);
                 var ticker = model.ticker;
-                $location.url("search" + '?' + ticker);
+                $location.url("search" + '?ticker=' + ticker);
             }
         }
     }

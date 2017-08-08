@@ -2,14 +2,14 @@
     angular
         .module("StockApp")
         .service("StockService", StockService);
-    function StockService($http, $sce) {
+    function StockService($http, $sce, $location) {
         var api = {
             "getStockRating": getStockRating,
             "getStockData": getStockData,
         };
-        var stockRatingApi = 'https://localhost:8080/https://www.quandl.com/api/v3/datatables/ZACKS/AR.json';
-        var stockDataApi = 'https://localhost:8080/https://www.quandl.com/api/v3/datatables/WIKI/PRICES.json';
-
+        var proxyUrl = $location.protocol()+ "://"+$location.host() + ":8080" + "/";
+        var stockRatingApi = proxyUrl + 'https://www.quandl.com/api/v3/datatables/ZACKS/AR.json';
+        var stockDataApi =  proxyUrl + 'https://www.quandl.com/api/v3/datatables/WIKI/PRICES.json';
         var apiKey = '&api_key=itQmxzTptW7AzTot5f8K';
         return api;
 
@@ -21,7 +21,7 @@
             var date =  new Date().toISOString().slice(0,10).replace(/-/g,"");
             var params = '?date='+date+'&ticker='+ticker;
             var url = stockDataApi + params + apiKey ;
-            url = "https://localhost:8080/https://www.quandl.com/api/v3/datatables/WIKI/PRICES.json?date=20160912&ticker=FB&api_key=itQmxzTptW7AzTot5f8K";
+            url = proxyUrl + "https://www.quandl.com/api/v3/datatables/WIKI/PRICES.json?date=20160912&ticker="+ ticker + apiKey;
             return $http.get(url);
         }
     }
