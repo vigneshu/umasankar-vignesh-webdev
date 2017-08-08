@@ -9,7 +9,7 @@ require("./assignment/app");
 require("./project/app");
 var port = process.env.PORT || 3000;
 
-var host = process.env.PORT ? '0.0.0.0' : '127.0.0.1';
+var host = process.env.HOST ? '0.0.0.0' : '127.0.0.1';
 // Listen on a specific port via the PORT environment variable
 var port_cors =  8080;
 var proxyUrl = "http://localhost:8080/";
