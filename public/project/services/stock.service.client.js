@@ -16,7 +16,7 @@
 
         function getStockRating(ticker) {
             var url = stockRatingApi + '?m_ticker='+ticker  + apiKey ;
-            var url = "/api/search?ticker="+ticker ;
+            var url = "/api/project/search?ticker="+ticker ;
             return $http.get(url);
         }
         function getStockData(ticker) {
@@ -24,7 +24,7 @@
             var params = '?date='+date+'&ticker='+ticker;
             // var url = stockDataApi + params + apiKey ;
             // url = proxyUrl + "https://www.quandl.com/api/v3/datatables/WIKI/PRICES.json?date=20160912&ticker="+ ticker + apiKey;
-            var url = "/api/searchData?ticker="+ticker;
+            var url = "/api/project/searchData?ticker="+ticker;
             return $http.get(url);
         }
     }

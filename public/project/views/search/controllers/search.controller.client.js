@@ -1,6 +1,6 @@
 (function() {
         angular.module("StockApp").controller("searchController", searchController);
-        function searchController($location, $routeParams, StockService) {
+        function searchController($location, $routeParams, StockService, UserService) {
             var model = this;
             model.stockRating = "";
             model.userId = $routeParams.userId;
@@ -18,7 +18,10 @@
                         model.stockData = msg.data;
                     });
                 }
-
+                UserService.findUserById(model.userId)
+                    .then(function(msg){
+                        model.user = msg.data;
+                    })
 
 
             }

@@ -7,11 +7,11 @@ var users = [
 ];
 
 
-app.get("/api/user/:userId", findUserById);
-app.get("/api/user", findUser);
-app.post("/api/user", createUser);
-app.put("/api/user/:userId", updateUser);
-app.delete("/api/user/:userId", deleteUser);
+app.get("/api/project/user/:userId", findUserById);
+app.get("/api/project/user", findUser);
+app.post("/api/project/user", createUser);
+app.put("/api/project/user/:userId", updateUser);
+app.delete("/api/project/user/:userId", deleteUser);
 
 function findUserById(req, response) {
     console.log("servers");

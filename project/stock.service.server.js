@@ -10,8 +10,8 @@ var pages = [
 ];
 var api = 'https://www.quandl.com/api/v3/datatables/ZACKS/AR.json?';
 var apiKey = '&api_key=itQmxzTptW7AzTot5f8K';
-app.get("/api/search", getStockRating);
-app.get("/api/searchData", getStockData);
+app.get("/api/project/search", getStockRating);
+app.get("/api/project/searchData", getStockData);
 
 function getStockRating(req, res){
     var ticker="ticker="+req.query.ticker;
