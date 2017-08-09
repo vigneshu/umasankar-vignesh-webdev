@@ -1,7 +1,9 @@
 var mongoose = require("mongoose");
 var userSchema = require("./widget.schema.server.js");
-var db = require("../database");
+var db = require("../models.server");
 var widgetModel = mongoose.model("widget", userSchema);
+var pageSchema = require("../page/page.schema.server.js");
+var pageModel = mongoose.model("page", pageSchema);
 widgetModel.createWidget = createWidget;
 widgetModel.findWidgetsByPageId = findWidgetsByPageId;
 widgetModel.findWidgetById = findWidgetById;
@@ -44,7 +46,8 @@ function findWidgetById(widgetId) {
         });
 }
 function findWidgetsByPageId(pageId) {
-    return widgetModel.find({_page: pageId});
+    // return widgetModel.find({_page: pageId});
+    return pageModel.find({_id: pageId}).populate('widgets').exec();
 }
 
 function reorderWidget(username, password) {

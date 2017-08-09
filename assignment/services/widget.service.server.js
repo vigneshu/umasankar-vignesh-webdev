@@ -113,7 +113,7 @@ function findWidgetsByPageId(req, res) {
     var pageWidgets = [];
     widgetModel.findWidgetsByPageId(pageId)
         .then(function(msg){
-            res.json(msg);
+            res.json(msg[0].widgets);
         });
 }
 

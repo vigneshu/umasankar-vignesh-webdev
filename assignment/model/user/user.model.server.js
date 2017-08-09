@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var userSchema = require("./user.schema.server.js");
-var db = require("../database");
+var db = require("../models.server");
 var userModel = mongoose.model("user", userSchema);
 userModel.createUser = createUser;
 userModel.updateUser = updateUser;
