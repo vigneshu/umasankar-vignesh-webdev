@@ -18,11 +18,18 @@ function updateOrder(req, res) {
     var loopCount = 0;
     //the initial and final values are indices within that particular page's
     // We need to find the indices in the whole page array
-    findWidgetsByPageId(pageId)
-        .then(function(widgets){
-            var item = widgets.splice(initial, 1)[0];
-            widgets.splice(final, 0, item);
-            res.sendStatus(200);
+    pageModel.findPageById(pageId)
+        .then(function(page){
+            var item = page.widgets.splice(initial, 1)[0];
+            page.widgets.splice(final, 0, item);
+            pageModel
+                .updatePage(pageId, {widgets: page.widgets})
+                .then(function(msg){
+                    res.sendStatus(200);
+                }, function (error) {
+                    res.sendStatus(404);
+                });
+
         }
     );
 
@@ -56,7 +63,6 @@ function uploadImage(req, res) {
 
     var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
     widget.type = "IMAGE";
-    console.log(widget);
     if (isNewWidget) {
         widgetModel.createWidget(pageId, widget)
             .then(function(createdWidget){

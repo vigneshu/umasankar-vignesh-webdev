@@ -3,7 +3,7 @@
         .module("WamApp")
         .controller("newWidgetController",newWidgetController);
 
-    function newWidgetController($location, $routeParams, WidgetService) {
+    function newWidgetController($rootScope, $location, $routeParams, WidgetService) {
         var model = this;
         model.userId = $routeParams.userId;
         model.websiteId = $routeParams.wid;
@@ -11,6 +11,11 @@
         model.type = $routeParams.type;
         model.createWidget = createWidget;
         function init() {
+            if (model.type === 'IMAGE') {
+                model.currentWidget = {};
+                model.currentWidget.url = $rootScope.flickrURL;
+                $rootScope.flickrURL = "";
+            }
         }
         init();
         function createWidget(widget) {

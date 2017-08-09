@@ -15,6 +15,7 @@
             if (model.wgid){
                 WidgetService.findWidgetById(model.wgid)
                 .then(function(msg){
+
                 model.currentWidget = msg.data;
                 });
             }

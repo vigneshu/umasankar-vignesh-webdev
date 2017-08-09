@@ -43,6 +43,10 @@ function findUserById(userId) {
                 return user;
             }
         });
+    /*
+     return userModel.find({_user: userId}).populate('websites', 'name').exec();
+     return userModel.find({_user: userId}).populate('reference collection name', 'colname').exec();
+     * */
 }
 
 function findUserByCredentials(username, password) {
