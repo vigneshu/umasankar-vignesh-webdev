@@ -25,6 +25,10 @@
                 model.msg = "Widget name is required";
                 return;
             }
+            if (!model.currentWidget.url) {
+                model.msg = "You need to enter URL (OR) Choose file and hit upload";
+                return;
+            }
             if(model.currentWidget.type == 'YOUTUBE'){
                 if (!model.currentWidget.url) {
                     model.msg = "Widget URL format is incorrect";

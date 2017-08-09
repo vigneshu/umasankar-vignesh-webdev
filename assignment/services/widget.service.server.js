@@ -50,7 +50,7 @@ function uploadImage(req, res) {
     if (widgetId == "") {
         isNewWidget = true;
     }
-
+    var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
     if (myFile) {
         var originalname = myFile.originalname; // file name on user's computer
         var filename = myFile.filename;     // new file name in upload folder
@@ -60,8 +60,21 @@ function uploadImage(req, res) {
         var mimetype = myFile.mimetype;
         widget.url = '/uploads/' + filename;
     }
+    else{
+        if(!widget.url){
+            if(isNewWidget)
+            {
+                callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/new/IMAGE";
+            }
+            else{
+                callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId;
+            }
+            res.redirect(callbackUrl);
+            return;
+        }
+    }
 
-    var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
+
     widget.type = "IMAGE";
     if (isNewWidget) {
         widgetModel.createWidget(pageId, widget)
