@@ -23,7 +23,11 @@
            UserService.findUserByUsername(user.username,user.password )
                 .then(function(userResponse){
                 var _user = userResponse.data;
+                console.log("constorller ");
+                console.log(userResponse);
+                console.log(_user);
                 if(_user == 0) {
+                    console.log("creating user");
                     return UserService.createUser(user);
                 }
                 else{

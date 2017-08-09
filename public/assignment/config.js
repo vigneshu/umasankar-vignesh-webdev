@@ -77,6 +77,11 @@
                     controller: 'homeController',
                     controllerAs: 'model'
                 })
+                .when('/user/:userId/website/:websiteId/page/:pid/widget/:wgid/flickr', {
+                    templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
+                    controller: 'flickrSearchController',
+                    controllerAs: 'model'
+                })
         }
     }
 )()

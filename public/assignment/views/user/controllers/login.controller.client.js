@@ -19,17 +19,16 @@
                 }
                  UserService.findUserByCredentials(user.username,user.password )
                     .then(function(user){
-                    var user = user.data;
+                        var user = user.data;
+                        if (user != 0){
+                            model.welocomeUser = user;
+                            userFound = true;
+                            $rootScope.currentUser = user;
+                            $location.url("user" + '/' + user._id);
 
-                    if (user != 0){
-                        model.welocomeUser = user;
-                        userFound = true;
-                        $rootScope.currentUser = user;
-                        $location.url("user" + '/' + user._id);
-
-                    }
-                    if (!userFound)
-                        model.errorMessage = "User Not found";
+                        }
+                        if (!userFound)
+                            model.errorMessage = "User Not found";
                 });
 
             }
