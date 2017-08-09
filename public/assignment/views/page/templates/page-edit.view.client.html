@@ -25,7 +25,9 @@
                     <li ng-repeat="page in model.pages" class="list-group-item">
                         <div class="row">
                             <div class="col-xs-8">
-                                {{page.name}}
+                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                                    {{page.name}}
+                                </a>
                             </div>
                             <div class="col-xs-4">
                                 <a class="navbar-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
