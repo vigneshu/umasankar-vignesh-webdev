@@ -24,7 +24,7 @@
                 model.msg = "Widget name is required";
                 return;
             }
-            if (!model.currentWidget.url) {
+            if (!model.currentWidget.url && model.type == 'IMAGE') {
                 model.msg = "You need to enter URL (OR) Choose file and hit upload";
                 return;
             }
