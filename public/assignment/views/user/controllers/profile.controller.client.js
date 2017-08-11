@@ -1,9 +1,10 @@
 (function() {
         // without dependency it tries to retreive module, with dependency it tries to declare a new module
         angular.module("WamApp").controller("profileController", profileController);
-        function profileController($scope, $routeParams, UserService, $rootScope, $location) {
+        function profileController($scope, $routeParams, UserService, $rootScope, $location, user) {
             var model = this;
-            var userId = $routeParams.userId;
+            // var userId = $routeParams.userId;
+            var userId = user._id;
 
             model.updateUser = updateUser;
             model.logout = logout;

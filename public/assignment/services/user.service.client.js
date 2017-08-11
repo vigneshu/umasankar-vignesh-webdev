@@ -4,17 +4,29 @@
         .factory("UserService", UserService);
     function UserService($http){
         var api = {
-            "findUserByCredentials": findUserByCredentials,
+            // "findUserByCredentials": findUserByCredentials,
+            "findUserByCredentials": login,
             "findUserById": findUserById,
+            "checkLogin": checkLogin,
             "findUserByUsername": findUserByUsername,
             "updateUser": updateUser,
             "createUser": createUser,
             "deleteUser": deleteUser,
         };
         return api;
+        function checkLogin(){
+            console.log("s");
+            return $http.get('/api/checkLogin');
+
+        }
         function updateUser(userId, user){
             var url = "/api/user/"+userId;
             return $http.put(url, user);
+        }
+        function login(username, password) {
+            var url = "/api/login";
+            var user_ = $http.post(url, {username:username,password: password});
+            return user_;
         }
         function findUserByCredentials(username, password) {
             var url = "/api/user?username="+username+"&password="+password;

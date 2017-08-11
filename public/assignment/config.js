@@ -18,7 +18,10 @@
                 .when("/user/:userId", {
                     templateUrl: "views/user/templates/profile.view.client.html",
                     controller: "profileController",
-                    controllerAs: "model"
+                    controllerAs: "model",
+                    resolve:{
+                        user: checkLogin
+                    }
                 })
                 //website routes
                 .when("/user/:userId/website", {
@@ -81,7 +84,22 @@
                     templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
                     controller: 'flickrSearchController',
                     controllerAs: 'model'
-                })
+                });
+            function checkLogin(UserService, $q){
+                var deferred = $q.defer();
+                UserService
+                    .checkLogin()
+                    .then(function (user){
+                        if(user.data === '0'){
+                            deferred.reject()
+                        } else {
+                            deferred.resolve(user.data);
+                        }
+                    });
+                return deferred.promise;
+            }
         }
+
+
     }
 )()
