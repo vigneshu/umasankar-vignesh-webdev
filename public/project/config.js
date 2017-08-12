@@ -9,8 +9,10 @@
                     controllerAs: "model"
                 })
                 .when('/', {
-                    templateUrl: 'home.view.client.html',
-                    controller: 'homeController',
+                    controller: 'loginController',
+                    templateUrl: 'views/user/templates/login.view.client.html',
+                    // templateUrl: 'home.view.client.html',
+                    // controller: 'homeController',
                     controllerAs: 'model'
                 })
                 .when("/register", {

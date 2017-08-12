@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
-var stockSchema = require("./stock.schema.server.js");
-var userSchema = require("./user.schema.server.js");
+var stockSchema = require("../stock/stock.schema.server.js");
+var userSchema = require("../user/user.schema.server.js");
 var db = require("../models.server.js");
 var stockModel = mongoose.model("project.stock", stockSchema);
 var userModel = mongoose.model("project.user", userSchema);

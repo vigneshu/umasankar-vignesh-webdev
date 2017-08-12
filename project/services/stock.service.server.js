@@ -1,7 +1,7 @@
 var app = require("../../express");
 var q = require("q");
 var https = require("https");
-var stockModel = require("../model/page/page.model.server");
+var stockModel = require("../model/stock/stock.model.server");
 var api = 'https://www.quandl.com/api/v3/datatables/ZACKS/AR.json?';
 var apiKey = '&api_key=itQmxzTptW7AzTot5f8K';
 app.get("/api/project/search", getStockRating);
