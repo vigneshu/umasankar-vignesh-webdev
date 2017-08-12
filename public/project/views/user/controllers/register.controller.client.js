@@ -1,6 +1,6 @@
 (function(){
     angular
-        .module("WamApp")
+        .module("StockApp")
         .controller("registerController",registerController);
 
     function registerController(UserService, $location){
@@ -32,7 +32,7 @@
                 }
             }).
            then(function(data){
-               $location.url("/user/" + data.data._id);
+               $location.url("/user/" + data.data._id + "/search");
            })
            .catch(function () {
                   console.log("User already exists");

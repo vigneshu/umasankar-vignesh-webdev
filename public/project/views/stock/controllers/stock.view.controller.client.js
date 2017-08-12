@@ -1,14 +1,11 @@
 (function() {
-        angular.module("StockApp").controller("searchController", searchController);
-        function searchController($location, $routeParams, StockService, UserService) {
+        angular.module("StockApp").controller("stockViewController", stockViewController);
+        function stockViewController($location, $routeParams, StockService, UserService) {
             var model = this;
-            model.stockRating = "";
             model.userId = $routeParams.userId;
+            model.ticker = $routeParams.ticker;
+            model.stockRating = "";
             model.stockData = "";
-            model.stockUserData = {};
-            model.searchStock = searchStock;
-            model.followStock = followStock;
-            model.ticker = $location.search().ticker;
             function init() {
                 if(model.ticker){
                     StockService.getStockRating(model.ticker)
@@ -23,10 +20,6 @@
                         .then(function(msg){
                             model.stockNews = msg.data;
                         });
-                    StockService.getStockUserInfo(model.userId)
-                        .then(function(msg){
-                            model.stockUserData = msg.data;
-                        });
 
 
                 }
@@ -38,16 +31,6 @@
 
             }
             init();
-            function followStock(){
-                StockService.followStock(model.ticker)
-            }
-            function searchStock(){
-                if(model.userId){
-                    $location.url("user/"+model.userId+"/search/" + '?ticker=' + model.ticker);
-                } else{
-                    $location.url("search" + '?ticker=' + model.ticker);
-                }
-            }
         }
     }
 )();

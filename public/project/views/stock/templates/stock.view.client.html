@@ -1,0 +1,42 @@
+
+<div class="vu">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-left">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/search">
+                    <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a class="navbar-link" href="#!/user/{{model.userId}}/website/new">
+                    <span class="glyphicon glyphicon-plus vu-white"></span>
+                </a>
+            </div>
+            <div class="navbar-header navbar-brand">
+                Stock View
+            </div>
+
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <br><h6>Stock Info API</h6></a>
+        <div ng-bind="model.stockData">
+        </div>
+
+        <h6>Analyst Ratings API</h6>
+        <div ng-bind="model.stockRating">
+
+        </div>
+
+        <br> <h6>Stock News</h6><br>
+        <div ng-bind="model.stockNews">
+        </div>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="navbar-header navbar-text pull-right container-fluid">
+            <a class="navbar-link"  href="#!/user/{{model.userId}}/search/{{model.ticker}}">
+                <span class="glyphicon glyphicon-user vu-white"></span>
+            </a>
+        </div>
+    </nav>
+</div>

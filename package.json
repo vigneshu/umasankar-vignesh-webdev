@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "angular-route": "^1.6.5",
+    "angular-rss": "0.0.1",
     "body-parser": "^1.17.2",
     "bootstrap": "^3.3.7",
     "cors-anywhere": "^0.4.0",
