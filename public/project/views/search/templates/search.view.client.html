@@ -31,7 +31,7 @@
             </div>
 
             <br>
-            <a ng-if="model.user && model.stockData" href="#!/user/{{model.userId}}/{{model.ticker}}">
+            <a ng-if="model.user && model.stockData" >
 
                 <div class="vu-widget-container">
                     <div class="vu-widget-text">
@@ -40,7 +40,9 @@
                         </a>
                     </div>
                 </div>
+                <a href="#!/user/{{model.userId}}/{{model.ticker}}">
                 <h6>Stock Info API</h6>
+                </a>
             </a>
             <div ng-bind="model.stockData">
             </div>
