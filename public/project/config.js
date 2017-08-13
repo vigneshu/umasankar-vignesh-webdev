@@ -30,11 +30,22 @@
                     controller: 'searchController',
                     controllerAs: 'model'
                 })
-                .when('/user/:userId/:ticker', {
+                .when('/user/:userId/stock/:ticker', {
                     templateUrl: 'views/stock/templates/stock.view.client.html',
                     controller: 'stockViewController',
                     controllerAs: 'model'
                 })
+                .when('/user/:userId/friends', {
+                    templateUrl: 'views/friends/templates/friends.view.client.html',
+                    controller: 'friendController',
+                    controllerAs: 'model'
+                })
+                .when('/user/:userId', {
+                    templateUrl: 'views/user/templates/profile.view.client.html',
+                    controller: 'profileController',
+                    controllerAs: 'model'
+                })
+
         }
     }
 )();

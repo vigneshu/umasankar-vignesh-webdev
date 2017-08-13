@@ -9,6 +9,8 @@
     "body-parser": "^1.17.2",
     "bootstrap": "^3.3.7",
     "cors-anywhere": "^0.4.0",
+    "datatables": "^1.10.13",
+    "datatables-bootstrap": "0.0.1",
     "express": "^4.15.3",
     "http-server": "^0.10.0",
     "jquery": "^3.2.1",

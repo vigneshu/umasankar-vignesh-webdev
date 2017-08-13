@@ -8,15 +8,29 @@ userModel.deleteUser = deleteUser;
 userModel.findUserById = findUserById;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByUsername = findUserByUsername;
-userModel.getStockUserInfo = getStockUserInfo;
-userModel.findStockByTicker = findStockByTicker;
+userModel.getStockInfo = getStockInfo;
+userModel.findStockByTickerForUser = findStockByTickerForUser;
+userModel.unFollowStock = unFollowStock;
 
-function findStockByTicker(userId, ticker) {
-
+function unFollowStock(userId, stockId) {
+    return userModel.findOne({_id: userId}, function(err, user){
+        var index = user.stocks.indexOf(stockId);
+        if (index > -1) {
+            user.stocks.splice(index, 1);
+        }
+        user.firstName="a";
+        return updateUser(userId, user);
+    });
 }
-function getStockUserInfo(userId) {
-    return userModel.find({userId: userId})
-        .populate('project.stock')
+function findStockByTickerForUser(userId, ticker) {
+    return userModel.findOne({_id: userId})
+        // .populate( 'stocks' )
+        .populate( 'stocks', null, { ticker: ticker } )
+        .exec();
+}
+function getStockInfo(userId) {
+    return userModel.findOne({_id: userId})
+        .populate('stocks' )
         .exec();
 }
 function createUser(user){
@@ -32,7 +46,16 @@ function createUser(user){
 
 }
 function updateUser(userId, user){
-    return userModel.update({_id: userId}, {$set: user});
+    return userModel.update({_id: userId}, {$set: user},
+        function (err, msg) {
+            if (err)
+            {
+                console.log("update error");
+                return console.error(err);
+            }
+            console.log("returning updated user"+JSON.stringify(user));
+            return user;
+    });
 }
 function deleteUser(userId) {
     return userModel.findOne({_id: userId}, function(err, user) {

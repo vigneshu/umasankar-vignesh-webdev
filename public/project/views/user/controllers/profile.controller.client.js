@@ -1,6 +1,6 @@
 (function() {
         // without dependency it tries to retreive module, with dependency it tries to declare a new module
-        angular.module("WamApp").controller("profileController", profileController);
+        angular.module("StockApp").controller("profileController", profileController);
         function profileController($scope, $routeParams, UserService, $rootScope, $location) {
             var model = this;
             var userId = $routeParams.userId;
@@ -22,6 +22,9 @@
             }
 
             function updateUser() {
+                // console.log( model.user);
+                // model.user.stocks = [];
+                // console.log( model.user);
                 UserService.updateUser(model.user._id, model.user)
                     .then(function(user){
                     var user  = user.data;

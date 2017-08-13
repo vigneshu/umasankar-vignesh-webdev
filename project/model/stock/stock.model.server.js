@@ -4,13 +4,15 @@ var userSchema = require("../user/user.schema.server.js");
 var db = require("../models.server.js");
 var stockModel = mongoose.model("project.stock", stockSchema);
 var userModel = mongoose.model("project.user", userSchema);
-stockModel.followStock = followStock;
+stockModel.unFollowStock = unFollowStock;
 stockModel.createStock = createStock;
 stockModel.updateStock = updateStock;
 stockModel.addActivity = addActivity;
-stockModel.findStockByTicker = findStockByTicker;
+stockModel.removeStock = removeStock;
 
-
+function removeStock(stockId) {
+    return stockModel.remove({_id: stockId});
+}
 function updateStock(stock) {
     return stockModel.update({_id: stockId}, {$set: stock});
 
@@ -18,26 +20,17 @@ function updateStock(stock) {
 function createStock(ticker){
     return stockModel.create({ticker: ticker});
 }
-function findStockByTicker(ticker){
-    return stockModel.findOne({ticker: tickers},
-        function (err, stock) {
-            return stock;
-        });
-}
-function followStock(userId, ticker){
-    return userModel.findStockByTicker(userId, ticker, function (stock){
-        if(!stock){
-            return createStock(ticker);
-            // return Promise.resolve();
-        }
-        return stock;
-    }).then(function(stock){
-        console.log("stockstock "+stock);
-        stock.isFollowing = true;
-        return updateStock(stock._id, stock);
-    });
-
-
+function unFollowStock(userId, ticker){
+    var stockId;
+    return userModel.findStockByTickerForUser(userId, ticker)
+        .then(function(user) {
+            return user;
+        }).then(function(user) {
+            stockId = user.stocks[0]._id;
+            return userModel.unFollowStock(user._id, stockId)
+        }).then(function(user){
+            return removeStock(stockId);
+        })
 }
 function addActivity(activity){
     return stockModel.addActivity(activity);
@@ -89,7 +82,7 @@ function findUserByUsername(username) {
         });
 }
 
-module.exports = userModel;
+module.exports = stockModel;
 
 
 //

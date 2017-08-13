@@ -9,9 +9,16 @@
             "findUserByUsername": findUserByUsername,
             "updateUser": updateUser,
             "createUser": createUser,
+            "getStockInfo": getStockInfo,
             "deleteUser": deleteUser,
+            "followFriend": followFriend,
+            "unFollowFriend": unFollowFriend,
         };
         return api;
+        function getStockInfo(userId) {
+            var url = "/api/project/"+userId+"/getStockInfo";
+            return $http.get(url);
+        }
         function updateUser(userId, user){
             var url = "/api/project/user/"+userId;
             return $http.put(url, user);
@@ -32,6 +39,14 @@
         function findUserByUsername(username) {
             var url = "/api/project/user?username="+username;
             return $http.get(url);
+        }
+        function unFollowFriend(userId, friendId) {
+            var url = "/api/project/"+userId+"/unFollowFriend?friendId="+friendId;
+            return $http.put(url);
+        }
+        function followFriend(userId, friendId) {
+            var url = "/api/project/"+userId+"/followFriend?friendId="+friendId;
+            return $http.put(url);
         }
         function deleteUser(userId) {
             var url = "/api/user/project/" + userId;

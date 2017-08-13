@@ -7,19 +7,21 @@
             "getStockRating": getStockRating,
             "getStockData": getStockData,
             "getStockNews": getStockNews,
-            "getStockUserInfo": getStockUserInfo,
             "followStock": followStock,
+            "unFollowStock": unFollowStock,
         };
         return api;
 
-        function followStock(ticker) {
-            var url = "/api/project/getStockUserInfo?userId="+userId ;
+        function unFollowStock(userId, ticker) {
+            console.log("s");
+            var url = "/api/project/"+userId+"/unFollowStock?ticker="+ticker;
             return $http.get(url);
         }
-        function getStockUserInfo(userId) {
-            var url = "/api/project/getStockUserInfo?userId="+userId ;
+        function followStock(userId, ticker) {
+            var url = "/api/project/"+userId+"/followStock?ticker="+ticker;
             return $http.get(url);
         }
+
         function getStockNews(ticker) {
             var url = "/api/project/searchNews?ticker="+ticker ;
             return $http.get(url);

@@ -1,3 +1,4 @@
 (function() {
-    var app = angular.module("StockApp", ["ngRoute"]);
+    var app = angular.module("StockApp", ["ngRoute","datatables"]);
+    //,  "datatables", "datatables.bootstrap"
 })()

@@ -10,8 +10,8 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Search</a></li>
-                        <li><a  href="#!/user/{{model.userId}}/friends">Find Friends</a></li>
+                        <li><a href="#!/user/{{model.userId}}/search">Search</a></li>
+                        <li class="active"><a  href="#!/user/{{model.userId}}/friends">Find Friends</a></li>
                     </ul>
                 </div>
             </div>
@@ -22,9 +22,9 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="input-group">
-                        <input type="text" ng-model="model.ticker" class="form-control" placeholder="Search for any stock. (MSFT, AAPL)...">
+                        <input type="text" ng-model="model.friend" class="form-control" placeholder="Enter your friends username. (alice2978, bob92)...">
                         <span class="input-group-btn">
-                             <button class="btn btn-default"  ng-click="model.searchStock()" type="button">Go!</button>
+                             <button class="btn btn-default"  ng-click="model.searchFriend()" type="button">Go!</button>
                         </span>
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
@@ -34,37 +34,21 @@
             </div>
 
             <br>
-            <div ng-if="model.user && model.stockData">
+            <div ng-if="model.friendData">
                 <div class="vu-widget-container">
                         <div >
                             <div class="vu-widget-text">
-                                <a ng-show="model.isFollowingCurrentSearch == false" ng-click="model.followStock(model.ticker)">
+                                <a ng-show="model.isFollowingCurrentSearch == false" ng-click="model.followFriend()">
                                     <span class="glyphicon glyphicon-plus"></span>
                                 </a>
-                                <span ng-show="model.isFollowingCurrentSearch == true"  ng-click="model.unFollowStock(model.ticker)" class="glyphicon glyphicon glyphicon-remove"></span>
+                                <span ng-show="model.isFollowingCurrentSearch == true"  ng-click="model.unFollowFriend()" class="glyphicon glyphicon glyphicon-remove"></span>
                             </div>
                         </div>
                 </div>
-
-                <a  href="#!/user/{{model.userId}}/stock/{{model.ticker}}">
-                <h6>{{model.ticker}}</h6>
+<!--Add frind feed link here-->
+                <a  href="#!/user/{{model.userId}}/otheruser/{{model.friendData._id}}">
+                <h6>{{model.friendData.username}}</h6>
                 </a>
-            </div>
-            <div ng-bind="model.stockData">
-            </div>
-            <h6>Your stocks</h6>
-            <h6>Table</h6>
-            <!--<table datatable="" dt-options="model.dtOptions" dt-column-defs="model.dtColumnDefs"></table>-->
-            <div class="container-fluid">
-                <ul class="list-group">
-                    <!--<li ng-repeat="userStock in model.stockUserData.stocks" class="list-group-item">-->
-                    <li ng-repeat="userStock in model.stockUserDataDetailed" class="list-group-item">
-
-                        <a  href="#!/user/{{model.userId}}/stock/{{userStock[0]}}">
-                            {{userStock}}
-                        </a>
-                    </li>
-                </ul>
             </div>
 
 

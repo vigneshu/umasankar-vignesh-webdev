@@ -7,7 +7,10 @@ var userSchema = mongoose.Schema(
         lastName: String,
         email: String,
         phone: String,
-        stocks: [{type: mongoose.Schema.Types.ObjectId, ref: 'stock'}],
+        stocks: [{type: mongoose.Schema.Types.ObjectId, ref: 'project.stock'}],
+        followers: [{type: mongoose.Schema.Types.ObjectId, ref: 'project.user'}],
+        following: [{type: mongoose.Schema.Types.ObjectId, ref: 'project.user'}],
+        admin: {type: Boolean, default: false},
         dateCreated: {
             type: Date,
             default: Date.now
