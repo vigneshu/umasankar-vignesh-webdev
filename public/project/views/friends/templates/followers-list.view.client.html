@@ -1,0 +1,40 @@
+<div class="vu">
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+
+                <div class="navbar-text pull-right">
+                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user/{{model.userId}}">
+                        <span class="glyphicon glyphicon-ok vu-white"></span>
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#!/user/{{model.userId}}/search">Stocks</a></li>
+                        <li><a  href="#!/user/{{model.userId}}/friends">Find Friends</a></li>
+                        <li class="active"><a  href="#!/user/{{model.userId}}/followers">Your followers</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <h6>Your followers</h6>
+            <div class="container-fluid">
+                <ul class="list-group">
+                    <li ng-repeat="follower in model.followers" class="list-group-item">
+                        {{follower}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="navbar-header navbar-text pull-right container-fluid">
+                <a class="navbar-link"  href="#!/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user vu-white"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

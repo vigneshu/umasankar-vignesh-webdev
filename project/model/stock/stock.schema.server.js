@@ -7,7 +7,7 @@ var stockSchema = mongoose.Schema(
             default: Date.now
         },
         isFollowing: Boolean,
-        activity: [{type: mongoose.Schema.Types.ObjectId, ref: 'stock.activity'}],
+        activity: [{type: mongoose.Schema.Types.ObjectId, ref: 'project.activity'}],
     }, {collection: "project.stock"}
 );
 module.exports = stockSchema;

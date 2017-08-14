@@ -10,8 +10,9 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#!/user/{{model.userId}}/search">Search</a></li>
+                        <li><a href="#!/user/{{model.userId}}/search">Stocks</a></li>
                         <li class="active"><a  href="#!/user/{{model.userId}}/friends">Find Friends</a></li>
+                        <li><a  href="#!/user/{{model.userId}}/followers">Your followers</a></li>
                     </ul>
                 </div>
             </div>
@@ -29,10 +30,6 @@
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
-            <div ng-if="model.userId">
-                <br><h3> Welcome {{model.user.username}}</h3><br>
-            </div>
-
             <br>
             <div ng-if="model.friendData">
                 <div class="vu-widget-container">
@@ -45,14 +42,24 @@
                             </div>
                         </div>
                 </div>
-<!--Add frind feed link here-->
                 <a  href="#!/user/{{model.userId}}/otheruser/{{model.friendData._id}}">
                 <h6>{{model.friendData.username}}</h6>
                 </a>
             </div>
 
+            <div ng-if="model.friendData">
+                <h6>You are following</h6>
+            </div>
+            <div class="container-fluid">
+                <ul class="list-group">
+                    <li ng-repeat="friend in model.friends" class="list-group-item">
 
-
+                        <a  href="#!/user/{{model.userId}}/otherUser/{{friend._id}}">
+                            {{friend}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <nav class="navbar navbar-default navbar-fixed-bottom">

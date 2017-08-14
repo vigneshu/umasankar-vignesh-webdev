@@ -3,6 +3,7 @@ var q = require("q");
 var https = require("https");
 var stockModel = require("../model/stock/stock.model.server");
 var userModel = require("../model/user/user.model.server");
+var activityModel = require("../model/activity/activity.model.server");
 var api = 'https://www.quandl.com/api/v3/datatables/ZACKS/AR.json?';
 var apiKey = '&api_key=itQmxzTptW7AzTot5f8K';
 app.get("/api/project/search", getStockRating);
@@ -53,8 +54,14 @@ function followStock(req, res) {
 
         })
         .then(function(user){
-            console.log("sending stock adfter following");
+            console.log("going to add activity");
+            return activityModel.addActivity({userId: userId, ticker: ticker});
+
+        })
+        .then(function(activity){
+            console.log("activity added sending stock adfter following");
             res.send(stock);
+
         });
 
 
@@ -102,7 +109,7 @@ function getStockData(req, res){
     var rightNow = new Date();
     var rightNowstr = rightNow.toISOString().slice(0,10).replace(/-/g,"");
     var lDate = new Date();
-    lDate.setDate(lDate.getDate() - 2);
+    lDate.setDate(lDate.getDate() - 3);
     var reslDate = lDate.toISOString().slice(0,10).replace(/-/g,"");
     var path = "/api/v3/datatables/WIKI/PRICES.json?date.gte="+reslDate+"&date.lte="+rightNowstr +  ticker + apiKey;
     var host = 'www.quandl.com';

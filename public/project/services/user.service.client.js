@@ -13,8 +13,16 @@
             "deleteUser": deleteUser,
             "followFriend": followFriend,
             "unFollowFriend": unFollowFriend,
+            "getFriendDetails": getFriendDetails,
+            "getFollowerDetails": getFollowerDetails,
         };
         return api;
+        function getFollowerDetails(userId) {
+            return $http.get("/api/project/user/"+ userId+"/getFollowerDetails");
+        }
+        function getFriendDetails(userId) {
+            return $http.get("/api/project/user/"+ userId+"/getFriendDetails");
+        }
         function getStockInfo(userId) {
             var url = "/api/project/"+userId+"/getStockInfo";
             return $http.get(url);

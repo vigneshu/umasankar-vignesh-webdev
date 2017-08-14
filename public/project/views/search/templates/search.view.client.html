@@ -10,8 +10,9 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Search</a></li>
+                        <li class="active"><a href="#!/user/{{model.userId}}/search">Stocks</a></li>
                         <li><a  href="#!/user/{{model.userId}}/friends">Find Friends</a></li>
+                        <li ><a  href="#!/user/{{model.userId}}/followers">Your followers</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,7 +37,7 @@
             <br>
             <div ng-if="model.user && model.stockData">
                 <div class="vu-widget-container">
-                        <div >
+                        <div>
                             <div class="vu-widget-text">
                                 <a ng-show="model.isFollowingCurrentSearch == false" ng-click="model.followStock(model.ticker)">
                                     <span class="glyphicon glyphicon-plus"></span>

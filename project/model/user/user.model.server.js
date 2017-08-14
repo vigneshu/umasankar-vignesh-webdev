@@ -8,6 +8,8 @@ userModel.deleteUser = deleteUser;
 userModel.findUserById = findUserById;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByUsername = findUserByUsername;
+userModel.getFriendDetails = getFriendDetails;
+userModel.getFollowerDetails = getFollowerDetails;
 userModel.getStockInfo = getStockInfo;
 userModel.findStockByTickerForUser = findStockByTickerForUser;
 userModel.unFollowStock = unFollowStock;
@@ -64,6 +66,16 @@ function deleteUser(userId) {
     });
 }
 
+function getFollowerDetails(userId) {
+    return userModel.findOne({_id: userId})
+        .populate('followers')
+        .exec();
+}
+function getFriendDetails(userId) {
+    return userModel.findOne({_id: userId})
+        .populate( 'following')
+        .exec();
+}
 function findUserById(userId) {
     return userModel.findOne({_id: userId},
         function (err, user) {

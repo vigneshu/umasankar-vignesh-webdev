@@ -36,8 +36,13 @@
                     controllerAs: 'model'
                 })
                 .when('/user/:userId/friends', {
-                    templateUrl: 'views/friends/templates/friends.view.client.html',
+                    templateUrl: 'views/friends/templates/friends-list.view.client.html',
                     controller: 'friendController',
+                    controllerAs: 'model'
+                })
+                .when('/user/:userId/followers', {
+                    templateUrl: 'views/friends/templates/followers-list.view.client.html',
+                    controller: 'followersController',
                     controllerAs: 'model'
                 })
                 .when('/user/:userId', {

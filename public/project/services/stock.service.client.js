@@ -2,7 +2,7 @@
     angular
         .module("StockApp")
         .service("StockService", StockService);
-    function StockService($http, $sce, $location) {
+    function StockService($http) {
         var api = {
             "getStockRating": getStockRating,
             "getStockData": getStockData,
@@ -13,7 +13,6 @@
         return api;
 
         function unFollowStock(userId, ticker) {
-            console.log("s");
             var url = "/api/project/"+userId+"/unFollowStock?ticker="+ticker;
             return $http.get(url);
         }

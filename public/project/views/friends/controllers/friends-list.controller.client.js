@@ -25,11 +25,13 @@
                         });
                 }
                 //get list of friends
-                UserService.findUserById(model.userId)
+                UserService.getFriendDetails(model.userId)
                     .then(function(msg){
                         model.friends = msg.data.following;
                         model.userData = msg.data;
                     });
+
+
             }
             init();
             function followFriend(){
@@ -37,6 +39,7 @@
                     .then(function(msg){
                         model.isFollowingCurrentSearch = true;
                         console.log(model.isFollowingCurrentSearch);
+                        $location.url("user/"+model.userId+"/friends/" + '?username=' + model.friend);
                     });
 
             }
@@ -46,6 +49,7 @@
                     .then(function(msg){
                         model.isFollowingCurrentSearch = false;
                         console.log(model.isFollowingCurrentSearch);
+                        $location.url("user/"+model.userId+"/friends/" + '?username=' + model.friend);
                     })
             }
 

@@ -8,6 +8,22 @@ app.delete("/api/project/user/:userId", deleteUser);
 app.get("/api/project/:userId/getStockInfo", getStockInfo);
 app.put("/api/project/:userId/followFriend", followFriend);
 app.put("/api/project/:userId/unFollowFriend", unFollowFriend);
+app.get("/api/project/user/:userId/getFriendDetails", getFriendDetails);
+app.get("/api/project/user/:userId/getFollowerDetails", getFollowerDetails);
+function getFollowerDetails(req, res){
+    var userId = req.params.userId;
+    userModel.getFollowerDetails(userId)
+        .then(function(msg){
+            res.send(msg);
+        });
+}
+function getFriendDetails(req, res){
+    var userId = req.params.userId;
+    userModel.getFriendDetails(userId)
+        .then(function(msg){
+            res.send(msg);
+        });
+}
 function unFollowFriend(req, res){
     var userId = req.params.userId;
     var friendId = req.query.friendId;
