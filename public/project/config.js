@@ -50,6 +50,11 @@
                     controller: 'profileController',
                     controllerAs: 'model'
                 })
+                .when('/user/:userId/activity', {
+                    templateUrl: 'views/activity/templates/activity-list.view.client.html',
+                    controller: 'activityListController',
+                    controllerAs: 'model'
+                })
 
         }
     }

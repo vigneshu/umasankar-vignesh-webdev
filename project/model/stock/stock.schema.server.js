@@ -6,7 +6,10 @@ var stockSchema = mongoose.Schema(
             type: Date,
             default: Date.now
         },
-        isFollowing: Boolean,
+        isFollowing: {
+            type: Boolean,
+            default: true,
+        },
         activity: [{type: mongoose.Schema.Types.ObjectId, ref: 'project.activity'}],
     }, {collection: "project.stock"}
 );

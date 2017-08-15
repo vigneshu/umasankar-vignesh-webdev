@@ -12,19 +12,32 @@
                     <ul class="nav navbar-nav">
                         <li><a href="#!/user/{{model.userId}}/search">Stocks</a></li>
                         <li><a  href="#!/user/{{model.userId}}/friends">Find Friends</a></li>
-                        <li class="active"><a  href="#!/user/{{model.userId}}/followers">Your followers</a></li>
+                        <li ><a  href="#!/user/{{model.userId}}/followers">Your followers</a></li>
+                        <li class="active"><a  href="#!/user/{{model.userId}}/activity">Your feed</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
         <div class="container-fluid">
-            <h6>Your followers</h6>
+            <h6>Your Feed</h6>
             <div class="container-fluid">
                 <ul class="list-group">
-                    <li ng-repeat="follower in model.followers" class="list-group-item">
-                        {{follower}}
+                    <li ng-repeat="activity in model.activities" class="list-group-item">
+                        <div>
+                            <!--{{activity}}-->
+                            {{activity.userId.username}} {{activity.type}} {{activity.ticker}}<!--activity.commentText-->
+                        </div>
+                        <ul class="list-group">
+                            <li ng-repeat="comment in activity.comments" class="list-group-item">
+                                {{comment.userId.username}} commented {{comment.comment}}
+                            </li>
+                        </ul>
+                                <textarea ng-model=activity.commentText placeholder="Your Comment" style='width:550px'></textarea>
+                                <button ng-click='model.addComment(activity._id);'>Post Comment</button>
+
                     </li>
+
                 </ul>
             </div>
         </div>

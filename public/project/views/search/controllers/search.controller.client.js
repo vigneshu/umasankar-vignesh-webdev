@@ -42,6 +42,7 @@
                 UserService.getStockInfo(model.userId)
                     .then(function(msg){
                         model.stockUserData = msg.data;
+                        console.log(model.stockUserData);
                         var stocks = msg.data.stocks;
                         for (var s in stocks){
                             model.userStocks = model.userStocks + stocks[s].ticker + ",";
@@ -83,16 +84,21 @@
             }
             init();
             function followStock(ticker){
+                console.log("follow");
                 StockService.followStock(model.userId, ticker)
+
                     .then(function(msg){
+                        console.log("follow then");
                         model.isFollowingCurrentSearch = true;
                         console.log(model.isFollowingCurrentSearch);
                     });
 
             }
             function unFollowStock(ticker){
+                console.log("unfollow");
                 StockService.unFollowStock(model.userId, ticker)
                     .then(function(msg){
+                        console.log("unfollow then");
                         model.isFollowingCurrentSearch = false;
                         console.log(model.isFollowingCurrentSearch);
                     })

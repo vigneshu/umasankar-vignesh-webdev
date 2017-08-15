@@ -17,50 +17,60 @@ function followStock(req, res) {
     var userId = req.params.userId;
     var ticker = req.query.ticker;
     var stock = null;
+    var user = null;
     userModel.findStockByTickerForUser(userId, ticker)
-        .then(function(user) {
-            return user;
+        .then(function(msg) {
+            user = msg;
+            return msg;
         })
-        .then(function(user) {
+        .then(function(msg){
+            console.log("going to add activity");
+            return activityModel.addActivity({userId: userId, ticker: ticker, type:'follow_stock'});
+
+        })
+        .then(function(activity) {
+            console.log("adding activity im stock collectio array");
+            console.log(activity);
+            user.activity.push(activity);
             if(user.stocks.length === 0){
                 console.log("user stock length 0 going to create ");
                 console.log(ticker);
-                return stockModel.createStock(ticker);
+                return stockModel.createStock({ticker:ticker, activity:[activity]});
+
 
             }
             else{
                 console.log("stock service server returning already following "+user.stocks[0]);
                 console.log("SHould not come here");
-                res.send(user.stocks[0]);
+                console.log("Changing back to following");
+                stock = user.stocks[0];
+                stock.activity.push(activity);
+                stock.isFollowing = true;
+                return stockModel.updateStock(stock._id, stock);
             }
         })
         .then(function(msg){
+
+            if(msg){
+                console.log("msg "+msg);
+                stock = msg;
+            }
+            var index = user.stocks.indexOf(stock._id);
+            console.log("stock "+stock);
+            console.log("stock._id "+stock._id);
+            console.log("index "+index);
+            if(index === -1){
+                console.log("stock not there. Therefore pushing");
+                user.stocks.push(stock._id);
+            }
             console.log("created stock going to find user for updating collection");
-            stock = msg;
-            return userModel.findUserById(userId);
-        })
-        .then(function(userFull){
-            userFull.stocks.push(stock._id);
-            console.log("found user goging to update");
-            return userModel.updateUser(userId, userFull);
-            /*
-
-             .then(function(msg){
-             console.log("updated going to return");
-             console.log("model returning "+stock);
-             return stock;
-             });
-             */
+            console.log(user);
+            return userModel.updateUser(userId, user);
 
         })
-        .then(function(user){
-            console.log("going to add activity");
-            return activityModel.addActivity({userId: userId, ticker: ticker});
-
-        })
-        .then(function(activity){
-            console.log("activity added sending stock adfter following");
-            res.send(stock);
+        .then(function(msg2){
+            console.log("sendiong msg back to client");
+            res.json(stock);
 
         });
 
@@ -73,10 +83,40 @@ function followStock(req, res) {
 }
 
 function unFollowStock(req, res) {
-    stockModel.unFollowStock(req.params.userId, req.query.ticker)
+    var stock = null;
+    console.log("unFollowStoc ");
+    var userId = req.params.userId;
+    var ticker = req.query.ticker;
+    var user = null;
+    console.log(ticker);
+    console.log(userId);
+    return userModel.findStockByTickerForUser(userId, ticker)
+        .then(function(msg) {
+            console.log("found user ");
+            console.log(msg);
+            user = msg;
+            stock = msg.stocks[0];
+            stock.isFollowing = false;
+            return stockModel.updateStock(stock._id, stock);
+        })
         .then(function(msg){
-            res.send(msg);
-        });
+            console.log("updated stock inunfollow ");
+            console.log("this is stock ");
+            console.log(msg);
+            return activityModel.addActivity({userId: userId, ticker: ticker, type:'unfollow_stock'});
+
+        })
+        .then(function(activity){
+            console.log("activity added for unfollowing ");
+            console.log(activity);
+            user.activity.push(activity);
+            return userModel.updateUser(userId, user);
+        })
+        .then(function(msg){
+            console.log("updated user after unfollowing ");
+            console.log(msg);
+            res.json(stock);
+        })
 }
 function getStockRating(req, res){
     var ticker="ticker="+req.query.ticker;

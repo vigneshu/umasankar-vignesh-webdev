@@ -12,18 +12,7 @@ userModel.getFriendDetails = getFriendDetails;
 userModel.getFollowerDetails = getFollowerDetails;
 userModel.getStockInfo = getStockInfo;
 userModel.findStockByTickerForUser = findStockByTickerForUser;
-userModel.unFollowStock = unFollowStock;
-
-function unFollowStock(userId, stockId) {
-    return userModel.findOne({_id: userId}, function(err, user){
-        var index = user.stocks.indexOf(stockId);
-        if (index > -1) {
-            user.stocks.splice(index, 1);
-        }
-        user.firstName="a";
-        return updateUser(userId, user);
-    });
-}
+userModel.getActivityForUser = getActivityForUser;
 function findStockByTickerForUser(userId, ticker) {
     return userModel.findOne({_id: userId})
         // .populate( 'stocks' )
@@ -32,7 +21,12 @@ function findStockByTickerForUser(userId, ticker) {
 }
 function getStockInfo(userId) {
     return userModel.findOne({_id: userId})
-        .populate('stocks' )
+        .populate('stocks' , null, { isFollowing: true})
+        .exec();
+}
+function getActivityForUser(userId) {
+    return userModel.findOne({_id: userId})
+        .populate('activity')
         .exec();
 }
 function createUser(user){

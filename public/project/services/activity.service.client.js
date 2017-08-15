@@ -1,16 +1,15 @@
 (function() {
     angular
         .module("StockApp")
-        .service("ActivityService", StockService);
-    function StockService($http) {
+        .service("ActivityService", ActivityService);
+    function ActivityService($http) {
         var api = {
-            "addActivity": addActivity,
+            "getActivitiesForUser": getActivitiesForUser,
         };
         return api;
-
-        function addActivity(userId, ticker, friendId) {
-            var url = "/api/project/"+userId+"/addActivity?ticker="+ticker+ "&friendId="+friendId+"&userId="+userId;
-            return $http.post(url);
+        function getActivitiesForUser(userId) {
+            var url = "/api/project/user/"+userId+"/getActivitiesForUser";
+            return $http.get(url);
         }
     }
 })();

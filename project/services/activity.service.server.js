@@ -1,17 +1,22 @@
 var app = require("../../express");
 var activityModel = require("../model/activity/activity.model.server");
-app.post("/api/project/:userId/addActivity", addActivity);
+var userModel = require("../model/user/user.model.server");
+app.get("/api/project/user/:userId/getActivitiesForUser", getActivitiesForUser);
 
-function addActivity(req, res) {
-    var stockId = req.params.stockId;
-    var message = req.body;
-    var type = "";
-    return activityModel.addActivity(
-        {
-            stockId: stockId,
-            message: message,
-            type: type})
-        .then(function (msg){
-            res.send(msg);
+function getActivitiesForUser(req, res) {
+    var userId = req.params.userId;
+
+    return userModel.findUserById(userId)
+        .then(function(user){
+            console.log("activities ");
+            var following = user.following;
+            following.push(userId);
+            console.log("activity server following "+following);
+            return activityModel.getActivityForUsers(following);
         })
+        .then(function(msg){
+            console.log("ssdfjh");
+            console.log(msg);
+            res.json(msg);
+        });
 }

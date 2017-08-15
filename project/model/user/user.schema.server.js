@@ -10,6 +10,7 @@ var userSchema = mongoose.Schema(
         stocks: [{type: mongoose.Schema.Types.ObjectId, ref: 'project.stock'}],
         followers: [{type: mongoose.Schema.Types.ObjectId, ref: 'project.user'}],
         following: [{type: mongoose.Schema.Types.ObjectId, ref: 'project.user'}],
+        activity: [{type: mongoose.Schema.Types.ObjectId, ref: 'project.activity'}],
         admin: {type: Boolean, default: false},
         dateCreated: {
             type: Date,
