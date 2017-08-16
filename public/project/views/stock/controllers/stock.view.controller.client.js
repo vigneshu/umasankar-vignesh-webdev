@@ -1,8 +1,8 @@
 (function() {
         angular.module("StockApp").controller("stockViewController", stockViewController);
-        function stockViewController($location, $routeParams, StockService, UserService) {
+        function stockViewController( $routeParams, StockService, UserService, user) {
             var model = this;
-            model.userId = $routeParams.userId;
+            var userId = user._id;
             model.ticker = $routeParams.ticker;
             model.stockRating = "";
             model.stockData = "";

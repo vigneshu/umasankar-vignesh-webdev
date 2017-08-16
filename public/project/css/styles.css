@@ -4,6 +4,10 @@ input, textarea {
 .vu .vu-margin-bottom-5 {
     margin-bottom: 5px;
 }
+.vu .vu-margin-bottom-15 {
+    margin-bottom: 15px;
+}
+
 p {
     text-align:justify;
 }
@@ -32,6 +36,7 @@ img, iframe {
 .list-group .list-group-item {
     box-shadow: none;
     border: none;
+
 }
 
 .vu .vu-split-view-left {

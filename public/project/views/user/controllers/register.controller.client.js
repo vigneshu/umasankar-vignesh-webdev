@@ -32,7 +32,7 @@
                 }
             }).
            then(function(data){
-               $location.url("/user/" + data.data._id + "/search");
+               $location.url("/user/search");
            })
            .catch(function () {
                   console.log("User already exists");

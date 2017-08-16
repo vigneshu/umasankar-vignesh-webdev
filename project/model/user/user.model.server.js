@@ -13,6 +13,12 @@ userModel.getFollowerDetails = getFollowerDetails;
 userModel.getStockInfo = getStockInfo;
 userModel.findStockByTickerForUser = findStockByTickerForUser;
 userModel.getActivityForUser = getActivityForUser;
+userModel.getUserList = getUserList;
+function getUserList() {
+    console.log("server model");
+
+    return userModel.find({});
+}
 function findStockByTickerForUser(userId, ticker) {
     return userModel.findOne({_id: userId})
         // .populate( 'stocks' )
@@ -42,16 +48,8 @@ function createUser(user){
 
 }
 function updateUser(userId, user){
-    return userModel.update({_id: userId}, {$set: user},
-        function (err, msg) {
-            if (err)
-            {
-                console.log("update error");
-                return console.error(err);
-            }
-            console.log("returning updated user"+JSON.stringify(user));
-            return user;
-    });
+    return userModel.update({_id: userId}, {$set: user});
+
 }
 function deleteUser(userId) {
     return userModel.findOne({_id: userId}, function(err, user) {

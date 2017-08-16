@@ -4,19 +4,31 @@
         .factory("UserService", UserService);
     function UserService($http){
         var api = {
-            "findUserByCredentials": findUserByCredentials,
+            // "findUserByCredentials": findUserByCredentials,
+            "findUserByCredentials": login,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
             "updateUser": updateUser,
             "createUser": createUser,
+            "checkLogin": checkLogin,
             "getStockInfo": getStockInfo,
             "deleteUser": deleteUser,
             "followFriend": followFriend,
             "unFollowFriend": unFollowFriend,
             "getFriendDetails": getFriendDetails,
             "getFollowerDetails": getFollowerDetails,
+            "logout": logout,
+            "getUserList": getUserList,
         };
         return api;
+        function getUserList(userId) {
+            console.log("service client");
+            console.log(userId);
+            var url = "/api/project/user/"+ userId+"/getUserList";
+            console.log(url);
+
+            return $http.get(url);
+        }
         function getFollowerDetails(userId) {
             return $http.get("/api/project/user/"+ userId+"/getFollowerDetails");
         }
@@ -57,8 +69,22 @@
             return $http.put(url);
         }
         function deleteUser(userId) {
-            var url = "/api/user/project/" + userId;
+            var url = "/api/project/user/" + userId;
             return $http.delete(url);
+        }
+        function checkLogin(){
+            console.log("s");
+            return $http.get('/api/project/checkLogin');
+
+        }
+        function logout() {
+            var url = "/api/project/logout";
+            return $http.post(url);
+        }
+        function login(username, password) {
+            var url = "/api/project/login";
+            var user_ = $http.post(url, {username:username,password: password});
+            return user_;
         }
     }
 

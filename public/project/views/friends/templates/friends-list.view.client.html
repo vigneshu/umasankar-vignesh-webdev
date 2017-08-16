@@ -4,16 +4,17 @@
             <div class="container-fluid">
 
                 <div class="navbar-text pull-right">
-                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user/{{model.userId}}">
+                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user">
                         <span class="glyphicon glyphicon-ok vu-white"></span>
                     </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#!/user/{{model.userId}}/search">Stocks</a></li>
-                        <li class="active"><a  href="#!/user/{{model.userId}}/friends">Find Friends</a></li>
-                        <li><a  href="#!/user/{{model.userId}}/followers">Your followers</a></li>
-                        <li><a  href="#!/user/{{model.userId}}/activity">Your Feed</a></li>
+                        <li><a href="#!/user/search">Stocks</a></li>
+                        <li class="active"><a  href="#!/user/friends">Following</a></li>
+                        <li><a  href="#!/user/followers">Your followers</a></li>
+                        <li><a  href="#!/user/activity">Your Feed</a></li>
+                        <li ng-if="model.user.admin" ><a  href="#!/user/admin">User List</a></li>
                     </ul>
                 </div>
             </div>
@@ -43,7 +44,7 @@
                             </div>
                         </div>
                 </div>
-                <a  href="#!/user/{{model.userId}}/otheruser/{{model.friendData._id}}">
+                <a  href="#!/user/otheruser/{{model.friendData._id}}">
                 <h6>{{model.friendData.username}}</h6>
                 </a>
             </div>
@@ -55,7 +56,7 @@
                 <ul class="list-group">
                     <li ng-repeat="friend in model.friends" class="list-group-item">
 
-                        <a  href="#!/user/{{model.userId}}/otherUser/{{friend._id}}">
+                        <a  href="#!/user/otherUser/{{friend._id}}">
                             {{friend}}
                         </a>
                     </li>
@@ -65,7 +66,7 @@
 
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="navbar-header navbar-text pull-right container-fluid">
-                <a class="navbar-link"  href="#!/user/{{model.userId}}">
+                <a class="navbar-link"  href="#!/user">
                     <span class="glyphicon glyphicon-user vu-white"></span>
                 </a>
             </div>

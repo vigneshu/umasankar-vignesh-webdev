@@ -2,14 +2,18 @@
     <div>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
-
+                <div class="navbar-text pull-left">
+                    <a class="navbar-link" href="#!/user/admin">
+                        <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+                    </a>
+                </div>
                 <div class="navbar-text pull-right">
                     <a class="navbar-link" ng-click="model.updateUser()">
                         <span class="glyphicon glyphicon-ok vu-white"></span>
                     </a>
                 </div>
                 <div class="navbar-header navbar-brand">
-                    Profile
+                    Edit User
                 </div>
             </div>
         </nav>
@@ -56,15 +60,9 @@
                    ng-model="model.user.dob"
                    class="form-control"/>
 
-            <a class="btn btn-default btn-primary btn-block"
-               href="#!/user/search"
-               role="button">Stocks</a>
-            <a class="btn btn-default btn-danger btn-block"
-               ng-click="model.logout()"
-               role="button">Logout</a>
             <a class="btn btn-default btn-danger btn-block"
                ng-click="model.deleteUser()"
-               role="button">Unregister</a>
+               role="button">Delete User</a>
 
         </div>
 

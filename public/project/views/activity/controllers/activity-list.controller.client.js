@@ -1,8 +1,8 @@
 (function() {
         angular.module("StockApp").controller("activityListController", activityListController);
-        function activityListController($route, $routeParams, ActivityService, CommentService) {
+        function activityListController($route, $routeParams, ActivityService, CommentService, UserService, user) {
             var model = this;
-            model.userId = $routeParams.userId;
+            model.userId = user._id;
             model.addComment = addComment;
             function init() {
                 //get list of activities
@@ -12,7 +12,10 @@
                         model.activities = msg.data;
                         console.log(msg.data);
                     });
-
+                UserService.findUserById(model.userId)
+                    .then(function(msg){
+                        model.user = msg.data;
+                    })
             }
             function addComment(activityId){
                 console.log('start');

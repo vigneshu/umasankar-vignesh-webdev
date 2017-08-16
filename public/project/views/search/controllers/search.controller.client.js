@@ -1,10 +1,10 @@
 (function() {
         angular.module("StockApp").controller("searchController", searchController);
-        function searchController($location, $routeParams, $q   , StockService, UserService, $compile, DTOptionsBuilder, DTColumnDefBuilder) {
+        function searchController($location, $routeParams, StockService, UserService, user) {
             //,
             var model = this;
             model.stockRating = "";
-            model.userId = $routeParams.userId;
+            model.userId = user._id;
             model.stockData = "";
             model.stockUserData = {};
             model.stockUserDataDetailed = {};
@@ -106,7 +106,7 @@
             }
             function searchStock(){
                 if(model.userId){
-                    $location.url("user/"+model.userId+"/search/" + '?ticker=' + model.ticker);
+                    $location.url("user/search/" + '?ticker=' + model.ticker);
                 } else{
                     $location.url("search" + '?ticker=' + model.ticker);
                 }

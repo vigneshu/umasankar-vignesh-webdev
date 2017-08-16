@@ -4,16 +4,17 @@
             <div class="container-fluid">
 
                 <div class="navbar-text pull-right">
-                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user/{{model.userId}}">
+                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user">
                         <span class="glyphicon glyphicon-ok vu-white"></span>
                     </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#!/user/{{model.userId}}/search">Stocks</a></li>
-                        <li><a  href="#!/user/{{model.userId}}/friends">Find Friends</a></li>
-                        <li ><a  href="#!/user/{{model.userId}}/followers">Your followers</a></li>
-                        <li ><a  href="#!/user/{{model.userId}}/activity">Your feed</a></li>
+                        <li class="active"><a href="#!/user/search">Stocks</a></li>
+                        <li><a  href="#!/user/friends">Following</a></li>
+                        <li ><a  href="#!/user/followers">Your followers</a></li>
+                        <li ><a  href="#!/user/activity">Your feed</a></li>
+                        <li ng-if="model.user.admin" ><a  href="#!/user/admin">User List</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +49,7 @@
                         </div>
                 </div>
 
-                <a  href="#!/user/{{model.userId}}/stock/{{model.ticker}}">
+                <a  href="#!/user/stock/{{model.ticker}}">
                 <h6>{{model.ticker}}</h6>
                 </a>
             </div>
@@ -62,7 +63,7 @@
                     <!--<li ng-repeat="userStock in model.stockUserData.stocks" class="list-group-item">-->
                     <li ng-repeat="userStock in model.stockUserDataDetailed" class="list-group-item">
 
-                        <a  href="#!/user/{{model.userId}}/stock/{{userStock[0]}}">
+                        <a  href="#!/user/stock/{{userStock[0]}}">
                             {{userStock}}
                         </a>
                     </li>
@@ -75,7 +76,7 @@
 
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="navbar-header navbar-text pull-right container-fluid">
-                <a class="navbar-link"  href="#!/user/{{model.userId}}">
+                <a class="navbar-link"  href="#!/user">
                     <span class="glyphicon glyphicon-user vu-white"></span>
                 </a>
             </div>

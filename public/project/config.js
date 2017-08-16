@@ -25,37 +25,109 @@
                     controller: 'searchController',
                     controllerAs: 'model'
                 })
-                .when('/user/:userId/search', {
+                .when('/user/search', {
                     templateUrl: 'views/search/templates/search.view.client.html',
                     controller: 'searchController',
-                    controllerAs: 'model'
+                    controllerAs: 'model',
+                    resolve:{
+                        user: checkLogin
+                    }
                 })
-                .when('/user/:userId/stock/:ticker', {
+                .when('/user/stock/:ticker', {
                     templateUrl: 'views/stock/templates/stock.view.client.html',
                     controller: 'stockViewController',
-                    controllerAs: 'model'
+                    controllerAs: 'model',
+                    resolve:{
+                        user: checkLogin
+                    }
                 })
-                .when('/user/:userId/friends', {
+                .when('/user/friends', {
                     templateUrl: 'views/friends/templates/friends-list.view.client.html',
                     controller: 'friendController',
-                    controllerAs: 'model'
+                    controllerAs: 'model',
+                    resolve:{
+                        user: checkLogin
+                    }
                 })
-                .when('/user/:userId/followers', {
+                .when('/user/followers', {
                     templateUrl: 'views/friends/templates/followers-list.view.client.html',
                     controller: 'followersController',
-                    controllerAs: 'model'
+                    controllerAs: 'model',
+                    resolve:{
+                        user: checkLogin
+                    }
                 })
-                .when('/user/:userId', {
+                .when('/user', {
                     templateUrl: 'views/user/templates/profile.view.client.html',
                     controller: 'profileController',
-                    controllerAs: 'model'
+                    controllerAs: 'model',
+                    resolve:{
+                            user: checkLogin
+                    }
                 })
-                .when('/user/:userId/activity', {
+                .when('/user/activity', {
                     templateUrl: 'views/activity/templates/activity-list.view.client.html',
                     controller: 'activityListController',
-                    controllerAs: 'model'
+                    controllerAs: 'model',
+                    resolve:{
+                        user: checkLogin
+                    }
                 })
-
+                .when('/user/admin/addUser', {
+                    templateUrl: 'views/admin/templates/add-user.view.client.html',
+                    controller: 'adminController',
+                    controllerAs: 'model',
+                    resolve:{
+                        user: checkAdmin
+                    }
+                })
+                .when('/user/admin', {
+                    templateUrl: 'views/admin/templates/admin.view.client.html',
+                    controller: 'adminController',
+                    controllerAs: 'model',
+                    resolve:{
+                        user: checkAdmin
+                    }
+                })
+                .when('/user/:userId/edit', {
+                    templateUrl: 'views/admin/templates/profile-edit.view.client.html',
+                    controller: 'adminController',
+                    controllerAs: 'model',
+                    resolve:{
+                        user: checkAdmin
+                    }
+                })
+                function checkLogin(UserService, $q){
+                    var deferred = $q.defer();
+                    UserService
+                        .checkLogin()
+                        .then(function (user){
+                            if(user.data === '0'){
+                                deferred.reject()
+                            } else {
+                                deferred.resolve(user.data);
+                            }
+                        });
+                    return deferred.promise;
+                }
+                function checkAdmin(UserService, $q){
+                    var deferred = $q.defer();
+                    UserService
+                        .checkLogin()
+                        .then(function (user){
+                            console.log("isadmin");
+                            console.log(user.data.admin);
+                            if(user.data === '0'){
+                                deferred.reject()
+                            } else if (user.data.admin) {
+                                deferred.resolve(user.data);
+                            }
+                            else{
+                                deferred.reject()
+                            }
+                        });
+                    return deferred.promise;
+                }
         }
     }
 )();

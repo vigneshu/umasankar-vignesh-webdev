@@ -51,10 +51,11 @@ function getActivityForUsers(userIds) {
         .where('userId')
         .in(userIds)
         .populate({
-        path:  'comments userId',
+        path:  'comments userId friendId',
         populate: {
             path: 'userId',
             model: userModel
+
         }
     }).exec();
 

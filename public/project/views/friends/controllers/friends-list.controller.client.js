@@ -1,8 +1,8 @@
 (function() {
         angular.module("StockApp").controller("friendController", friendController);
-        function friendController($location, $routeParams, UserService) {
+        function friendController($location, $routeParams, UserService, user) {
             var model = this;
-            model.userId = $routeParams.userId;
+            model.userId = user._id;
             model.friend =  $location.search().username;
             model.isFollowingCurrentSearch = false;
              model.userData = {};
@@ -29,6 +29,7 @@
                     .then(function(msg){
                         model.friends = msg.data.following;
                         model.userData = msg.data;
+                        model.user = msg.data;
                     });
 
 
@@ -39,7 +40,7 @@
                     .then(function(msg){
                         model.isFollowingCurrentSearch = true;
                         console.log(model.isFollowingCurrentSearch);
-                        $location.url("user/"+model.userId+"/friends/" + '?username=' + model.friend);
+                        $location.url("user/friends/" + '?username=' + model.friend);
                     });
 
             }
@@ -49,7 +50,7 @@
                     .then(function(msg){
                         model.isFollowingCurrentSearch = false;
                         console.log(model.isFollowingCurrentSearch);
-                        $location.url("user/"+model.userId+"/friends/" + '?username=' + model.friend);
+                        $location.url("user/friends/" + '?username=' + model.friend);
                     })
             }
 
@@ -59,7 +60,7 @@
                     return;
                 }
                 if(model.friend){
-                    $location.url("user/"+model.userId+"/friends/" + '?username=' + model.friend);
+                    $location.url("user/friends/" + '?username=' + model.friend);
                 } else{
                     alert("enter username");
                 }

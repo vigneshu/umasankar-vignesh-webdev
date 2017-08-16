@@ -4,16 +4,17 @@
             <div class="container-fluid">
 
                 <div class="navbar-text pull-right">
-                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user/{{model.userId}}">
+                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user">
                         <span class="glyphicon glyphicon-ok vu-white"></span>
                     </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#!/user/{{model.userId}}/search">Stocks</a></li>
-                        <li><a  href="#!/user/{{model.userId}}/friends">Find Friends</a></li>
-                        <li ><a  href="#!/user/{{model.userId}}/followers">Your followers</a></li>
-                        <li class="active"><a  href="#!/user/{{model.userId}}/activity">Your feed</a></li>
+                        <li><a href="#!/user/search">Stocks</a></li>
+                        <li><a  href="#!/user/friends">Following</a></li>
+                        <li ><a  href="#!/user/followers">Your followers</a></li>
+                        <li class="active"><a  href="#!/user/activity">Your feed</a></li>
+                        <li ng-if="model.user.admin" ><a  href="#!/user/admin">User List</a></li>
                     </ul>
                 </div>
             </div>
@@ -25,8 +26,8 @@
                 <ul class="list-group">
                     <li ng-repeat="activity in model.activities" class="list-group-item">
                         <div>
-                            <!--{{activity}}-->
-                            {{activity.userId.username}} {{activity.type}} {{activity.ticker}}<!--activity.commentText-->
+                            <!--{{ activity}}-->
+                            {{activity.userId.username}} {{activity.type}} {{activity.ticker}} {{activity.friendId.username}}
                         </div>
                         <ul class="list-group">
                             <li ng-repeat="comment in activity.comments" class="list-group-item">
@@ -44,7 +45,7 @@
 
         <nav class="navbar navbar-default navbar-fixed-bottom">
             <div class="navbar-header navbar-text pull-right container-fluid">
-                <a class="navbar-link"  href="#!/user/{{model.userId}}">
+                <a class="navbar-link"  href="#!/user">
                     <span class="glyphicon glyphicon-user vu-white"></span>
                 </a>
             </div>

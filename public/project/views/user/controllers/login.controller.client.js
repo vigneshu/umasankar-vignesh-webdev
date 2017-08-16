@@ -5,7 +5,6 @@
             var model = this;
             //eventhandlers
             model.login = login;
-
             function init() {
 
             }
@@ -20,12 +19,11 @@
                  UserService.findUserByCredentials(user.username,user.password )
                     .then(function(user){
                     var user = user.data;
-
                     if (user != 0){
                         model.welocomeUser = user;
                         userFound = true;
                         $rootScope.currentUser = user;
-                        $location.url("user" + '/' + user._id+ "/search");
+                        $location.url("user" + '/');
 
                     }
                     if (!userFound)

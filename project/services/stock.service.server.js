@@ -113,8 +113,7 @@ function unFollowStock(req, res) {
             return userModel.updateUser(userId, user);
         })
         .then(function(msg){
-            console.log("updated user after unfollowing ");
-            console.log(msg);
+            console.log("after adding activity returning stock ");
             res.json(stock);
         })
 }

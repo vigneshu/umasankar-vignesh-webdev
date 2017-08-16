@@ -1,8 +1,8 @@
 (function() {
         angular.module("StockApp").controller("followersController", followersController);
-        function followersController($location, $routeParams, UserService) {
+        function followersController($location, $routeParams, UserService, user) {
             var model = this;
-            model.userId = $routeParams.userId;
+            model.userId = user._id;
             model.friend =  $location.search().username;
             model.follwerData = {};
             function init() {
@@ -15,6 +15,7 @@
                         console.log("followers");
                         console.log(model.followers);
                         model.userData = msg.data;
+                        model.user = msg.data;
                     });
 
 
