@@ -97,6 +97,15 @@
                         user: checkAdmin
                     }
                 })
+                .when('/user/:userId/editActivities', {
+                    templateUrl: 'views/admin/templates/activity-edit.view.client.html',
+                    controller: 'activityEditorController',
+                    controllerAs: 'model',
+                    resolve:{
+                        user: checkAdmin
+                    }
+                })
+
                 function checkLogin(UserService, $q){
                     var deferred = $q.defer();
                     UserService

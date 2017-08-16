@@ -3,6 +3,29 @@ var activityModel = require("../model/activity/activity.model.server");
 var commentModel = require("../model/comment/comment.model.server");
 var userModel = require("../model/user/user.model.server");
 app.post("/api/project/user/:userId/activity/:activityId/addComment", addComment);
+app.delete("/api/project/user/:userId/activity/:activityId/comment/:commentId", deleteComment);
+function deleteComment(req, res) {
+    var activityId = req.params.activityId;
+    var commentId = req.params.commentId;
+    return commentModel.deleteComment(commentId)
+        .then(function(comment){
+            console.log("comment deleted going to find activity");
+            return activityModel.getActivityById(activityId);
+        })
+        .then(function(activity){
+            console.log("activity found going to update activity");
+            console.log(activity);
+            var index = activity.comments.indexOf(commentId);
+            if(index > -1){
+                activity.comments.splice(index, 1);
+            }
+            return activityModel.updateActivity(activityId, activity);
+        })
+        .then(function(msg){
+            console.log("activity updated");
+            res.json(msg);
+        })
+}
 
 function addComment(req, res) {
     console.log("hey serber");

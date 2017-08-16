@@ -10,6 +10,7 @@ activityModel.addActivity = addActivity;
 activityModel.getActivityForUsers = getActivityForUsers;
 activityModel.updateActivity = updateActivity;
 activityModel.getActivityById = getActivityById;
+activityModel.deleteActivity = deleteActivity;
 
 function updateActivity(activityId, activity) {
     return activityModel.update({_id: activityId}, {$set: activity},
@@ -33,6 +34,12 @@ function getActivityById (activityId) {
                 return activity;
             }
         });
+}
+function deleteActivity(activityId) {
+    return activityModel.findOne({_id: activityId}, function(err, activity) {
+        activity.remove();
+
+    });
 }
 function addActivity(activity) {
     return activityModel.create(activity);

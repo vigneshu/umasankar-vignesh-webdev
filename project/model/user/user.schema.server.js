@@ -12,6 +12,10 @@ var userSchema = mongoose.Schema(
         following: [{type: mongoose.Schema.Types.ObjectId, ref: 'project.user'}],
         activity: [{type: mongoose.Schema.Types.ObjectId, ref: 'project.activity'}],
         admin: {type: Boolean, default: false},
+        google:{
+            id: String,
+            token:String,
+        },
         dateCreated: {
             type: Date,
             default: Date.now

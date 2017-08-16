@@ -23,7 +23,7 @@
                         model.welocomeUser = user;
                         userFound = true;
                         $rootScope.currentUser = user;
-                        $location.url("user" + '/');
+                        $location.url("user/");
 
                     }
                     if (!userFound)

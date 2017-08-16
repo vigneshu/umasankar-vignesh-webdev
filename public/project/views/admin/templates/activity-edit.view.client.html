@@ -1,0 +1,71 @@
+<div class="vu">
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-text pull-left">
+                    <a class="navbar-link" href="#!/user/{{model.editUserId}}/edit">
+                        <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+                    </a>
+                </div>
+                <div class="navbar-header navbar-brand">
+                    Manage user activities
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <h6>Your Feed</h6>
+            <div class="container-fluid">
+                <ul class="list-group">
+                    <li ng-repeat="activity in model.activities" class="list-group-item">
+                        <div>
+
+
+                            <div class="vu-widget-container">
+                                <div>
+                                    <div class="vu-widget-text">
+                                        <span  ng-click="model.deleteActivity(activity._id)" class="glyphicon glyphicon glyphicon-remove"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <u>
+                                {{activity.userId.username}} {{activity.type}} {{activity.ticker}} {{activity.friendId.username}}
+                            </u>
+
+
+                            <!--{{ activity}}-->
+
+                        </div>
+                        <ul class="list-group">
+                            <li ng-repeat="comment in activity.comments" class="list-group-item">
+                                <div class="vu-widget-container">
+                                    <div>
+                                        <div class="vu-widget-text">
+                                            <span  ng-click="model.deleteComment(activity._id,comment._id)" class="glyphicon glyphicon glyphicon-remove"></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <u>
+                                {{comment.userId.username}} commented {{comment.comment}}
+                                </u>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="navbar-header navbar-text pull-right container-fluid">
+                <a class="navbar-link" href="#!/user">
+                    <span class="glyphicon glyphicon-user vu-white"></span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

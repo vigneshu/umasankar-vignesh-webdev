@@ -25,7 +25,7 @@
                 UserService.findUserById(model.editUserId)
                     .then(function(msg){
                         model.user = msg.data;
-                    })
+                    });
             }
             init();
             function deleteUser(){

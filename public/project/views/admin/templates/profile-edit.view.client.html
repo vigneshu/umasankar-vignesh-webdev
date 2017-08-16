@@ -59,6 +59,9 @@
                    type="date"
                    ng-model="model.user.dob"
                    class="form-control"/>
+            <a class="btn btn-default btn-success btn-block"
+               href="#!/user/{{model.editUserId}}/editActivities"
+               role="button">Activities</a>
 
             <a class="btn btn-default btn-danger btn-block"
                ng-click="model.deleteUser()"

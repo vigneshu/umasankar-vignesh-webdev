@@ -14,10 +14,14 @@ userModel.getStockInfo = getStockInfo;
 userModel.findStockByTickerForUser = findStockByTickerForUser;
 userModel.getActivityForUser = getActivityForUser;
 userModel.getUserList = getUserList;
+userModel.findUserByGoogleId = findUserByGoogleId;
 function getUserList() {
     console.log("server model");
 
     return userModel.find({});
+}
+function findUserByGoogleId(googleId) {
+    return userModel.findOne({'google.id': googleId});
 }
 function findStockByTickerForUser(userId, ticker) {
     return userModel.findOne({_id: userId})

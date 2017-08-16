@@ -2,7 +2,37 @@ var app = require("../../express");
 var activityModel = require("../model/activity/activity.model.server");
 var userModel = require("../model/user/user.model.server");
 app.get("/api/project/user/:userId/getActivitiesForUser", getActivitiesForUser);
+app.delete("/api/project/user/:userId/activity/:activityId", deleteActivity);
 
+function deleteActivity(req, res) {
+    var userId = req.params.userId;
+    var activityId = req.params.activityId;
+    return activityModel.deleteActivity(activityId)
+        .then(function(msg){
+            return userModel.findUserById(userId);
+        })
+        .then(function(user){
+            console.log("found user for delete activity");
+            console.log(user);
+            console.log("activityId");
+            console.log(activityId);
+            var index = user.activity.indexOf(activityId);
+
+            if(index>-1){
+                user.activity.splice(index, 1);
+            }
+            console.log("index");
+            console.log(index);
+            console.log("user after ");
+            console.log(user);
+            console.log(userId);
+            return userModel.updateUser(userId, user);
+        })
+        .then(function(msg){
+            console.log("user updated");
+            res.json(msg);
+        })
+}
 function getActivitiesForUser(req, res) {
     var userId = req.params.userId;
 

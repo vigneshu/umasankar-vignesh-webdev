@@ -32,7 +32,13 @@
                 }
             }).
            then(function(data){
-               $location.url("/user/search");
+               return UserService.findUserByCredentials(user.username,user.password );
+
+           }).
+           then(function(data){
+               var data = data.data;
+               $location.url("/user");
+
            })
            .catch(function () {
                   console.log("User already exists");

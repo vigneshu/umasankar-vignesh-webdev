@@ -8,9 +8,7 @@
                 //get list of activities
                 ActivityService.getActivitiesForUser(model.userId)
                     .then(function(msg){
-                        console.log("msg.data");
                         model.activities = msg.data;
-                        console.log(msg.data);
                     });
                 UserService.findUserById(model.userId)
                     .then(function(msg){

@@ -56,13 +56,17 @@
                    ng-model="model.user.dob"
                    class="form-control"/>
 
-            <a class="btn btn-default btn-primary btn-block"
+
+            <a ng-if="model.user.admin" class="btn btn-default btn-primary btn-block"
+               href="#!/user/admin"
+               role="button">User List</a>
+            <a ng-if="!model.user.admin" class="btn btn-default btn-primary btn-block"
                href="#!/user/search"
                role="button">Stocks</a>
             <a class="btn btn-default btn-danger btn-block"
                ng-click="model.logout()"
                role="button">Logout</a>
-            <a class="btn btn-default btn-danger btn-block"
+            <a ng-if="!model.user.admin" class="btn btn-default btn-danger btn-block"
                ng-click="model.deleteUser()"
                role="button">Unregister</a>
 
