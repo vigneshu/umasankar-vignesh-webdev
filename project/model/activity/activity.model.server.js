@@ -56,6 +56,7 @@ function getActivityForUsers(userIds) {
     //     .exec();
     return activityModel.find()
         .where('userId')
+        .sort( { date: -1 } )
         .in(userIds)
         .populate({
         path:  'comments userId friendId',

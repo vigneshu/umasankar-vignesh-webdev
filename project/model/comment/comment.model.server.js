@@ -6,7 +6,6 @@ commentModel.addComment = addComment;
 commentModel.deleteComment = deleteComment;
 
 function addComment(comment) {
-    console.log("reached model");
     return commentModel.create(comment);
 }
 function deleteComment(commentId) {

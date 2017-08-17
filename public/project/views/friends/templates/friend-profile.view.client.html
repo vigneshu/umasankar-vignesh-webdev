@@ -3,9 +3,11 @@
                 <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-top">
             <div class="collapse navbar-collapse">
                 <div class="navbar-text float-left">
-                    <a class="nav-link" href="#!/user/friends">
-                        <span class="fa fa-arrow-left vu-white"></span>
-                    </a>
+                    <!--<a class="nav-link" href="#!/user/friends">-->
+                        <!--<span class="fa fa-arrow-left vu-white"></span>-->
+                    <!--</a>-->
+                    <back> </back>
+
                 </div>
                 <div class="navbar-header navbar-brand">
                     Profile View
@@ -53,6 +55,11 @@
             <div class="vu-margin-top-45">
             <h3> {{model.friendData.username}}'s activity</h3>
                 <hr>
+                <div class="container-fluid"  ng-hide="model.friendActivity.length">
+                    <div class="alert alert-info center-block">
+                        <strong>{{model.friendData.username}} has no activity yet</strong>
+                    </div>
+                </div>
             </div>
             <ul class="list-group">
                 <li ng-repeat="activity in model.friendActivity" class="list-group-item">

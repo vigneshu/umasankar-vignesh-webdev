@@ -3,9 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-top">
             <div class="collapse navbar-collapse">
                 <div class="navbar-text float-left">
-                    <a class="nav-link" href="#!/user/search">
-                        <span class="fa fa-arrow-left vu-white"></span>
-                    </a>
+                    <back> </back>
                 </div>
                 <div class="navbar-header navbar-brand">
                     Profile
@@ -75,7 +73,7 @@
             <a class="btn btn-default btn-danger btn-block"
                ng-click="model.logout()"
                role="button">Logout</a>
-            <a ng-if="!model.user.admin" class="btn btn-default btn-danger btn-block"
+            <a ng-if="!model.user.admin" href class="btn btn-default btn-danger btn-block"
                ng-click="model.deleteUser()"
                role="button">Unregister</a>
 

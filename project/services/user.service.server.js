@@ -154,8 +154,7 @@ function unFollowFriend(req, res){
 
         })
         .then(function(activity){
-            console.log("follow friend activity");
-            console.log(activity);
+            console.log("unfollow_friend friend activity");
             console.log(activity);
             user.activity.push(activity);
             var index = user.following.indexOf(friend._id);
@@ -188,6 +187,14 @@ function followFriend(req, res){
         })
         .then(function(msg){
             friend = msg;
+            console.log("going to add activity");
+            return activityModel.addActivity({userId: userId, friendId:friendId, type:'follow_friend'});
+
+        })
+        .then(function(activity){
+            console.log("follow_friend  activity");
+            console.log(activity);
+            user.activity.push(activity);
             var index = user.following.indexOf(friend._id);
             if (index == -1) {
                 user.following.push(friend._id);
