@@ -1,10 +1,10 @@
 <div class="vu">
     <div>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-text pull-left">
-                    <a class="navbar-link" href="#!/user/{{model.editUserId}}/edit">
-                        <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+        <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-top">
+            <div class="collapse navbar-collapse">
+                <div class="navbar-text float-left">
+                    <a class="nav-link" href="#!/user/{{model.editUserId}}/edit">
+                        <span class="fa fa-arrow-left vu-white"></span>
                     </a>
                 </div>
                 <div class="navbar-header navbar-brand">
@@ -12,59 +12,53 @@
                 </div>
             </div>
         </nav>
-
         <div class="container-fluid">
-            <h6>Your Feed</h6>
-            <div class="container-fluid">
-                <ul class="list-group">
-                    <li ng-repeat="activity in model.activities" class="list-group-item">
-                        <div>
-
-
-                            <div class="vu-widget-container">
-                                <div>
-                                    <div class="vu-widget-text">
-                                        <span  ng-click="model.deleteActivity(activity._id)" class="glyphicon glyphicon glyphicon-remove"></span>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <u>
-                                {{activity.userId.username}} {{activity.type}} {{activity.ticker}} {{activity.friendId.username}}
-                            </u>
-
-
-                            <!--{{ activity}}-->
-
+            <div ng-hide="model.activities.length">
+                <div class="alert alert-info center-block">
+                    <strong>No activities for this user</strong>
+                </div>
+            </div>
+            <div class="card" ng-repeat="activity in model.activities">
+                <div class="card-header">
+                    <strong class="ng-binding">
+                        {{activity.userId.username}} {{ model.feedContent[activity.type]}} {{activity.ticker}} {{activity.friendId.username}}
+                    </strong>
+                    <div class="pull-right">
+                        <span  ng-click="model.deleteActivity(activity._id)" class="fa fa-times"></span>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="card-text">
+                        <div class="container-fluid"  ng-hide="activity.comments.length">
+                            <i>No comments yet!</i>
                         </div>
-                        <ul class="list-group">
-                            <li ng-repeat="comment in activity.comments" class="list-group-item">
-                                <div class="vu-widget-container">
-                                    <div>
-                                        <div class="vu-widget-text">
-                                            <span  ng-click="model.deleteComment(activity._id,comment._id)" class="glyphicon glyphicon glyphicon-remove"></span>
-
-                                        </div>
-                                    </div>
+                        <ul class="vu-comment">
+                            <!-- ngRepeat: comment in post.comments -->
+                            <li ng-repeat="comment in activity.comments" >
+                                <span><b>{{comment.userId.username}}:</b>&nbsp </span>{{comment.comment}}
+                                <div class="pull-right">
+                                    <span  ng-click="model.deleteComment(activity._id,comment._id)" class="fa fa-times"></span>
                                 </div>
-                                <u>
-                                {{comment.userId.username}} commented {{comment.comment}}
-                                </u>
-                            </li>
+                            </li><!-- end ngRepeat: comment in post.comments -->
                         </ul>
+                    </div>
+                    <div class="clearfix"></div>
 
-                    </li>
+                </div>
 
-                </ul>
             </div>
         </div>
 
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="navbar-header navbar-text pull-right container-fluid">
-                <a class="navbar-link" href="#!/user">
-                    <span class="glyphicon glyphicon-user vu-white"></span>
-                </a>
+
+        <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-nav mr-auto ">
+                </div>
+                <div class="navbar-link ">
+                    <a class="navbar-header navbar-brand float-right"  href="#!/user">
+                        <span class="fa fa-user fa-fw vu-white"></span>
+                    </a>
+                </div>
             </div>
         </nav>
     </div>

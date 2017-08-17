@@ -1,21 +1,20 @@
 <div class="vu">
     <div>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-text pull-left">
-                    <a class="navbar-link" href="#!/user/friends">
-                        <span class="glyphicon glyphicon-chevron-left vu-white"></span>
+                <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-top">
+            <div class="collapse navbar-collapse">
+                <div class="navbar-text float-left">
+                    <a class="nav-link" href="#!/user/friends">
+                        <span class="fa fa-arrow-left vu-white"></span>
                     </a>
                 </div>
                 <div class="navbar-header navbar-brand">
                     Profile View
                 </div>
-
             </div>
         </nav>
 
         <div class="container-fluid">
-            <h3> Profile details</h3>
+            <h3> Profile details</h3><hr>
             <div ng-show="model.msg" class="alert alert-info">
                 {{model.msg}}
             </div>
@@ -51,30 +50,29 @@
                    type="date"
                    ng-model="model.user.dob"
                    class="form-control"/>
-
+            <div class="vu-margin-top-45">
             <h3> {{model.friendData.username}}'s activity</h3>
+                <hr>
+            </div>
             <ul class="list-group">
                 <li ng-repeat="activity in model.friendActivity" class="list-group-item">
-                    <div>
-                        <!--{{ activity}}-->
-                        {{activity.userId.username}} {{activity.type}} {{activity.ticker}} {{activity.friendId.username}}
+                    <i>
+                        {{activity.userId.username}} {{ model.feedContent[activity.type]}} {{activity.ticker}} {{activity.friendId.username}}
+                    </i>
+                    <div class="pull-right">
+                        <small><i>{{ activity.date | date : "short" }}</i></small>
                     </div>
-                    <ul class="list-group">
-                        <li ng-repeat="comment in activity.comments" class="list-group-item">
-                            {{comment.userId.username}} commented {{comment.comment}}
-                        </li>
-                    </ul>
                 </li>
-
             </ul>
-
-        </div>
-
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="navbar-header navbar-text pull-right container-fluid">
-                <a class="navbar-link"  href="#!/user">
-                    <span class="glyphicon glyphicon-user vu-white"></span>
-                </a>
+            <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-nav mr-auto ">
+                </div>
+                <div class="navbar-link ">
+                    <a class="navbar-header navbar-brand float-right"   href="#!/user">
+                        <span class="fa fa-user fa-fw vu-white"></span>
+                    </a>
+                </div>
             </div>
         </nav>
     </div>

@@ -14,25 +14,31 @@
         </nav>
 
         <div class="container-fluid">
-            <div class="container-fluid">
+            <div class="container-fluid"  ng-hide="model.activities.length">
+                <div class="alert alert-info center-block">
+                    <strong>Nothing in your feed. Check back later.</strong>
+                </div>
+            </div>
                 <div class="card" ng-repeat="activity in model.activities">
                     <div class="card-header">
-                        <a href="#/profile/576f3ea8eccc8534264d6b97">
                             <strong class="ng-binding">
-                                {{activity.userId.username}} {{activity.type}} {{activity.ticker}} {{activity.friendId.username}}
-                            </strong></a>
-                        <div class="pull-right post-time">
-                            {{activity.date}}
+                                {{activity.userId.username}} {{ model.feedContent[activity.type]}} {{activity.ticker}} {{activity.friendId.username}}
+                            </strong>
+                        <div class="pull-right">
+                            <small><i>{{ activity.date | date : "short" }}</i></small>
                         </div>
                     </div>
                     <div class="card-block">
                         <div class="card-text">
+                            <div class="container-fluid"  ng-hide="activity.comments.length">
+                                <i>No comments yet!</i>
+                            </div>
                                 <ul class="vu-comment">
                                     <!-- ngRepeat: comment in post.comments -->
                                     <li ng-repeat="comment in activity.comments" >
                                         <span><b>{{comment.userId.username}}:</b>&nbsp </span>{{comment.comment}}
-                                    <div class="pull-right post-time">
-                                        {{comment.date}}
+                                    <div class="pull-right">
+                                        <small><i>{{ comment.date | date : "short" }}</i></small>
                                     </div>
                                 </li><!-- end ngRepeat: comment in post.comments -->
                                 </ul>
@@ -51,24 +57,6 @@
 
                     </div>
                 </div>
-                <ul class="list-group">
-                    <li ng-repeat="activity in model.activities" class="list-group-item">
-                        <div>
-                            <!--{{ activity}}-->
-                            {{activity.userId.username}} {{activity.type}} {{activity.ticker}} {{activity.friendId.username}}
-                        </div>
-                        <ul class="list-group">
-                            <li ng-repeat="comment in activity.comments" class="list-group-item">
-                                {{comment.userId.username}} commented {{comment.comment}}
-                            </li>
-                        </ul>
-                                <textarea ng-model=activity.commentText placeholder="Your Comment" style='width:550px'></textarea>
-                                <button ng-click='model.addComment(activity._id);'>Post Comment</button>
-
-                    </li>
-
-                </ul>
-            </div>
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-bottom">

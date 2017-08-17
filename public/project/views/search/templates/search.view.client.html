@@ -7,7 +7,7 @@
                         <li class="nav-item active"><a  class="nav-link" href="#!/user/search">Stocks</a></li>
                         <li class="nav-item"><a class="nav-link "  href="#!/user/friends">Following</a></li>
                         <li class="nav-item"><a class="nav-link " href="#!/user/followers">Your followers</a></li>
-                        <li class="nav-item"><a class="nav-link " href="#!/user/activity">Your feed</a></li>
+                        <li class="nav-item"><a class="nav-link " href="#!/user/activity">Your Feed</a></li>
                         <li class="nav-item" ng-if="model.user.admin" ><a  class="nav-link vu-white" href="#!/user/admin">User List</a></li>
                     </ul>
                 </div>
@@ -83,7 +83,7 @@
                                 <a ng-show="model.isFollowingCurrentSearch == false" ng-click="model.followStock(model.ticker)">
                                     <span class="fa fa-plus text-success"></span>
                                 </a>
-                                <span ng-show="model.isFollowingCurrentSearch == true"  ng-click="model.unFollowStock(model.ticker)" class="fa fa-fw fa-remove"></span>
+                                <span ng-show="model.isFollowingCurrentSearch == true"  ng-click="model.unFollowStock(model.ticker)" class="fa fa-fw fa-times"></span>
                             </div>
                         </td>
                     </tbody>
@@ -100,7 +100,7 @@
                 </div>
             </div>
 
-            <table class="table table-responsive user-table" >
+            <table class="table table-responsive user-table" ng-show="model.stockUserDataDetailed.length" >
 
                 <thead>
                 <tr>
@@ -112,7 +112,7 @@
                     <th>Date</th>
                 </tr>
                 </thead>
-                <tbody ng-repeat="stock in model.stockUserDataDetailed">
+                <tbody ng-repeat="stock in model.stockUserDataDetailed" >
                 <tr>
                     <td>
                         <a  href="#!/user/stock/{{stock[0]}}">
@@ -127,7 +127,7 @@
                     <td><a href="#/profile/{{user._id}}/edit">{{user.username}}</a></td>
                     <td>
                         <div>
-                            <span  ng-click="model.unFollowStock(stock[0])" class="fa fa-fw fa-remove"></span>
+                            <span  ng-click="model.unFollowStock(stock[0])" class="fa fa-fw fa-times"></span>
                         </div>
                     </td>
                 </tbody>

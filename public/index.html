@@ -1,40 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
-    <meta name="viewport" content="user-scalable=no"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="./vendor/jquery/jquery.js"></script>
+    <script src="./vendor/jquery/jquery-ui.js"></script>
+    <link href="./vendor/jquery/jquery-ui.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="./vendor/angular/angular.js"></script>
+    <script src="./vendor/angular/angular-route.js"></script>
+    <title>Theme Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Web Dev Course Home Page</h1><hr>
+        <div class="col-md-8 profile-description">
+            <p>My name is Vignesh Umasankar, and I am a student at Northeastern University majoring in Computer Science. I am enrolled in the MS program and will be graduating at the end of Fall 2017.
+                I've completed two software development internships at Barrett Technology and Piaggio Fast forward. At Barrett Technology I worked on robotic rehabilitation, building  games controlled using robotic arms. At Piaggio, I worked on personal cargo robot which helps people carry things around
+            </p>
+        </div>
+        <div class="col-md-4 profile-pic-wrapper">
+            <img class="vu-profile-pic" src="./images/profile_pic.jpg" >
+        </div>
+    </div>
+</div>
 
-    <h1>Web Dev Course Home Page</h1>
+<div class="container-fluid vu-work">
+    <div class="header vu-padding-bottom">
+        <nav>
+            <a href="https://github.com/vigneshu/umasankar-vignesh-webdev" class="btn btn-default pull-right">
+                <img src="./images/github.png"> View on GitHub</a>
+        </nav>
+        <h3 class="text-muted">CS5610</h3>
 
-    <p>
-        This is your website's home page. Your home page should have a picture of yourself, link to your assignments,
-        link to your final project implementation on Heroku, link to your GitHub,
-        link to a 5 minute video demoing your project. Your home page should look
-        spectacular. You should feel proud to share your homepage with your potential employer.
-        I should feel proud to share your homepage with my colleagues.
-    </p>
 
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/index.html">Project</a>
-        </li>
-        <li>
-            <a href="assignment/">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/vigneshu/umasankar-vignesh-webdev">Your public repository at GitHub.com</a>
-        </li>
-        <li>
-            <a href="/lectures">Lectures</a>
-        </li>
-    </ul>
+    </div><hr>
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <a href="project/index.html"> <img src="./images/project.jpg" style="height: 150px; width: 100%; display: block;">
+                <div class="center-block"><h3>Project</h3></div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <a href="assignment/" class="links"><img src="./images/assignment.png" style="height: 150px; width: 100%; display: block;">
+                <div class="center-block"><h3>Assignment</h3></div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <a href="test/index.html"><img src="./images/database.png" style="height: 150px; width: 100%; display: block;">
+                <div class="center-block"><h3> Test MongoDB</h3></div>
+            </a>
+        </div>
+    </div>
+
+</div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../vendor/css/bootstrap/js/bootstrap.min.js"></script>
 </html>

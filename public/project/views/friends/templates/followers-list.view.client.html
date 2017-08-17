@@ -11,7 +11,11 @@
                 </ul>
             </div>
         </nav>
-
+        <div class="vu-margin-top-45 container-fluid"  ng-hide="model.followers.length">
+            <div class="alert alert-info center-block">
+                <strong>You have no followers</strong>
+            </div>
+        </div>
         <div class="container-fluid">
             <div ng-show="model.followers.length > 0">
                 <h6>Your followers</h6>

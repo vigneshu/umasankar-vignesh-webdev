@@ -5,7 +5,6 @@
             var model = this;
             model.stockRating = "";
             model.userId = user._id;
-            model.current = 'User';
             model.editUserId = null;
             model.deleteUser = deleteUser;
             model.updateUser = updateUser;

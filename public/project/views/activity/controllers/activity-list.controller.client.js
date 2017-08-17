@@ -4,16 +4,26 @@
             var model = this;
             model.userId = user._id;
             model.addComment = addComment;
+            model.feedContent = {};
             function init() {
                 //get list of activities
                 ActivityService.getActivitiesOfUserAndFriends(model.userId)
                     .then(function(msg){
                         model.activities = msg.data;
+                        for(var a in model.activities ){
+                            console.log(model.activities[a]);
+                            console.log(model.activities[a].date);
+                            // console.log(model.activities[a].date.format("dd mmm yyyy hh:MMtt"));
+                        }
                     });
                 UserService.findUserById(model.userId)
                     .then(function(msg){
                         model.user = msg.data;
                     })
+                model.feedContent['unfollow_stock'] = "unfollowed stock";
+                model.feedContent['follow_stock'] = "started following stock";
+                model.feedContent['unfollow_friend'] = "unfollowed";
+                model.feedContent['follow_friend'] = "started following";
             }
             function addComment(activityId){
                 console.log('start');

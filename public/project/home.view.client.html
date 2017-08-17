@@ -14,55 +14,102 @@
 
 </head>
 
-<body>
+<div class="vu">
 
-<!-- Fixed navbar -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Bootstrap theme</a>
+        <div class="header clearfix">
+
+            <h3 class="text-muted">Stock Application</h3><hr>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a ng-show="!currentUser" href="#!/login">Login</a></li>
-                <!--<li><a ng-show="!currentUser" href="#!/register">Register</a></li>-->
-                <!--<li><a ng-show="currentUser" href="#!/user/{{currentUser._id}}">Profile</a></li>-->
-                <!--<li><a ng-show="currentUser" href="#!/login">Logout</a></li>-->
-                <!--<li><a href="#!/admin">Admin</a></li>-->
-                <!--<li><a href="#!/about">About</a></li>-->
-                <!--<li><a href="#contact">Contact</a></li>-->
-                <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
-                    <!--<ul class="dropdown-menu">-->
-                        <!--<li><a href="#">Action</a></li>-->
-                        <!--<li><a href="#">Another action</a></li>-->
-                        <!--<li><a href="#">Something else here</a></li>-->
-                        <!--<li role="separator" class="divider"></li>-->
-                        <!--<li class="dropdown-header">Nav header</li>-->
-                        <!--<li><a href="#">Separated link</a></li>-->
-                        <!--<li><a href="#">One more separated link</a></li>-->
-                    <!--</ul>-->
-                <!--</li>-->
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="input-group">
-                <input type="text" ng-model="model.ticker" class="form-control" placeholder="Search for any stock. (MSFT, AAPL)...">
-                <span class="input-group-btn">
-            <button class="btn btn-default"  ng-click="model.searchStock()" type="button">Go!</button>
-          </span>
-            </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-    </div><!-- /.row -->
+
+        <div class="jumbotron">
+            <h1 class="display-3">Welcome!</h1>
+            <p class="lead">Hey, there! Search for companies to get stock prices, volume traded and lot more information about the stock. Sign up to get exclusive analyst ratings. You can follow stock, add friends and more! </p>
+            <p><a class="btn btn-lg btn-success" href="#!/register" role="button">Sign up today</a></p>
+            <p><i>Already have an account?&nbsp&nbsp<a href="#!/login" >Login</a></i></p>
+        </div>
+
+        <div class="container-fluid">
+            <h3 >Search for a stock</h3><hr>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" ng-model="model.ticker" class="form-control" placeholder="Search for any stock. (MSFT, AAPL)...">
+                        <span class="input-group-btn">
+                             <button class="btn btn-default"  ng-click="model.searchStock()" type="button">Go!</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+
+
+            <br>
+            <div ng-show="model.stockData.length > 0">
+
+                <table class="table table-responsive user-table" >
+
+                    <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th>Open Price</th>
+                        <th>Day's high</th>
+                        <th>Day's low</th>
+                        <th>Current Price</th>
+                        <th>Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+
+                        <td>
+                            <a  href="#!/login">
+                                {{model.stockData[0]}}
+                            </a>
+                        </td>
+                        <td>{{model.stockData[2]}}</td>
+                        <td>{{model.stockData[3]}}</td>
+                        <td>{{model.stockData[4]}}</td>
+                        <td>{{model.stockData[5]}}</td>
+                        <td>{{model.stockData[1]}}</td>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <table class="table table-responsive user-table" ng-show="model.stockUserDataDetailed.length" >
+
+                <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Open Price</th>
+                    <th>Day's high</th>
+                    <th>Day's low</th>
+                    <th>Current Price</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="stock in model.stockUserDataDetailed" >
+                <tr>
+                    <td>
+                        <a  href="#!/user/stock/{{stock[0]}}">
+                            {{stock[0]}}
+                        </a>
+                    </td>
+                    <td>{{stock[2]}}</td>
+                    <td>{{stock[3]}}</td>
+                    <td>{{stock[4]}}</td>
+                    <td>{{stock[5]}}</td>
+                    <td>{{stock[1]}}</td>
+                </tbody>
+            </table>
+        </div>
+    </div> <!-- /container -->
+
+
+
+
 </div>
+</div>
+</html>

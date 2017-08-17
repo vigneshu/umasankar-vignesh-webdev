@@ -9,10 +9,10 @@
                     controllerAs: "model"
                 })
                 .when('/', {
-                    controller: 'loginController',
-                    templateUrl: 'views/user/templates/login.view.client.html',
-                    // templateUrl: 'home.view.client.html',
-                    // controller: 'homeController',
+                    // controller: 'loginController',
+                    // templateUrl: 'views/user/templates/login.view.client.html',
+                    templateUrl: 'home.view.client.html',
+                    controller: 'homeController',
                     controllerAs: 'model'
                 })
                 .when("/register", {
@@ -21,8 +21,8 @@
                     controllerAs: "model"
                 })
                 .when('/search', {
-                    templateUrl: 'views/search/templates/search.view.client.html',
-                    controller: 'searchController',
+                    templateUrl: 'home.view.client.html',
+                    controller: 'homeController',
                     controllerAs: 'model'
                 })
                 .when('/user/search', {

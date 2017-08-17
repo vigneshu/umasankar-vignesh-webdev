@@ -1,0 +1,13 @@
+.vu-profile-pic {
+    height: 250px;
+    border-radius: 30px;
+}
+
+.vu-work {
+    margin:auto;
+    width: 600px;
+}
+
+.vu-padding-bottom {
+    padding-bottom: 3px;
+}

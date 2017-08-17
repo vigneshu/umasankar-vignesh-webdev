@@ -67,8 +67,12 @@
                             if (model.userStocks.split(",").length == 2){
                                 model.userStocks =  model.userStocks.split(",")[0];
                             }
+                            console.log("model.userStocks");
+                            console.log(model.userStocks);
                             StockService.getStockData(model.userStocks)
                                 .then(function(response){
+                                    console.log("response.data.datatable");
+                                    console.log(response.data);
                                     model.stockUserDataDetailed = response.data.datatable.data;
                                     // model.stockUserDataDetailed = [response.data.datatable.data[0]];
                                     var i = model.stockUserDataDetailed.length;

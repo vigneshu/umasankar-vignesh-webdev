@@ -25,6 +25,7 @@
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
+
             <div ng-if="model.friendData" >
                 <h6>Search results</h6>
                 <div class="vu-widget-container " >
@@ -41,7 +42,11 @@
                 <strong>{{model.friendData.username}}</strong>
                 </a>
             </div>
-
+            <div class="vu-margin-top-45"  ng-hide="model.friends.length">
+                <div class="alert alert-info center-block">
+                    <strong>Search and add friends to start following</strong>
+                </div>
+            </div>
             <div ng-show="model.friends.length > 0">
                 <h6>You are following</h6>
                 <table class="table table-responsive user-table" >

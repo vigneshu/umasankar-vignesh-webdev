@@ -18,10 +18,13 @@
                             console.log(msg.data);
                             model.friendData = msg.data;
                             console.log( model.friendData.followers);
-                            var index = model.friendData.followers.indexOf(model.userId);
-                            if(index > -1){
-                                model.isFollowingCurrentSearch = true;
+                            if(model.friendData.followers){
+                                var index = model.friendData.followers.indexOf(model.userId);
+                                if(index > -1){
+                                    model.isFollowingCurrentSearch = true;
+                                }
                             }
+
                         });
                 }
                 //get list of friends

@@ -1,18 +1,27 @@
 <div class="vu">
     <div>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-
-                <div class="navbar-text pull-right">
-                    <a class="navbar-link" ng-click="model.updateUser()">
-                        <span class="glyphicon glyphicon-ok vu-white"></span>
+        <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-top">
+            <div class="collapse navbar-collapse">
+                <div class="navbar-text float-left">
+                    <a class="nav-link" href="#!/user/search">
+                        <span class="fa fa-arrow-left vu-white"></span>
                     </a>
                 </div>
                 <div class="navbar-header navbar-brand">
                     Profile
                 </div>
+                <div class="navbar-nav mr-auto ">
+                </div>
+                <div class="navbar-link ">
+                    <a class="navbar-header navbar-brand float-right" href  ng-click="model.updateUser()">
+                    <span class="fa fa-check  vu-white"></span>
+                </a>
+                </div>
+
             </div>
         </nav>
+
+
 
         <div class="container-fluid">
             <div ng-show="model.msg" class="alert alert-info">
@@ -72,11 +81,15 @@
 
         </div>
 
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="navbar-header navbar-text pull-right container-fluid">
-                <a class="navbar-link" href>
-                    <span class="glyphicon glyphicon-user vu-white"></span>
-                </a>
+        <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-nav mr-auto ">
+                </div>
+                <div class="navbar-link ">
+                    <a class="navbar-header navbar-brand float-right"  href>
+                        <span class="fa fa-user fa-fw vu-white"></span>
+                    </a>
+                </div>
             </div>
         </nav>
     </div>
