@@ -59,7 +59,7 @@ function addComment(req, res) {
             res.json(msg);
         });
 }
-function getActivitiesForUser(req, res) {
+function getActivitiesOfUserAndFriends(req, res) {
     var userId = req.params.userId;
 
     return userModel.findUserById(userId)

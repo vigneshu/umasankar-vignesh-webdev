@@ -9,7 +9,7 @@
             model.deleteComment = deleteComment;
             function init() {
                 console.log(model.editUserId);
-                ActivityService.getActivitiesForUser(model.editUserId)
+                ActivityService.getActivitiesOfUserAndFriends(model.editUserId)
                     .then(function(msg){
                         model.activities = msg.data;
                         console.log("activities");

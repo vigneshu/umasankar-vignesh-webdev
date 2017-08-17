@@ -44,9 +44,9 @@
                     });
 
             }
-            function unFollowFriend(){
+            function unFollowFriend(friendId){
                 console.log("here");
-                UserService.unFollowFriend(model.userId, model.friendData._id)
+                UserService.unFollowFriend(model.userId, friendId)
                     .then(function(msg){
                         model.isFollowingCurrentSearch = false;
                         console.log(model.isFollowingCurrentSearch);

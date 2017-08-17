@@ -50,11 +50,18 @@ function followStock(req, res) {
             }
         })
         .then(function(msg){
-
             if(msg){
                 console.log("msg "+msg);
                 stock = msg;
             }
+            return userModel.findUserById(userId);
+        })
+        .then(function(msg){
+
+
+                    console.log("userrrr "+msg);
+                user = msg;
+
             var index = user.stocks.indexOf(stock._id);
             console.log("stock "+stock);
             console.log("stock._id "+stock._id);
@@ -84,36 +91,31 @@ function followStock(req, res) {
 
 function unFollowStock(req, res) {
     var stock = null;
-    console.log("unFollowStoc ");
     var userId = req.params.userId;
     var ticker = req.query.ticker;
     var user = null;
-    console.log(ticker);
-    console.log(userId);
+    var activity = null;
     return userModel.findStockByTickerForUser(userId, ticker)
         .then(function(msg) {
-            console.log("found user ");
-            console.log(msg);
             user = msg;
             stock = msg.stocks[0];
             stock.isFollowing = false;
             return stockModel.updateStock(stock._id, stock);
         })
         .then(function(msg){
-            console.log("updated stock inunfollow ");
-            console.log("this is stock ");
-            console.log(msg);
             return activityModel.addActivity({userId: userId, ticker: ticker, type:'unfollow_stock'});
 
         })
-        .then(function(activity){
-            console.log("activity added for unfollowing ");
-            console.log(activity);
+        .then(function(msg){
+            activity = msg;
+            return userModel.findUserById(userId);
+        })
+        .then(function(msg){
+            user = msg;
             user.activity.push(activity);
             return userModel.updateUser(userId, user);
         })
         .then(function(msg){
-            console.log("after adding activity returning stock ");
             res.json(stock);
         })
 }
@@ -150,7 +152,12 @@ function getStockData(req, res){
     var lDate = new Date();
     lDate.setDate(lDate.getDate() - 3);
     var reslDate = lDate.toISOString().slice(0,10).replace(/-/g,"");
+    console.log("lDate"+lDate);
+    console.log("reslDate"+reslDate);
+    console.log("rightNowstr"+rightNowstr);
     var path = "/api/v3/datatables/WIKI/PRICES.json?date.gte="+reslDate+"&date.lte="+rightNowstr +  ticker + apiKey;
+
+    // var path = "/api/v3/datasets/EOD/AAPL"+ticker+".json??rows=5&order=desc"+ apiKey;
     var host = 'www.quandl.com';
     stockSearchQuery(host, path)
         .then(function(msg){

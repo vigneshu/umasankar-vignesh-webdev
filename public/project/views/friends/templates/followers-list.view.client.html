@@ -25,7 +25,9 @@
             <div class="container-fluid">
                 <ul class="list-group">
                     <li ng-repeat="follower in model.followers" class="list-group-item">
+                        <a  href="#!/user/otherUser/{{follower._id}}">
                         {{follower}}
+                        </a>
                     </li>
                 </ul>
             </div>

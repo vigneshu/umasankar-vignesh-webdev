@@ -6,7 +6,7 @@
             model.addComment = addComment;
             function init() {
                 //get list of activities
-                ActivityService.getActivitiesForUser(model.userId)
+                ActivityService.getActivitiesOfUserAndFriends(model.userId)
                     .then(function(msg){
                         model.activities = msg.data;
                     });

@@ -1,22 +1,15 @@
 <div class="vu">
     <div>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
 
-                <div class="navbar-text pull-right">
-                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user">
-                        <span class="glyphicon glyphicon-ok vu-white"></span>
-                    </a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#!/user/search">Stocks</a></li>
-                        <li class="active"><a  href="#!/user/friends">Following</a></li>
-                        <li><a  href="#!/user/followers">Your followers</a></li>
-                        <li><a  href="#!/user/activity">Your Feed</a></li>
-                        <li ng-if="model.user.admin" ><a  href="#!/user/admin">User List</a></li>
+        <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-top">
+            <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="#!/user/search">Stocks</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="#!/user/friends">Following</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!/user/followers">Your followers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!/user/activity">Your Feed</a></li>
+                        <li class="nav-item" ng-if="model.user.admin" ><a class="nav-link" href="#!/user/admin">User List</a></li>
                     </ul>
-                </div>
             </div>
         </nav>
 
@@ -32,43 +25,66 @@
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
-            <br>
-            <div ng-if="model.friendData">
-                <div class="vu-widget-container">
+            <div ng-if="model.friendData" >
+                <h6>Search results</h6>
+                <div class="vu-widget-container " >
                         <div >
                             <div class="vu-widget-text">
                                 <a ng-show="model.isFollowingCurrentSearch == false" ng-click="model.followFriend()">
-                                    <span class="glyphicon glyphicon-plus"></span>
+                                    <span class="fa fa-plus"></span>
                                 </a>
-                                <span ng-show="model.isFollowingCurrentSearch == true"  ng-click="model.unFollowFriend()" class="glyphicon glyphicon glyphicon-remove"></span>
+                                <span ng-show="model.isFollowingCurrentSearch == true"  ng-click="model.unFollowFriend(model.friendData._id)" class="fa fa-times"></span>
                             </div>
                         </div>
                 </div>
                 <a  href="#!/user/otheruser/{{model.friendData._id}}">
-                <h6>{{model.friendData.username}}</h6>
+                <strong>{{model.friendData.username}}</strong>
                 </a>
             </div>
 
-            <div ng-if="model.friendData">
+            <div ng-show="model.friends.length > 0">
                 <h6>You are following</h6>
-            </div>
-            <div class="container-fluid">
-                <ul class="list-group">
-                    <li ng-repeat="friend in model.friends" class="list-group-item">
+                <table class="table table-responsive user-table" >
 
-                        <a  href="#!/user/otherUser/{{friend._id}}">
-                            {{friend}}
-                        </a>
-                    </li>
-                </ul>
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="friend in model.friends">
+                    <tr>
+                        <td>
+                            <a  href="#!/user/otherUser/{{friend._id}}">
+                                {{friend.username}}
+                            </a>
+                        </td>
+                        <td>{{friend.firstName}}</td>
+                        <td>{{friend.lastName}}</td>
+                        <td>
+                            <div>
+                                <span  ng-click="model.unFollowFriend(friend._id)" class="fa fa-times"></span>
+                            </div>
+                        </td>
+                    </tbody>
+                </table>
             </div>
+
+
         </div>
 
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="navbar-header navbar-text pull-right container-fluid">
-                <a class="navbar-link"  href="#!/user">
-                    <span class="glyphicon glyphicon-user vu-white"></span>
-                </a>
+
+        <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-nav mr-auto ">
+                </div>
+                <div class="navbar-link ">
+                    <a class="navbar-header navbar-brand float-right"  href="#!/user">
+                        <span class="fa fa-user fa-fw vu-white"></span>
+                    </a>
+                </div>
             </div>
         </nav>
     </div>

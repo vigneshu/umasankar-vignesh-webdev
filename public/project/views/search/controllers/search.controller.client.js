@@ -1,6 +1,6 @@
 (function() {
         angular.module("StockApp").controller("searchController", searchController);
-        function searchController($location, $routeParams, StockService, UserService, user) {
+        function searchController($location, $route, $routeParams, StockService, UserService, user) {
             //,
             var model = this;
             model.stockRating = "";
@@ -28,7 +28,18 @@
                     StockService.getStockData(model.ticker)
                         .then(function(msg){
 
-                        model.stockData = msg.data;
+                        model.stockData = msg.data.datatable.data[0];
+                        // var i = model.stockData.length;
+                        // var prevTicker  = "";
+                        // while (i--) {
+                        //     var ticker_t = model.stockData[i][0];
+                        //     if(ticker_t === prevTicker)
+                        //     {
+                        //         model.stockData.splice(i,1);
+                        //     }
+                        //     prevTicker = ticker_t;
+                        //
+                        // }
                     });
                     StockService.getStockNews(model.ticker)
                         .then(function(msg){
@@ -59,17 +70,18 @@
                             StockService.getStockData(model.userStocks)
                                 .then(function(response){
                                     model.stockUserDataDetailed = response.data.datatable.data;
-                                    // var columns = response.data.datatable.columns;
-                                    // var rows = response.data.datatable.data;
-                                    // model.dtColumnDefs = [];
-                                    //
-                                    // for (var col in columns){
-                                    //     model.dtColumnDefs.push(DTColumnDefBuilder.newColumnDef(col).withTitle(columns[col].name));
-                                    //
-                                    // }
-                                    // model.dtOptions = DTOptionsBuilder
-                                    //     .fromSource(model.stockUserDataDetailed)
-                                    //     .withDataProp('0.values');
+                                    // model.stockUserDataDetailed = [response.data.datatable.data[0]];
+                                    var i = model.stockUserDataDetailed.length;
+                                    var prevTicker  = "";
+                                    while (i--) {
+                                        var ticker_t = model.stockUserDataDetailed[i][0];
+                                        if(ticker_t === prevTicker)
+                                        {
+                                            model.stockUserDataDetailed.splice(i,1);
+                                        }
+                                        prevTicker = ticker_t;
+
+                                    }
                                 });
                         }
 
@@ -84,23 +96,18 @@
             }
             init();
             function followStock(ticker){
-                console.log("follow");
                 StockService.followStock(model.userId, ticker)
-
                     .then(function(msg){
-                        console.log("follow then");
                         model.isFollowingCurrentSearch = true;
-                        console.log(model.isFollowingCurrentSearch);
+                        $route.reload();
                     });
 
             }
             function unFollowStock(ticker){
-                console.log("unfollow");
                 StockService.unFollowStock(model.userId, ticker)
                     .then(function(msg){
-                        console.log("unfollow then");
                         model.isFollowingCurrentSearch = false;
-                        console.log(model.isFollowingCurrentSearch);
+                        $route.reload();
                     })
 
             }

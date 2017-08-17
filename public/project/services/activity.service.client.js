@@ -4,7 +4,8 @@
         .service("ActivityService", ActivityService);
     function ActivityService($http) {
         var api = {
-            "getActivitiesForUser": getActivitiesForUser,
+            "getActivitiesOfUserAndFriends": getActivitiesOfUserAndFriends,
+            "getActivitiesOfUser": getActivitiesOfUser,
             "deleteActivity": deleteActivity,
         };
         return api;
@@ -16,8 +17,12 @@
             var url = "/api/project/user/"+userId+"/activity/"+activityId;
             return $http.delete(url);
         }
-        function getActivitiesForUser(userId) {
-            var url = "/api/project/user/"+userId+"/getActivitiesForUser";
+        function getActivitiesOfUser(userId) {
+            var url = "/api/project/user/"+userId+"/getActivitiesOfUser";
+            return $http.get(url);
+        }
+        function getActivitiesOfUserAndFriends(userId) {
+            var url = "/api/project/user/"+userId+"/getActivitiesOfUserAndFriends";
             return $http.get(url);
         }
     }

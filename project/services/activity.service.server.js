@@ -1,7 +1,8 @@
 var app = require("../../express");
 var activityModel = require("../model/activity/activity.model.server");
 var userModel = require("../model/user/user.model.server");
-app.get("/api/project/user/:userId/getActivitiesForUser", getActivitiesForUser);
+app.get("/api/project/user/:userId/getActivitiesOfUserAndFriends", getActivitiesOfUserAndFriends);
+app.get("/api/project/user/:userId/getActivitiesOfUser", getActivitiesOfUser);
 app.delete("/api/project/user/:userId/activity/:activityId", deleteActivity);
 
 function deleteActivity(req, res) {
@@ -29,11 +30,24 @@ function deleteActivity(req, res) {
             return userModel.updateUser(userId, user);
         })
         .then(function(msg){
-            console.log("user updated");
             res.json(msg);
         })
 }
-function getActivitiesForUser(req, res) {
+function getActivitiesOfUser(req, res) {
+    var userId = req.params.userId;
+    console.log("getActivitiesOfUser ");
+    return userModel.findUserById(userId)
+        .then(function(user){
+            console.log("activities ");
+            return activityModel.getActivityForUsers([userId]);
+        })
+        .then(function(msg){
+            console.log("ssdfjh");
+            console.log(msg);
+            res.json(msg);
+        });
+}
+function getActivitiesOfUserAndFriends(req, res) {
     var userId = req.params.userId;
 
     return userModel.findUserById(userId)
@@ -41,12 +55,9 @@ function getActivitiesForUser(req, res) {
             console.log("activities ");
             var following = user.following;
             following.push(userId);
-            console.log("activity server following "+following);
             return activityModel.getActivityForUsers(following);
         })
         .then(function(msg){
-            console.log("ssdfjh");
-            console.log(msg);
             res.json(msg);
         });
 }

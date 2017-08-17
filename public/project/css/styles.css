@@ -7,30 +7,70 @@ input, textarea {
 .vu .vu-margin-bottom-15 {
     margin-bottom: 15px;
 }
+.vu h6{
+    margin-top: 45px;
+}
 
 p {
     text-align:justify;
 }
 body {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 100px;
+    padding-bottom: 70px;
 }
 img, iframe {
     margin-bottom: 10px;
 }
-
+.vu .vu-center-card {
+    margin:0 auto;
+    width:600px;
+    background-color: #d4d4d4;
+}
+.vu .vu-strong-buy {
+    background-color: #00ad13;
+}
+.vu .vu-buy {
+    background-color: #086218;
+}
+.vu .vu-hold {
+     background-color: #ec9c01;
+ }
+.vu .vu-sell {
+    background-color: #800101;
+}
+.vu .vu-strong-sell{
+    background-color: #e10d0d;
+}
 .vu .navbar-default {
     background-color: #004988;
     border-color: #204d74;
 }
+.vu .badge{
+    color: darkgreen;
+}
+.vu .vu-bg-light{
+    background-color: #b1bbc4;
+}
 
-.vu .navbar-default .navbar-brand {
+.vu .navbar-default a {
     color: white;
 }
 
 
-.vu .vu-white{
+.vu .navbar-default .navbar-brand {
     color: white;
+    padding-top: 0.8125rem;
+    padding-left: 0.5125rem;
+}
+
+.vu .vu-white{
+     color: white;
+ }
+.vu .vu-green{
+    color: limegreen;
+}
+.vu .vu-black{
+    color: black;
 }
 .list-group,
 .list-group .list-group-item {

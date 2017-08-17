@@ -34,13 +34,22 @@
                     }
                 })
                 .when('/user/stock/:ticker', {
-                    templateUrl: 'views/stock/templates/stock.view.client.html',
-                    controller: 'stockViewController',
-                    controllerAs: 'model',
-                    resolve:{
-                        user: checkLogin
-                    }
-                })
+                templateUrl: 'views/stock/templates/stock.view.client.html',
+                controller: 'stockViewController',
+                controllerAs: 'model',
+                resolve:{
+                    user: checkLogin
+                }
+            })
+            .when('/user/otherUser/:userId', {
+                templateUrl: 'views/friends/templates/friend-profile.view.client.html',
+                controller: 'friendProfileController',
+                controllerAs: 'model',
+                resolve:{
+                    user: checkLogin
+                }
+            })
+
                 .when('/user/friends', {
                     templateUrl: 'views/friends/templates/friends-list.view.client.html',
                     controller: 'friendController',
@@ -106,20 +115,21 @@
                     }
                 })
 
-                function checkLogin(UserService, $q){
+                function checkLogin($location,UserService, $q){
                     var deferred = $q.defer();
                     UserService
                         .checkLogin()
                         .then(function (user){
                             if(user.data === '0'){
                                 deferred.reject()
+                                $location.url('/login');
                             } else {
                                 deferred.resolve(user.data);
                             }
                         });
                     return deferred.promise;
                 }
-                function checkAdmin(UserService, $q){
+                function checkAdmin($location,UserService, $q){
                     var deferred = $q.defer();
                     UserService
                         .checkLogin()
@@ -128,11 +138,13 @@
                             console.log(user.data.admin);
                             if(user.data === '0'){
                                 deferred.reject()
+                                $location.url('/login');
                             } else if (user.data.admin) {
                                 deferred.resolve(user.data);
                             }
                             else{
                                 deferred.reject()
+                                $location.url('/login');
                             }
                         });
                     return deferred.promise;
