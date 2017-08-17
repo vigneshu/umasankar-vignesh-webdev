@@ -4,12 +4,18 @@ var bodyParser = require('body-parser');
 var cookieParser  = require('cookie-parser');
 var session       = require('express-session');
 var passport      = require('passport');
+// require('dotenv').config({
+//     path: 'process.env'
+//     }
+// )
 app.use(cookieParser());
 app.use(session({
     secret: 'asdf',//TODO process.env.session
     resave: true,
     saveUninitialized: true
 }));
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 
