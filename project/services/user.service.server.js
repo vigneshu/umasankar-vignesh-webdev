@@ -5,13 +5,12 @@ var passport      = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var googleConfig = {
-    //TODO change to heroku environment
-    // clientID     : process.env.GOOGLE_CLIENT_ID,
-    // clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    // callbackURL  : process.env.GOOGLE_CALLBACK_URL
-    clientID     : "651731750208-nu1eu94b563r71p9oq2bj1oi4rh8bvm6.apps.googleusercontent.com",
-    clientSecret : "TN4T6mkpVZWjE5KHAJAd9HAq",
-    callbackURL  : "http://127.0.0.1:3000/google/oauth/callback"
+    clientID     : process.env.GOOGLE_CLIENT_ID,
+    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL  : process.env.GOOGLE_CALLBACK_URL
+    // clientID     : "651731750208-nu1eu94b563r71p9oq2bj1oi4rh8bvm6.apps.googleusercontent.com",
+    // clientSecret : "TN4T6mkpVZWjE5KHAJAd9HAq",
+    // callbackURL  : "http://127.0.0.1:3000/google/oauth/callback"
 }
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
