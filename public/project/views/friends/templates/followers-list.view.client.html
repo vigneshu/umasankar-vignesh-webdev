@@ -1,43 +1,53 @@
 <div class="vu">
     <div>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-
-                <div class="navbar-text pull-right">
-                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user">
-                        <span class="glyphicon glyphicon-ok vu-white"></span>
-                    </a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#!/user/search">Stocks</a></li>
-                        <li><a  href="#!/user/friends">Following</a></li>
-                        <li class="active"><a  href="#!/user/followers">Your followers</a></li>
-                        <li ><a  href="#!/user/activity">Your feed</a></li>
-                        <li ng-if="model.user.admin" ><a  href="#!/user/admin">User List</a></li>
-                    </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-top">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#!/user/search">Stocks</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!/user/friends">Following</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="#!/user/followers">Your followers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!/user/activity">Your Feed</a></li>
+                    <li class="nav-item" ng-if="model.user.admin" ><a class="nav-link" href="#!/user/admin">User List</a></li>
+                </ul>
             </div>
         </nav>
 
         <div class="container-fluid">
-            <h6>Your followers</h6>
-            <div class="container-fluid">
-                <ul class="list-group">
-                    <li ng-repeat="follower in model.followers" class="list-group-item">
-                        <a  href="#!/user/otherUser/{{follower._id}}">
-                        {{follower}}
-                        </a>
-                    </li>
-                </ul>
+            <div ng-show="model.followers.length > 0">
+                <h6>Your followers</h6>
+                <table class="table table-responsive user-table" >
+
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="follower in model.followers">
+                    <tr>
+                        <td>
+                            <a  href="#!/user/otherUser/{{follower._id}}">
+                                {{follower.username}}
+                            </a>
+                        </td>
+                        <td>{{follower.firstName}}</td>
+                        <td>{{follower.lastName}}</td>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="navbar-header navbar-text pull-right container-fluid">
-                <a class="navbar-link"  href="#!/user">
-                    <span class="glyphicon glyphicon-user vu-white"></span>
-                </a>
+        <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-nav mr-auto ">
+                </div>
+                <div class="navbar-link ">
+                    <a class="navbar-header navbar-brand float-right"  href="#!/user">
+                        <span class="fa fa-user fa-fw vu-white"></span>
+                    </a>
+                </div>
             </div>
         </nav>
     </div>

@@ -1,28 +1,56 @@
 <div class="vu">
     <div>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
 
-                <div class="navbar-text pull-right">
-                    <a class="navbar-link" ng-click="model.updateUser()" href="#!/user">
-                        <span class="glyphicon glyphicon-ok vu-white"></span>
-                    </a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#!/user/search">Stocks</a></li>
-                        <li><a  href="#!/user/friends">Following</a></li>
-                        <li ><a  href="#!/user/followers">Your followers</a></li>
-                        <li class="active"><a  href="#!/user/activity">Your feed</a></li>
-                        <li ng-if="model.user.admin" ><a  href="#!/user/admin">User List</a></li>
-                    </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-top">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#!/user/search">Stocks</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!/user/friends">Following</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!/user/followers">Your followers</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="#!/user/activity">Your Feed</a></li>
+                    <li class="nav-item" ng-if="model.user.admin" ><a class="nav-link" href="#!/user/admin">User List</a></li>
+                </ul>
             </div>
         </nav>
 
         <div class="container-fluid">
-            <h6>Your Feed</h6>
             <div class="container-fluid">
+                <div class="card" ng-repeat="activity in model.activities">
+                    <div class="card-header">
+                        <a href="#/profile/576f3ea8eccc8534264d6b97">
+                            <strong class="ng-binding">
+                                {{activity.userId.username}} {{activity.type}} {{activity.ticker}} {{activity.friendId.username}}
+                            </strong></a>
+                        <div class="pull-right post-time">
+                            {{activity.date}}
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div class="card-text">
+                                <ul class="vu-comment">
+                                    <!-- ngRepeat: comment in post.comments -->
+                                    <li ng-repeat="comment in activity.comments" >
+                                        <span><b>{{comment.userId.username}}:</b>&nbsp </span>{{comment.comment}}
+                                    <div class="pull-right post-time">
+                                        {{comment.date}}
+                                    </div>
+                                </li><!-- end ngRepeat: comment in post.comments -->
+                                </ul>
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="row comment-input input-group">
+                            <input type="text" ng-model=activity.commentText class="form-control col-md-12 ng-pristine ng-untouched ng-valid" placeholder="Comment">
+                            <span class="input-group-btn">
+                            <button ng-click="model.addComment(activity._id)" class="btn btn-default comment-post" type="button">
+                                <i class="material-icons">post</i></button>
+                          </span>
+                        </div>
+
+                    </div>
+                </div>
                 <ul class="list-group">
                     <li ng-repeat="activity in model.activities" class="list-group-item">
                         <div>
@@ -43,11 +71,15 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="navbar-header navbar-text pull-right container-fluid">
-                <a class="navbar-link"  href="#!/user">
-                    <span class="glyphicon glyphicon-user vu-white"></span>
-                </a>
+        <nav class="navbar navbar-expand-lg navbar-light vu-bg-light fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-nav mr-auto ">
+                </div>
+                <div class="navbar-link ">
+                    <a class="navbar-header navbar-brand float-right"  href="#!/user">
+                        <span class="fa fa-user fa-fw vu-white"></span>
+                    </a>
+                </div>
             </div>
         </nav>
     </div>

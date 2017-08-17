@@ -1,6 +1,10 @@
 input, textarea {
     margin-bottom: 5px;
 }
+/*.vu{*/
+    /*margin:auto;*/
+    /*width:1024px;*/
+/*}*/
 .vu .vu-margin-bottom-5 {
     margin-bottom: 5px;
 }
@@ -10,6 +14,9 @@ input, textarea {
 .vu h6{
     margin-top: 45px;
 }
+.vu .vu-comment{
+    list-style: none;
+}
 
 p {
     text-align:justify;
@@ -18,6 +25,14 @@ body {
     padding-top: 100px;
     padding-bottom: 70px;
 }
+.vu .card{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.vu .card-block{
+    padding: 40px;
+}
+
 img, iframe {
     margin-bottom: 10px;
 }

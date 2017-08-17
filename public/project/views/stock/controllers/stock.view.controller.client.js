@@ -11,7 +11,9 @@
                 if(model.ticker){
                     StockService.getStockRating(model.ticker)
                         .then(function(msg){
-                            model.stockRating = Math.ceil(msg.data.datatable.data[0][26]);
+                            model.stockRating = 0;
+                            if(msg.data.datatable.data[0].length > 26)
+                                model.stockRating =  Math.ceil(msg.data.datatable.data[0][26]);
 
                         });
                     StockService.getStockData(model.ticker)
